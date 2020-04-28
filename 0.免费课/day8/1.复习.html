@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组的方法：15
+        // 数组的去重
+        // 数组的冒泡排序
+        // 数组的插入排序
+        // 数组的快速排序
+        // 1.indexOf   2. 对象属性名不能重复 3.在原数组直接实现去重
+        // 隔行变色  任意数求和  选项卡  去重   冒泡  插入  快速排序  递归求和
+        // 思路 ==> 代码；
+        // 这行代码是干什么的；给每一行代码加上注释；
+        var ary = [1,2,3,23,56,56,23,3];
+        // var len = ary.length;
+        // for(var i=0;i<ary.length;i++){
+        //     var cur = ary[i];
+        // }
+        // 用户体验
+        // for(var i=0;i<ary.length;i++){
+        //     var cur = ary[i];
+        //     var obj = {};
+        //     if(obj[cur]===cur){
+        //         // ary.splice(i,1)
+        //         ary[i]=ary[ary.length-1];
+        //         ary.length--;
+        //         i--;
+        //         continue;
+        //     }
+        //     obj[cur]=cur;
+        // }
+        // 冒泡排序
+        // 插入排序
+        // 快速排序
+
+        var ary = [12,56,18,23,46,78,48,88];
+        var newAry=[];
+        newAry.push(ary[0]);
+        // 1.创建新的空数组，把ary的第一项添加到新数组中；
+        // 2.循环数组，拿到数组的每一项；
+        // 3. 让原数组的每一项依次和新数组中的每一项从前往后依次进行比较
+        // 4. 如果原数组中的值,如果这个值大于当前循环的值，那么就继续往前比较，直到遇到比其大的值，把原数组中的值放在这个大值得前面；
+        // for(var i=1;i<ary.length;i++){
+        //     var cur = ary[i];
+        //     //      7  k=6
+        //     for(var k=0;k<newAry.length;k++){
+        //         if(cur>newAry[k]){
+        //             // 当比较到最后一项时，如果cur还比最后一项大，直接将curpush新数组中；并且需要break;
+        //             if(k===newAry.length-1){
+        //                 newAry.push(cur);
+        //                 break;
+        //             }
+        //         }else{
+        //             newAry.splice(k,0,cur);
+        //             break;
+        //         }
+        //     }
+        // }
+        // console.log(newAry);
+
+        // 递归
+        // 在函数体内部调用函数自己
+        // 递归求和:递归一定要终止条件；否则就会栈溢出；
+        // 回调函数： 
+        // function A(b){}
+        // function B(){}
+        // A(B)
+
+        // 6.
+        // document.getElementById
+        // document.getElementsByClassName
+        // document.getElementsByTagName
+        // document.getElementsByName
+        // document.body
+        // document.documentElement
+
+
+
+
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>

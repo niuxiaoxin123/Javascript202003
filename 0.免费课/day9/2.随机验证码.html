@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #code{
+            width:200px;
+            height:50px;
+            border:1px solid red;
+            border-radius: 10px;
+            margin:100px auto;
+            line-height: 50px;
+            text-align: center;
+            font-size:20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="code">1234</div>
+    <script>
+        var code = document.getElementById("code");
+        var  str = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // 如何产生随机的字符串呢？
+        // 在JS中有一个产生随机的数字的方法 Math.round(Math.random()*100);
+        // 产生一个随机的数字【0-61】，让这个随机的数字作为字符串的索引，去获取随机的字符；这个操作执行4次，把4次找到的字符拼接到一起，最后对code这个元素进行修改
+        // 0-1 *61
+        // 如果得到的这个新字符在newStr中出现过，那么这个字符就无效，不能在往newStr上拼接了；【indexOf】
+        function getCode(){
+            var newStr = "";
+            // for(var i=0;i<4;i++){
+            //     // 会产生一个0-61的随机整数字；
+            //     var curNum = Math.round(Math.random()*61);
+            //     // 通过产生随机的数字去str中取到一个随机的字符；把它拼接到newStr中；
+            //     var  curStr  = str[curNum];
+            //     if(newStr.indexOf(curStr)===-1){
+            //         // 说明curStr新字符不在newStr中存在过；
+            //         newStr+=curStr;
+            //     }else{
+            //         // 如果这一项出现过，没有想newStr上拼接字符；那么需要i--;
+            //         i--;
+            //     }
+            //     // newStr = newStr +str[curNum];
+            // }
+            // "abc"  a
+            var i=0;
+            while(i<4){
+                var curNum = Math.round(Math.random()*61);
+                var  curStr  = str[curNum];
+                if(newStr.toLowerCase().indexOf(curStr.toLowerCase())===-1){
+                    newStr+=curStr;
+                    // 进来一次，说明拼接了一个新字符；那么就执行i++;
+                    i++;
+                }
+            }
+            code.innerText=newStr;
+        };
+        code.onclick = getCode;
+        getCode();
+        // 只要刷新页面，这个code就会重新生成一个；
+        // var a = "rrr";
+        // a+"b";
+        // console.log(a);
+
+        // var  yy = "ABC";
+        // yy.toLowerCase();// 返回值是一个小写的，但是原字符串是不变的；
+        // console.log(yy);
+        
+        
+    </script>
+</body>
+</html>

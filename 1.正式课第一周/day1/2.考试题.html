@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" class="box"></div>
+    <script>
+        // 数据类型
+        // 基本数据类型 number string boolean  null  undefined 
+        // 数字  字符串  布尔 null  undefined 
+        // 引用数据类型： 对象 数组 正则 函数  Math  Date的实例 
+        // typeof  instanceOf  constructor  Object.prototype.toString.call()
+        // 堆栈内存；
+        // arguments  形参；
+        // setTimeout  setInterval;
+        // 浏览器内核：谷歌 ： webkit   IE：trident   火狐Gecko  欧朋 presto
+
+        // 先根据汉语的需求转成具有逻辑的思路
+        // 把汉语的思路转成代码；
+        // 元素都是对象{...}
+        // 二： 1. var box = document.getElementById("div1");{...}
+        // var  obj = [];
+        // obj();// obj is not function; 当代码报错后，后面的代码都不再解析了；
+        // var box = document.getElementsByClassName("box");// [{...}][0]
+        // console.log(box);
+        // box.style.background="red";
+        // document.getElementsByTagName("div")[0]
+        // var op = document.createElement("p");
+        // document.body.appendChild(op);
+        // previousSibling 
+        // 获取上一个哥哥元素节点；晚上敲 previousElementSibling 
+        // substr  substring  slice
+        // replace
+        // 三： ary.push()  ary[ary.length]=xxx; ary.splice(ary.length,0,xx);
+        // ary.pop() ary.length--; ary.splice(ary.length-1,1)
+        // forEach  map 
+        // ary.sort(function(a,b){
+        //     return a-b
+        // })
+        // var  ary = [2,3,5,7,2,6]
+        // ary.slice(n-1,m);
+        // 四.
+        // 1. Math.round(Math.random()*(m-n)+n)
+        // 2. Math.max  Math.min
+        // 3. true
+        // 4. true 
+        // 5."OK"
+        // var val="3px"+3?"oK":"no";
+
+        // 会多少写多少；
+        // 5步  3步 
+        // 先写3步；
+        // 
+        function sum(){
+            var total = 0;
+            for(var i=0;i<arguments.length;i++){
+                var cur = Number(arguments[i]);
+                if(!isNaN(cur)){
+                    if(cur%3===0&&cur%5===0){
+                        total+=cur;
+                    }
+                }
+            }
+            return total;
+        }
+        sum(10,21,66,90,30,28);
+
+        // 整理思路；
+        // 6. 1.去重 2.排序
+        // var ary = [1,2,3,2,1,2,3,4,2,1,2,3,4,3,2,1];
+        // var obj = {};// 在对象中，属性名是不可以的重复的；
+        // for(var i=0;i<ary.length;i++){
+        //     var cur = ary[i];
+        //     // 在获取obj中属性名是cur的值的属性值；
+        //     if(obj[cur]===cur){
+        //         // 如果这个条件成立了，说明在数组中之前出现过这一项；
+        //         ary[i]=ary[ary.length-1];
+        //         ary.length--;
+        //         i--;
+        //         continue;
+        //     }
+        //     obj[cur]=cur;// 给obj新增键值对
+        // }
+        // ary.sort(function(a,b){return b-a});
+
+        // 试错 
+        // var  obj = {};
+        // var a = 1;
+        // obj[a]=100;
+
+        // 7.
+        // Math.round(Math.random()*(9999-10000)+1000)
+        // function getCode(){
+        //     // var  str ="0123456789";
+        //     var newStr = "";
+        //     for(var i=0;i<4;i++){
+        //         var index = Math.round(Math.random()*9);
+        //         newStr+=index;
+        //     }
+        //     box.innertHTML = newStr;
+        // }
+        // var timer =  setInterval(getCode,1000);
+        // setTimeout(function(){
+        //     clearInterval(timer);
+        // },10000)
+
+        var oLis = document.getElementsByTagName("li");
+        // i 代表当前li的索引
+        for(var i=0;i<oLis.length;i++){
+            if(i%2===0){
+                oLis[i].style.background="red";
+            }else{
+                oLis[i].style.background="green";
+            }
+            // 在鼠标划上之前，先把原来的颜色存储起来；
+            oLis[i].bg=oLis[i].style.background;
+            oLis[i].index = i+1;
+            oLis[i].onmouseover= function(){
+                this.style.background="pink";
+            }
+            oLis[i].onmouseout= function(){
+                // 把li元素上原有的背景颜色赋值给当前元素的background属性
+                this.style.background=this.bg;
+            }
+            oLis[i].onclick = function(){
+                alert("我是第"+this.index+"个Li");
+            }
+        }
+        
+    
+    </script>
+</body>
+</html>;

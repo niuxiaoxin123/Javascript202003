@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 形参和实参
+        // arguments:
+        // function sum(a,b,c,d,f,e,g,y){
+        //     // y是undefined：任何数字和undefined运算都得到NaN;
+        //     console.log(a+b+c+d+e+f+g+y)
+        // }
+        // sum(1,2,8,5,6,45,98);// 
+        // sum(1,2,8,5,6,45,98,99);
+        // 知识点杂碎：记忆力；
+        function sum(){
+            // arguments: 实参集合；是一个类似于数组的集合；里面有实参的每一个值；并且每一个值都有一个对应的索引；
+            console.log(typeof arguments);// "object"
+            var total = 0;// 
+            for(var i=0;i<arguments.length;i++){
+                // 向total这个变量上累加arguments[i]这个值；
+                // 把这个数字转成number类型的；
+                // var  cur = Number(arguments[i]);
+                // if(!isNaN(cur)){// 凡是isNaN执行结果是false，就把这个值加到total这个变量上；取反；
+                //     total+=cur;
+                // }
+                // total+arguments[i];
+                // total=total+arguments[i];
+                var  cur = Number(arguments[i]);
+                if(!isNaN(cur)){
+                    // cur 是NaN时候，这个条件成立
+                    total+=cur;
+                }
+            }
+            console.log(total);
+        }
+        sum(1,2,8,5,6,45,98,"3","89","3px",undefined);
+        // var a = "3px";
+        // var  b = Number(a);
+        // console.log(a)
+        
+        
+    </script>
+</body>
+</html>

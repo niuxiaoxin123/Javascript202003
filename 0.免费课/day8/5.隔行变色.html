@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #list{
+            width:400px;
+            list-style: none;
+            margin:100px  auto;
+        }
+        #list li{
+            width:100%;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            border-bottom:  1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+        <li>我爱你中国！</li>
+    </ul>
+    <ol>
+        <li>111111111</li>
+        <li>111111111</li>
+        <li>111111111</li>
+        <li>111111111</li>
+    </ol>
+    <script>
+        // 获取所有的li
+        // 通过标签的名字来获取元素；得到一个类数组集合；不是一个数组，是一个类似于数组的集合
+        var first = document.getElementById('first')
+        // {style:background:""}
+        // 改变上下文
+        var list = document.getElementById('list')
+        var oLis = list.getElementsByTagName("li");
+        // [{},{},{},{}]
+        console.log(oLis);
+        // li的奇数行是红色，偶数行是黄色
+        for(var i=0;i<oLis.length;i++){
+            // i%2 取余数   任何整数%2，都会得到0或者1
+            if(i%2===0){
+                oLis[i].style.backgroundColor='grey';
+            }else{
+                oLis[i].style.backgroundColor='pink';
+            }
+        }
+        // 鼠标划上的li让其显示黄色，鼠标离开让其显示原来的颜色；
+        // 鼠标划上的事件 onmouseover  onmouseout
+        oLis[0].onmouseover=function(){
+            // 当鼠标划上这个li时，执行这个函数
+            console.log(100)
+        }
+        oLis[0].onmouseout=function(){
+            // 当鼠标离开这个li时，执行这个函数；
+            console.log(200)
+        }
+    </script>
+</body>
+</html>

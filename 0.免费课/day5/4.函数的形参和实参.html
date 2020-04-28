@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var a = 3.4667;
+        // var b = 6.65322;
+        // var t = Number((a+b).toFixed(2));
+        // console.log(t);
+
+        // var a1 = 1.345654;
+        // var b1 = 3.2342;
+        // var t1 = Number((a1+b1).toFixed(2));
+        // console.log(t1);
+
+        // 函数的形参和实参；
+        // 形参： 函数定义的小括号中两个值就是形参；
+        // 实参： 函数执行的小括号的两个值就是实参；
+        // 这就是一个求和的方法；
+        // 在JS中函数：
+        function sum(num1,num2){// 和实参一一对应起来；
+            var t = Number((num1+num2).toFixed(2));
+            console.log(num1)
+            console.log(t);
+        };
+        // 当调用sum时，会让sum函数体中的代码从上到下执行一次；
+        // 在JS中，把视线同一功能的代码放在一个函数体中，当想实现这个功能时，只需要执行该函数就可以；这就是函数的封装；
+        // 1.如果函数只有形参，没有实参，那么形参默认存储的值就是undefined；
+        // 2.在函数形参的位置可以用等号赋默认值；如果有默认值且有有对应的实参，那么实参会把默认值给覆盖掉；
+        // 参数:相当于函数的入口；
+        sum(3.4667,6.65322,2,3,4,5,55,6);
+        // sum(1.345654,3.2342);
+        // sum(1.345,8.234);
+        // 求任意两个数的和
+    
+    
+    
+    </script>
+</body>
+</html>

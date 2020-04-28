@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="a">
+        珠峰培训
+        <span></span>
+        <!-- hhh -->
+        <p></p>
+        <!-- 88 -->
+        <!-- 666 -->
+        <!-- 1000 -->
+        <ul id="list">
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var list = document.getElementById("list");
+        // DOM : document object model;
+        // DOM元素 ： 元素也是对象类型{}
+        // 在JS中换行和空格都是文本节点；
+        // 节点都是对象数据类型的;nodeType  nodeName  nodeValue
+        // 节点 ： 元素节点  文本节点   注释节点 document
+        // 节点类型          nodeType       nodeName     nodeValue
+        // 元素节点             1          大写的标签名      null
+        // 文本节点             3            #text        文本的内容
+        // 注释节点             8            #comment     注释的内容
+        // document            9            #document      null
+        // console.dir(box);
+        // console.dir(list);
+
+
+        // 节点属性：代表了节点的关系
+        // 1. childNodes  : 所有的子节点；是一个类数组集合；
+        // console.log(box.childNodes)
+        // 2. children :所有的子元素节点；
+        //console.dir(box)
+        // 3. parentNode: 当前节点的父亲节点；
+         // console.log(list.parentNode)
+        // 4. previousSibling  :上一个哥哥节点
+        // console.log(list.previousSibling);
+        // console.log(list.previousElementSibling)// IE8以下不兼容
+        // 5. nextSibling : 下一个弟弟节点；
+        // 如果没有，则获取结果是null;
+        //console.dir(list.nextSibling.nextSibling)
+        // console.log(list.nextElementSibling);// IE8以下不兼容
+        // 6. firstChild : 第一个子节点
+        //console.dir(box.firstChild);
+        //console.dir(box.firstElementChild);// IE8以下不兼容
+        // 7.lastChild  : 最后一个子节点
+        console.dir(box.lastChild)
+        console.dir(box.lastElementChild)// IE8以下不兼容
+       
+       // JS中这个元素节点的对象和标签是一一映射的；当改变其中一个值，另一个也会发生改变；
+       // box.className="b";
+       //console.dir(list)
+        // 封装一个兼容IE的获取上一个哥哥元素节点的方法
+        // for : 
+        // 函数的封装
+       function getBro(curEle){
+           var  pre = curEle.previousSibling;
+           while(pre){// 只要这个小括号转布尔是true，那么继续执行while.如果是false，就不再执行了；
+                if(pre.nodeType===1){
+                    // 如果pre.nodeType是1，说明是元素节点
+                    return pre;
+                }
+                // 将哥哥节点的哥哥节点再次赋值给pre;
+                pre=pre.previousSibling;
+           }
+           return  null;
+       }
+       getBro(list);
+       getBro(box);
+    
+
+    
+    </script>
+</body>
+</html>

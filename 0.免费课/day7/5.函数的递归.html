@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //递归： 函数在函数体内部调用函数自己，这样的现象就是递归；
+        // 1.定义
+        // function fn(){
+        //     // 只有让函数执行，这里面的代码才会解析；
+        //     var num = 100;
+        //     console.log(num)
+        //     fn();
+        // } 
+        // 2.执行
+        //fn();// 
+        // 求1-100之间的和
+        // var total = 0;
+        // for(var i=0;i<=100;i++){
+        //     total+=i;
+        // }
+        // console.log(total);
+        // 使用递归求出1--100的数字和；
+        function sum(num){
+            if(num===1){
+                return num;// 当num==1时，终止递归函数
+            }
+            return num+sum(num-1);
+        }
+        // sum(100)  return 100 + 99 + 98+sum(97)+...+1
+        // sum(99)   return 99 + sum(98)
+        // sum(98)   return 98+sum(97);
+        //...
+        // sum(2)    return 2+sum(1)
+        // sum(1)    1
+        // var t = sum(100);
+        // console.log(t);
+        // 求出1-100之间是3倍数并且是5倍数的和；用递归求和
+        // % : 取余数
+        // function sum(num){
+        //     if(num==0){
+        //         return 0;
+        //     }
+        //     if(num%3==0&&num%5==0){
+        //         // 说明能被3和5整除
+        //         console.log(num);
+        //         return  num + sum(num-1)
+        //     }else{
+        //         return sum(num-1);
+        //     }
+        // }
+        // sum(100)   return sum(99);
+        // sum(99)   return sum(98);
+        // sum(90)    return 90+sum(89)
+        // var  s = sum(100);
+        // console.log(s);
+
+    
+    </script>
+</body>
+</html>

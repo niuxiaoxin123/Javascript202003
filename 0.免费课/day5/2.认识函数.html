@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 函数  if else  for ==>编程语言【逻辑】
+    // var bar = 1;
+    // 声明且创建一个函数；
+    // 引用类型的；函数也是一个空间地址类型的；
+    // 函数的定义过程：
+    // 1)首先会去堆内存开辟一个空间，这个空间对应一个空间地址
+    // 2)把函数体中的代码当作字符串存储到这个堆内存空间中
+    // 3)把这个空间对应的空间地址赋值给这个函数名；
+   
+    // function：功能 方法 工厂；
+    function fn(){ // 当浏览器一行一行解析代码时，遇到function fn{}里面的代码时，会直接跳过；
+        // 当加载页面时，这个函数体中的代码不会进行解析，只有当fn执行时，才会让里面的代码运行起来；
+        var num=100;
+        console.log(num);
+    }
+    // 完整的函数分为两部分：1.函数的定义  2.函数的执行；
+    // 2.函数的执行
+    console.log(200);
+    fn();// fn执行会让函数体中的代码从上到下运行一遍；
+    fn();
+    console.log(300);
+
+
+    
+    
+    
+    </script>
+</body>
+</html>

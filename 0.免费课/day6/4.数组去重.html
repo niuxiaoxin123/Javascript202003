@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var  ary = [12,56,78,34,56,78,99];
+        // 数组去重：把数组中重复项去掉；    
+        // var newAry = [];
+        // //1. indexOf
+        // for(var i=0;i<ary.length;i++){
+        //     // 思路：
+        //     // 获取到ary中的成员判断该成员是否已经在newAry中存在，如果返回-1；说明不存在，需要把这一项放入newAry中；如果存在，不做任何的处理；
+        //     // 先要有汉语版的逻辑判断，然后把汉语转成代码；
+        //     if(newAry.indexOf(ary[i])===-1){
+        //         newAry.push(ary[i]);
+        //     }
+        // }
+        // console.log(newAry);
+        var  ary = [12,56,78,34,56,78,99];
+        var newAry = [];
+        var obj = {};
+        // 1.把ary的每一项放到obj这个对象中，数组成员值作为属性名和属性值
+        // 2.利用for in循环对象，把对象的每一个键值对的属性值放到数组中
+        for(var i=0;i<ary.length;i++){
+            //var cur = ary[i];
+            //obj.cur = cur;// 属性名是cur,属性值是cur的值
+            //obj[cur]=cur;// 属性名就是cur的值
+            obj[ary[i]]=ary[i]
+        }
+        for(var key in obj){
+            // key : key是个字符串 ，key是obj这个对象的属性名
+            newAry.push(obj[key]);
+        }
+        console.log(newAry);
+
+        // 免费课 ： 预习；
+        
+
+
+        
+        
+        
+    </script>
+</body>
+</html>

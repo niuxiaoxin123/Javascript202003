@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab{
+            width:400px;
+            height:300px;
+            margin: 100px auto;
+        }
+        #tab ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        #tab ul li{
+            width:60px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            float:left;
+            border:1px solid red;
+            /* margin:0px 5px; */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #tab ul li.select{
+            background: pink;
+        }
+        #tab div{
+            display: none;
+            width:400px;
+            height:300px;
+            text-align: center;
+            line-height: 300px;
+            border:1px solid red;
+        }
+        #tab div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul>
+            <li class="select">电视剧</li>
+            <li>电影</li>
+            <li>综艺</li>
+        </ul>
+        <div class="select">家有儿女</div>
+        <div>战狼3</div>
+        <div>王牌对王牌</div>
+    </div>
+    <script>
+        // 选项卡原理： 当点击li的时候
+        var tab = document.getElementById("tab");
+        var oLis = tab.getElementsByTagName("li");
+        var divs = tab.getElementsByTagName("div");
+        console.log(oLis)
+
+        // 选项卡的解决方案：通过设置元素的class来控制li的背景和div元素的显示隐藏；
+        // for
+        for(var i=0;i<oLis.length;i++){
+            // 当打开页面时，该for循环就运行了
+            // oLis[0].onclick = function(){...}
+        //    console.dir(oLis[i])
+         // 新增键值对；当打开页面，循环时就执行
+            //oLis[0].index=0; 
+            //oLis[1].index=1;
+            //oLis[2].index=2;
+            // 把当前的li索引存储到了当前li的这个对象上；
+            // 自定义属性；
+            oLis[i].index=i;
+            oLis[i].onclick = function(){
+                // 当执行这个函数的时候，外层的for循环早已经循环完成，在没有点击之前i变成了唯一值3；
+                // 但是函数体中的代码需要等到点击li时才会执行；
+                // this会执行当前点击的那个li元素；
+                // console.log(this) 
+                // 元素.className="XXX"；这行代码可以修改元素的class；
+                // 在给当前点击的元素新增class之前，先把所有的li的class都清空；
+                for(var j=0;j<oLis.length;j++){
+                    oLis[j].className="";
+                    divs[j].className="";
+                }
+                // this ==>this和当前的li元素的空间地址是一样的； 
+                // this==>Li; 
+                // this 是li元素，元素在js中都是对象数据类型的；{}
+                //console.dir(this);
+                this.className="select";
+                // 通过this,获取到当前的点击的li对象，再通过.index获取到当前li对象存储的当前li的索引；
+                divs[this.index].className="select";
+            }
+        }
+
+        // var f = function(){}
+        // var g = function(){}
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 快速排序；
+        // 对数组取中间项，然后循环数组，把比中间项小的放在左边的数组，比中间项大的放在右边的数组；最后连接到一起，这样再次对左右数组执行同样的操作；
+        var  ary = [10,8,89,56,48,34,66,28,68];
+        function quickSort(a){
+            // Math.floor : 向下取整；
+            // 只要长度小于等于1；说明该数组中最多一项；不需要在进行循环比较了；
+            if(a.length<=1){
+                return a;
+            }
+            var  middleIndex=Math.floor(a.length/2);
+            // 根据索引，删除了中间项；并且返回一个数组，数组里是删除那一项；
+            // middleVal 就是原数组中的中间项；
+            var  middleVal = a.splice(middleIndex,1)[0];
+            var left = [];// 比中间项小的放到left中，比中间项大的放到right中;
+            var right=[];
+            for(var i=0;i<a.length;i++){
+                var cur = a[i];
+                // 比中间项小的放在left数组中
+                if(cur<=middleVal){
+                    left.push(cur)
+                }
+                // 比中间项大的放在right数组中
+                if(cur>middleVal){
+                    right.push(cur);
+                }
+            }
+            // 需要对left和right这个数组继续执行同样的操作；
+            // 凡是递归一定会有一个终止的条件；
+            return  quickSort(left).concat(middleVal,quickSort(right));
+        }
+        var newAry = quickSort(ary);
+        console.log(newAry);
+        
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 算法： 
+        // 数组 ： 三个排序  冒泡排序  插入排序 和快速排序；
+        //  sort
+        // ary.sort(function(a,b){return a-b});
+        // console.log(ary)
+        // 培训大家的逻辑思想 
+        //var  ary = [10,67,34,28,66,88,16];
+        //          [66,67,88]
+        // 1. 让相邻的两项进行比较，如果前面一项比后面一项大，让这两项交换位置；
+        // 这样循环一轮之后，将数组的最大值放到了数组的最后面；
+        // 循环一轮解决一个最大值；那么有多少项，我就再外层循环多少次；
+        var ary = [12,23,25,36,57,88,66]
+         for(var j=0;j<ary.length-1;j++){
+             // 外边循环一次，里面循环6次；
+             // 当j=0时，里面的小循环就循环6次，把数组的最大值放在了数组的最后面；
+             // j=1 里面的小循环就循环6次，把数组倒数第二个大值放在倒数第二个位置上；
+             // j=2 ...
+             // j=3... 已经解决了3个最大值；
+             // 循环了j轮，后面那j项确定是最大值了，不需要再循环了；
+            var  flag = true;
+            for(var i=0;i<ary.length-1-j;i++){
+                if(ary[i]>ary[i+1]){// 相邻的两项进行比较；
+                // 借助了temp临时存储了ary[i]的值
+                // 如果前面一项大于后面一项，交换位置
+                // 如果前面一项小于等于后面一项，不换位置，直接进行下一轮的比较
+                    var temp=ary[i];
+                    ary[i]=ary[i+1];
+                    ary[i+1]=temp;
+                    // 只要存在前面一项比后面一项大的这种情况，那么把flag改成false;
+                    // 如果不存在前面一项比后面一项大，说明数组已经是排好顺序了
+                    flag=false;
+                }
+                console.log(100);
+            };
+            if(flag){
+                break;// break 是终止的最外层的大循环；
+            }
+        } 
+        console.log(ary);
+        
+
+        
+
+        
+    
+    
+    </script>
+</body>
+</html>

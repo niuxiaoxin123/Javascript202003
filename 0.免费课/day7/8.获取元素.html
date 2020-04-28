@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="a">
+        <div class="abc"></div>
+    </div>
+    <div  class="a"></div>
+    <ul id="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+    <input type="text" name="a">
+    <script>
+        // 在html中叫标签，js中叫元素;
+        // 经常会通过js的方式来操作元素；
+        // JS : 操作DOM；元素；
+        // DOM 
+        // 要操作谁，就要先获取谁；
+        // 1. document.getElementById; 
+        // document :上下文；在什么范围内获取元素；document[文档]
+        // 如果id重名，默认只能获取第一个；
+        // getElementById的前面必须是document;
+        //var box= document.getElementById("box");
+        
+        //box.style.background="black";
+        // 在JS中box实际就是一个对象{}；
+        //console.log(typeof box)// "box"
+        //console.dir(box);// 详细输出；{}
+        //console.log(box);
+        
+
+        // 2. document.getElementsByClassName
+        // 获取到是一个集合
+        // 通过document.getElementsByClassName获取多个元素；但是如果想具体使用某个元素，那么需要加上索引；
+         //var divs = box.getElementsByClassName("abc");
+        // console.log(divs) [{},{}]
+        // divs[0].style.background="black";
+        //在IE8以下不兼容；
+
+        // 3.document.getElementsByTagName
+        // 通过标签名来获取元素
+        // var list = document.getElementById("list");
+        // var oLis = list.getElementsByTagName("li");// 集合
+        // console.log(oLis);
+
+        // 4. document.getElementsByName
+        // 一般用于获取input框，表单元素；
+        // var f = document.getElementsByName("a")
+        // console.log(f);
+
+        // 5. document.body
+        // var a = document.body
+        // console.log(a);
+        // 6. document.documentElement
+        // var b = document.documentElement
+        // console.log(b);
+        
+        
+
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 分布式：分为三个区： 分别是
+        // 先将本地的文件夹变成一个git仓库；
+        // 所有的git命令都要在git仓库下执行
+        // git  init : 让本地的文件夹初始化成一个git仓库；
+        // git status : 查看这个文件中文件的状态；红色：文件在开发区   绿色：开发区和暂存区的代码一致；
+        // git  add . : 把开发区的代码克隆一份上传到暂存区；
+        // git checkout -- 文件名 : 把暂存区存储的代码把本地给覆盖掉；
+        // git  restore 文件名【也是将暂存区的文件覆盖本地】
+        // git rm --cached 文件名： 删除在暂存区的文件
+
+        // 如果是第一次使用git，需要将代码从暂存区上传到历史区，需要配置全局的邮箱和用户名；
+        // 在git中执行下面两条命令
+        // git config --global  user.email "你的邮箱"
+        // git config --global  user.name "用户名"
+        // git commit -m"123"
+
+
+
+        // git init  : 初始化一个git仓库
+        // git  add . : 将本地代码上传到暂存区
+        // git  commit -m"567" : 将暂存区的代码上传到历史区；
+
+    
+    </script>
+</body>
+</html>

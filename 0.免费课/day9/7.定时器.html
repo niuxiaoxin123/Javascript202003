@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定时器 ： 分为两种 
+        // setTimeout  : 到了预定的时间执行一次
+        // setInterval： 每隔一定得预定的时间执行一次；
+        // setTimeout(函数,毫秒数)
+        // 当浏览器解析到16行时，浏览器会立即记录一个开始的时间戳；定时器就是相对这个时间来开始的；
+        // setTimeout(function(){
+        //     // 过了3000毫秒，执行这个函数一次；
+        //     console.log("不要睡觉");
+        // },3000);
+        // 当浏览器解析到定时器，会立即解析下面的代码，不会在此等待；
+        // console.log(100);
+
+        // 2. setInterVal : 每隔2000毫秒就会执行一次
+        // var val=setInterval(function(){
+        //     console.log("好好学习")
+        // },2000);
+        // var val1=setInterval(function(){
+
+        // },2000);
+        // var val2=setTimeout(function(){
+        //     console.log(1000)
+        // },2000);
+        // 定时器的返回值；定时器的返回值是代表该定时器在当前页面时第几个定时器；
+        // 定时器只要是定时器，就会累加1；
+        // console.log(val);
+        // console.log(val1);
+        // console.log(val2);
+
+        // 清除定时器  clearTimeout  clearInterval
+        // clearTimeout(val2);
+        // clearInterval(val);
+        // 从第三个参数开始，就会传递给这个回调函数；
+        // setTimeout(function(a,b){// a,b 是形参 
+        //     console.log(a,b);
+        // },1000,"珠峰","北京");
+
+        // 思考： 页面一打开，每隔1000毫秒就输出一次hello;共输出10次结束；
+        // var rr =  setInterval(function(){
+        //         console.log("hello")
+        // }, 1000);
+        // setTimeout(function(){
+        //     clearInterval(rr);
+        // }, 10000);
+
+        // 浏览器有最小的识别时间；谷歌的识别时间6~8ms；火狐 10~13  IE 15~18;
+        setTimeout(function(){
+            console.log(300);
+        }, 15);
+        // JS是单线程，同一时间只能执行一行代码；
+        for(var i=0;i<100000000;i++){  // 330ms
+
+        }
+
+    
+    
+    
+    </script>
+</body>
+</html>

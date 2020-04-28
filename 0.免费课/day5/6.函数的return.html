@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. return :把函数体内部值返回到函数的外面；
+        // 2. return 能够让函数体中的代码立即终止；函数体内return下面的代码不再执行；
+        // 在函数体外部不能用return；
+        function sum(){
+            // arguments:// 函数的实参集合；这个只能在函数体内部使用；
+            // document.getElementsByTagName("li");
+            // arguments : 是一个类数组集合；有索引 有length；
+            var total = 0;
+            for(var i=0;i<arguments.length;i++){
+                // 如果这个数字强制转数字是NaN，则过滤出该值；
+                var cur  = Number(arguments[i]);
+                // Number 的结果要么是正常的数字，要么是NaN；
+                if(!isNaN(cur)){//如果isNaN(cur)的值是false;这个cur就得累加
+                    total+=cur;
+                }
+                // console.log(888)
+                // return;
+            }
+            
+            // 把函数体内部的值返回到函数体外，供函数体外面使用；这样的值就是返回值；
+            // return  + 值；就可以这个值返回到函数的外面
+            // return total;
+            // return;// 也返回undefined；
+            // return  88;
+            return;
+            console.log(99);
+            var  f = 1;
+        }
+        // 在函数体的外面拿到里面的求和结果；
+        // 函数(),就是把函数体中return后面的值给了变量val;那么这val就叫做函数的返回值；也叫函数的执行结果；
+        // 就是sum执行完以后把返回值给了变量val;
+        var  val = sum(1,true,NaN,"3px","20",1001,88);
+        console.log(val);
+        // 也会直接输出函数的执行结果；是函数体内部return出的值；
+        //console.log(sum(1,true,NaN,"3px","20",1001,88))
+
+        // 3. 如果函数体中没有return，那么函数默认的返回值是undefined；
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="a b">
+        <div>100
+            <span></span>
+        </div>
+        <div id="first">200</div>
+    </div>
+   
+    <script>
+        var box = document.getElementById("box");
+        var list = document.getElementById("list");
+        var first = document.getElementById("first");
+        // 1.document.createElement :创建一个元素;
+         var a = document.createElement("div");
+         a.innerText="好好学习，天天向上";
+        // 2. appendChild : 向容器元素的末尾新增一个元素
+        // 父元素.appendChild(子元素)
+        // box.appendChild(a);
+        // 3.insertBefore ; 在哪个子元素之前插入新元素；
+        // 父元素.insertBefore(newChild,oldChild)
+        // box.insertBefore(a,first);
+        // 4.removeChild : 删除子节点
+        // 父元素.removeChild(子元素);
+        // box.removeChild(first);
+        // 5. replaceChild : 替换某个子元素；
+        // 父元素.replaceChild(新元素,oldChild)
+        // box.replaceChild(a,first);
+        // 6.cloneNode : 克隆节点
+        // var hh = 元素.cloneNode(true/false)// true /false
+        // 将节点克隆一份，默认是false，进行浅克隆，只克隆最外层的节点；如果参数是true，则也会克隆子孙节点；
+         //var m = box.cloneNode(true);
+        // list.appendChild(m);
+         //console.log(m);
+
+
+        // 7.getAttribute /setAttribute /removeAttribute;
+        // getAttribute : 获取行间属性的属性值；如果没有，则回去的结果是null;
+        // box.index=10;
+        //  var r =  box.getAttribute("a");
+        //  console.log(r);
+        // setAttribute : 设置行间属性
+        // 元素.setAttribute(属性名,属性值);
+        //box.setAttribute("c","aaa");
+        // removeAttribute : 删除行间属性；
+        //box.removeAttribute("a")
+
+        // 8.classList : 新增 删除  替换class名字；
+        // 元素.classList.add() 新增class
+        //box.classList.add("b");
+        // 元素.classList.remove()
+        //box.classList.remove("a");
+        box.classList.replace("a","abc");
+        
+    </script>
+</body>
+</html>

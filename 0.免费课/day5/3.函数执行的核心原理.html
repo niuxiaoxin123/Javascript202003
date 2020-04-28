@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 堆栈内存：浏览器渲染页面时，会形成两个虚拟的内存；
+        // 虚拟的内存 1：可大可小 2.虚拟的内存可以回收释放  3. 存储东西
+        // 1.定义形成堆内存
+        var a = 1;
+        function fn(){
+           var num  = 100; 
+           console.log(a);
+        }
+        // 2. 执行形成栈内存；
+        // 1) 提供代码的运行环境 2）存储基本数据类型值；
+        fn();
+        // console.log(a);
+        // console.log(num)// num is not defined; 
+
+        // function foo(){
+        //     var num =1;
+        // }
+        // 1.函数体外部不能访问函数体内部的变量；
+        // 2.函数体内部可以访问函数体外面的变量
+        // 1. 当函数执行时，会保护里面的私有变量不受外界的干扰，函数外面不能访问里面的变量；这种性质也称之为“闭包”；
+        // 3.当函数执行时
+        // 1) 首先会形成一个私有的作用域，也叫栈内存；
+        // 2) 形参赋值
+        // 3) 变量提升
+        // 4) 代码从上到下运行
+        // 5) 作用域是否销毁；
+    </script>
+</body>
+</html>

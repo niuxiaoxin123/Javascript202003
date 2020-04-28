@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function  : 引用数据类型的；
+        // 函数定义
+        // 1. 
+        function fn(a,b){// a 和b是形参
+            var num =100;
+            // arguments : 实参集合；类似于数组，可以进行循环
+            var total = 0;
+            for(var i=0;i<arguments.length;i++){
+                var cur =Number(arguments[i]) 
+                if(!isNaN(cur)){
+                    total+=cur
+                }
+            }
+            // return total;// 返回值
+            // 可以终止代码不再向下运行；倒计时
+            console.log(100);
+        }
+        var a = fn(100,200,666);// 实参
+        // 函数执行
+        // 1. 首先形成一个私有作用域
+        // 2. 形参赋值
+        // 3. 变量提升
+        // 4. 代码从上到下执行
+        // 5. 作用域是否销毁
+
+        // 三个判断   三个循环语句
+        // DOM  删除子节点 removeChild  replaceChild  appendChild insertBefore  cloneNode  getAttribute  classList 
+        // childNodes children  parenNode previousSibling  nextSibling   firstChild  lastChild
+    
+    </script>
+</body>
+</html>

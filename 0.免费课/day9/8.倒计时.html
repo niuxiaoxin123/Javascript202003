@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #time{
+            width:200px;
+            height:80px;
+            text-align: center;
+            line-height: 80px;
+            border:1px solid red;
+            border-radius: 20px;
+            margin:100px auto;
+            font-size:25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="time">00:00:00</div>
+    <script>
+        var time = document.getElementById("time");
+        // div内容每隔一秒变一次： 1. setInterval  2.innerHTML
+        // 目标时间： 定时器倒计的终止时间；
+        // 当前时间：new Date();
+        // 每隔一秒计算一次，让目标时间减去当前时间，会得到一个时间差；当前时间距离目标时间的
+        var targetTime = new Date("2020-4-24 17:08:00").getTime();
+        // 135分钟  2个小时15分钟 
+        
+        function fn(){
+            // 每次都会获取到当前的最新时间
+            var curTime = Date.now();
+            //计算出此时此刻的时间距离目标时间的毫秒差；
+            var diffTime = targetTime-curTime;
+            if(diffTime<=0){
+                // 清除定时器；然后不让代码再向下运行；
+                clearInterval(timer);
+                return;
+            }
+            // console.log(diffTime);
+            // 只需要计算出这个时间差中含有多少个小时，多少个分钟，多少个秒；把这三个值拼在一起，放在time这个div中；
+            var hour = Math.floor(diffTime/(1000*60*60));
+            var minutes = Math.floor((diffTime-hour*60*60*1000)/(1000*60));
+            var seconds = Math.floor((diffTime-hour*60*60*1000-minutes*60*1000)/1000);
+            time.innerText=formatter(hour)+":"+formatter(minutes)+":"+formatter(seconds);
+        }
+        // 如果传进来的函数小于10；那么需要在这函数前面拼接"0";如果大于10；直接return;
+        function formatter(val){
+            if(val<10){
+                return "0"+val;
+            }
+            return val;
+        }
+
+        // 每隔1000毫秒执行一次fn;
+        fn();
+       var timer =  setInterval(fn,1000);
+        // 4个案例 60分；
+        // 任意数求和  递归求和  去重  【选项卡 、冒泡】 隔行变色  随机验证码  倒计时    
+        // 数组方法  DOM 方法 数据类型；
+    </script>
+</body>
+</html>

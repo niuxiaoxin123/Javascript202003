@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="a"></div> -->
+    <input type="text" id="text">
+    <ul>
+        <li>上海<button>删除</button></li>
+    </ul>
+    <script>
+        // 如果有id名字，是可以直接使用的；
+        // console.log(a);
+        var text = document.getElementById("text");
+        // 当input框失去鼠标焦点时，触发这个函数；
+        text.onblur=function(){
+            // console.log(100)
+            console.log(this.value)
+        }
+        
+
+    
+    
+    </script>
+</body>
+</html>

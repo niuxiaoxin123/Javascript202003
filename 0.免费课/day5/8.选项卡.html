@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab{
+            width:400px;
+            height:300px;
+            margin: 100px auto;
+        }
+        #tab ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        #tab ul li{
+            width:60px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            float:left;
+            border:1px solid red;
+            /* margin:0px 5px; */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #tab ul li.select{
+            background: pink;
+        }
+        #tab div{
+            display: none;
+            width:400px;
+            height:300px;
+            text-align: center;
+            line-height: 300px;
+            border:1px solid red;
+        }
+        #tab div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul>
+            <li class="select">电视剧</li>
+            <li>电影</li>
+            <li>综艺</li>
+        </ul>
+        <div class="select">家有儿女</div>
+        <div>战狼3</div>
+        <div>王牌对王牌</div>
+    </div>
+    <script>
+        // 选项卡原理： 当点击li的时候
+        var tab = document.getElementById("tab");
+        var oLis = tab.getElementsByTagName("li");
+        var divs = tab.getElementsByTagName("div");
+        // 当点击li时，首先清空所有li上面的class;然后再给点击的这个li新增class;
+        // oLis[0].onclick = function(){};
+        // oLis[1].onclick =function(){}
+        // 浏览器执行这个循环，速度非常快；
+        for(var i=0;i<oLis.length;i++){
+            // 如果不点击，这个for循环执行；
+            // 当点击时，for循环早已经循环完成了；i变成了3
+            oLis[i].index = i;// 当循环的时候执行；执行三次
+            // oLis[0].index =0;//  新增键值对
+            // oLis[1].index=1;
+            // oLis[2].index=2;
+            // oLis[0] oLis[1] oLis[2]分别代表那三个li元素；
+            oLis[i].onclick = function(){
+                for(var j=0;j<oLis.length;j++){
+                    oLis[j].className="";
+                    divs[j].className="";// 清空所有的div上的class；
+                }
+                //console.log(this);
+                // this：点击的那个li元素；给点击的这个li新增class;
+                // 当点击li时，让点击的这个li对应的div新增class；但是这个函数中的this只能找到点击的li,因为不是点击的div；
+                // 让点击的这个li对应的div新增class；
+                // this 就是点击的那个li元素；
+                this.className="select";
+                //console.log(this===oLis[1])
+                // console.log(i)
+                // 当每一个li元素上，有一个属性名叫index,这个属性名的属性值存储了当前li的索引；
+                divs[this.index].className="select";
+            }
+        }
+
+
+        for(var i=0;i<oLis.length;i++){
+
+            oLis[i].index = i;// 当循环的时候执行；执行三次
+            oLis[i].onclick = function(){
+                for(var j=0;j<oLis.length;j++){
+                    oLis[j].className="";
+                    divs[j].className="";
+                }
+                this.className="select";
+                divs[this.index].className="select";
+            }
+        }
+    
+    </script>
+</body>
+</html>

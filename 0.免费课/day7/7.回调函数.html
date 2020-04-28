@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function A(foo){
+        //     foo();// 实际上就是调用了函数B；
+        // }
+        // A(function (){console.log(100)})
+        // 把函数B作为实参传给函数A，可以在函数A中任意调用函数B；那么函数B就叫做函数A的回调函数；
+
+        // sort  map  forEach
+        var ary = [2,3,4];
+        ary.sort();// sort本省也是一个函数，值sort执行的时候，对数组ary进行了排序；数组sort方法是内置的方法；native code ;
+        ary.sort(function(a,b){
+            // a，b代表相邻的两项；
+            // 这个函数就是sort函数的回调函数；但是sort内部如何调用的这个函数，不清楚；
+            return a-b;
+        })// 从小到大排序
+        // map默认会return数组，但是这个数组中放了回调函数的返回值；
+        ary.map(function(item,index){
+            return 100;// 这是回调函数的return
+        });
+
+    
+    
+    
+    </script>
+</body>
+</html>

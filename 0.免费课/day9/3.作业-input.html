@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="todo">
+    <ul id="list">
+
+    </ul>
+    <script>
+        var todo = document.getElementById("todo");
+        var list = document.getElementById("list");
+        // onblur : 失去鼠标焦点；光标在input中闪烁，点击input框外面，光标消失，触发这个事件；
+        todo.onblur=function(){
+            if(this.value.length>0){
+                // 当不输入任何内容时，length为0；大于0，说明里面有内容；
+                var curLi = document.createElement("li");
+                // this 是关键字；在js中的特定场景下，会代表不同的内容；
+                // this => input；this和todo指向同一个块堆内存；
+                // console.log(this===todo);
+                curLi.innerText=this.value;
+                // 删除按钮
+                var curBtn = document.createElement("button");
+                curBtn.innerText="删除";
+                curBtn.onclick = function(){
+                    // removeChild
+                    list.removeChild(curBtn.parentNode);
+                }
+                curLi.appendChild(curBtn);
+                list.appendChild(curLi);
+                // 对input内容清空掉
+                this.value=null;
+                }
+        }
+    
+    
+    </script>
+</body>
+</html>

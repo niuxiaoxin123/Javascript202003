@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 数据类型
+    var  num = 100;
+    var  obj ={a:100};
+    // 1. 基本数据类型是操作值，引用数据类型操作空间地址
+    // 2. 基本数据类型存储到栈内存中，引用数据类型存储到堆内存中；
+    var a = b = 100;
+    a=200;
+    // b:100
+    var c=d={}// c和d实际上存储了一个空间地址
+
+    // 基本数据类型
+
+    // number
+    // Number: 将其他数据类型强制转成number类型；【数字、NaN】 
+    // isNaN:(小括号中的值会先强制转成数字，然后再判断)
+    // isNaN("3px")  isNaN(true)  isNaN("true");
+    // parseInt  parseInt("3.5px")
+    // parseFloat: parseFloat("3.5px");
+    // toFixed : 保留小数点位数；返回一个字符串
+    // var num= 10.2345;
+    // num.toFixed(2)
+
+
+    // string
+    // length   索引  运算 * / -;
+    // toUpperCase  toLowerCase  charAt  charCodeAt substr substring  slice  concat  split   indexOf lastIndexOf replace trim;
+    // var  str = "zhufengzhufeng";// 把zhufeng换成zhufengpeixun;
+
+
+
+    // boolean
+    // 1. Boolean :将其他数据类型强制转成布尔类型；
+    // Boolean("12px");// 只有0  "" NaN null undefined转是false，其他的都是true；
+    // var obj = {};
+    // Boolean(obj.a)
+    // ! : ![] ==> false  先把！后面的转成布尔值，然后再取反；
+    // !!: 相当于Boolean;
+    // &&: 并且  || 或
+    // if(1==1&&2=="2"){}
+    // if(1==3||2=="2"){}
+    // && 放在等号的右边；如果&&前面的值转布尔是true，直接取到&&后面的值；如果&&前面的值转布尔是false，那么直接取当前这个值；
+    // var a = 1&&NaN;
+    // console.log(a);
+    // || 放在等号的右边，如果||前面的值转布尔是true，直接取前面这个值，如果转布尔是false，直接取后面的值；
+    // var  b=NaN||100;
+    // console.log(b);
+
+
+
+    // null和undefined
+    // 1. undefined ： 
+    // 1) 如果变量只声明没赋值，默认存储undefined
+    // 2) 获取对象的属性名对应的属性值，如果属性名不存在，那么默认是undefined
+    // 3) 函数形参没有对应的实参，那么默认存储undefined
+    // 4) 函数体中如果没有return或return后面没有跟值，那么函数的返回值就是undefined；
+    // 函数的返回值： J就是函数的执行结果
+    // function fn(a){
+    //     console.log(a);
+    //     // return;
+    // }
+    // var f = fn()
+
+
+
+
+
+    // 引用数据类型
+    // object {}
+    // 1. 对象的定义：
+    // 1) 开辟一个堆内存，有一个对应的空间地址
+    // 2) 把对象中的键值对存储到这个堆内存中
+    // 3) 把空间地址赋值给这个对象名
+    // var obj = {a:1}
+    // 增 删 改 查；
+    //obj.b=100;
+    //obj["b"]=888;
+    //delete
+    // obj.a=300;
+    // obj['a']=300;
+    // var y= obj.a;
+    // var y = obj["a"]
+
+    // 1. 对象的属性名不能重复
+    
+
+    // array
+    // var ary=[12,8,78,57,66];
+    // length  索引
+    // 1. 给数组的末尾新增一项 三种方法；
+    // ary.push  ary.splice(ary.length,0,666) ary[ary.length]=100;  ary.concat(100);
+    // pop  shift ushift  splice  slice  sort reverse concat  join indexOf  lastIndexOf  map  forEach  toString
+    // 数组去重，冒泡排序  插入排序  快速排序
+
+
+    // function 
+    
+
+    // Math
+    // Math.abs  Math.max  Math.min  Math.floor  Math.ceil  Math.round  Math.random()  Math.round(Math.random()*(m-n)+n)
+    // Math.pow  Math.sqrt
+    // Date
+    
+    
+    </script>
+</body>
+</html>

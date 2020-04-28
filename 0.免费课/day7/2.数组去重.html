@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在原数组上实现去重
+        var  ary = [78,66,12,66,66,39,12];
+        var a = [88,7,66,88,66]
+        // 1. 对象的属性名不能重复的性质，来实现在原数组上的去重；
+        var obj = {};// {78:78}
+        for(var i=0;i<ary.length;i++){
+            var cur = ary[i];// 78
+            if(obj[cur]===cur){
+                // 这个条件什么时候成立；
+                // 当之前存储过这个值，或者是重复项，这个条件成立
+                // ary.splice(i,1);
+                // 数组塌陷：当删除某一项，会引发该项后面所有的成员向前移动，此时浏览器要重新计算每一项的索引，这样非常消耗性能；
+                // 通过最后一项的索引取到最后一项的值，赋值给当前索引项
+                ary[i]=ary[ary.length-1];// 把数组的最后一项复制一个拿到这；
+                //ary.pop();
+                ary.length--;// 删除数组最后一项
+                i--;
+                // 当删除完一项以后，数组所有项往前移动一项，
+                continue;// 终止本轮循环；
+            }
+            obj[cur]=cur;// {78:78,66:66,12:12}
+        }
+        console.log(ary);
+
+        //var a=[1,2,3,4,5,6];
+        // 改变数组的length，能够直接删除数组中的后面几项
+        // a.length=3;
+        //a.length--;// 让a.length = 5
+        // a.length-=1; 
+        // console.log(a.length);
+        // console.log(a);
+        var  ary = [78,66,12,66,66,39,12];
+        var a = [88,7,66,88,66]
+        function unique(yy){
+            // ary和yy是同一个空间地址，指向同一个堆内存；
+            var obj = {};
+            for(var i=0;i<yy.length;i++){
+                var cur = yy[i];
+                if(obj[cur]===cur){
+                    yy[i]=yy[yy.length-1];
+                    yy.length--;
+                    i--;
+                    continue;
+                }
+                obj[cur]=cur;
+            }
+        }
+        // 通过参数控制让函数对不同的数组进行处理；
+        unique(ary);
+        unique(a);
+        console.log(ary);
+        // var c =300;
+        // // 基本数据类型值是操作值得，引用数据操作的是空间地址；
+        // function fn(b){
+        //     b=100;
+        // }
+        // fn(c)
+        // console.log(c);// 300
+
+        // var  abc = [12,3,56];
+        // // abc[2]=100;
+        // var f = abc[2];// 把56给了f;
+        // f=100;
+        // console.log(abc)
+        // function map(){
+        //     function f(){
+        //         return 1;
+        //     }
+        //     var ary = [];
+        //     ary.push(f());
+        //     return ary;
+        // }
+        
+        
+        
+    
+    </script>
+</body>
+</html>

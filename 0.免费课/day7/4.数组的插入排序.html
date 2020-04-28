@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // sort : 
+        // 插入排序；
+        var  ary = [12,67,8,36,27,88,27,99,28]
+        var newAry = [];
+        newAry.push(ary[0]);
+        // 怎么拿到数组中的每一项;依次从原数组中取出每一项值；
+        for(var i=1;i<ary.length;i++){
+            var cur = ary[i];
+            // 跟新数组中从后往前依次进行比较，如果比新数组中的这一项小，那么需要继续和上一项进行比较，如果比新数组中这一项大，那么放在该项的后面；
+           for(var j=newAry.length-1;j>=0;j--){
+                if(cur<newAry[j]){
+                    // 如果比这个小，继续j--;
+                    if(j===0){
+                        // 如果j等于0;那么需要将这一项放到数组的最前面
+                        newAry.unshift(cur);
+                    }
+                }else{
+                    // 在所以j的后面把这一项放进去；
+                    newAry.splice(j+1,0,cur);
+                    // 一旦给这一项找到了位置，放到了数组中，那么直接停止该小循环；
+                    break;
+                }
+           } 
+        }
+        console.log(newAry);
+        
+    
+    
+    </script>
+</body>
+</html>

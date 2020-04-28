@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组由数组成员，每一个数组成员都对应一个唯一的索引值；数组还有length;代表数组成员的个数；
+        // 数组14个方法；都是用来处理数组的；这些方法都是函数；
+       
+        // 1. push : 向数组的末尾新增一项或多项； 
+        // var len= ary.push(100);
+        // console.log(ary);
+        // console.log(len);
+        // console.log(ary.push)
+        // console.log(Number)
+        // 2. pop : 
+        // var  a = ary.pop();
+        // console.log(ary);
+        // console.log(a);
+       
+        // 3. unshift
+        // var f = ary.unshift(99,100);
+        // console.log(ary);
+        // console.log(f);
+
+       //  4.shift
+       //    var m = ary.shift();
+       //    console.log(ary);
+       //    console.log(m);
+
+       
+        // 5. splice
+        //var  t  = ary.splice(3,2,9999,999,99)
+        // var  t  = ary.splice(3,0,9999,999,9)
+        // console.log(ary);
+        // console.log(t)
+
+        // 6. slice 截取
+        // var f = ary.slice(2,5);
+        // var f = ary.slice(3,6);
+        // var f = ary.slice(4,6)
+        // console.log(f);
+        // console.log(ary);
+        // var  ary= [88,240,111,7,99,10,460,660];
+        // 7. sort  排序
+        // sort():只能排相同的位数的数组
+        // ary.sort(function(a,b){
+        //     console.log(a,b)
+        //     return b-a;
+        // });
+        // console.log(ary);
+        
+        //8.  reverse   反转
+        // var  a = ary.reverse();
+        // console.log(ary);
+        // console.log(a);
+        
+        // 9. concat  : 数组的拼接
+        // var a = [99,80];
+        // var newAry = ary.concat(100,88,66,[7,5]);
+        // console.log(ary);
+        // console.log(newAry);
+        // 10.join
+        // var str = ary.join("%&#");
+        // console.log(str)
+        // console.log(ary);
+        
+        // 11. indexOf 
+        // 每次只能检测一个
+        //var val = ary.indexOf(88);
+        // console.log(ary.indexOf(88,2));
+        // console.log(ary);
+        // 12. lastIndexOf
+        // console.log(ary.lastIndexOf(10))
+
+        // 13. map :映射，循环
+        // for(var i=0;i<ary.length;i++){
+        //     console.log(ary[i]);
+        // }
+        // var ff = ary.map(function(item,index){
+        //     // item : 是数组的每一项 
+        //     // index : 代表的是item对应的索引
+        //     //console.log(item,index);
+        //     return item+1;
+        // });
+        // console.log(ff);
+        // console.log(ary);
+        var  ary= [88,240,10,111,7,99,88,10,460,660];
+        // 14. forEach  循环
+        // forEach中没有return；返回值是undefined；
+        // var a = ary.forEach(function(item,index){
+        //     console.log(item,index)
+        //     return 100
+        // })
+        // console.log(a);
+        // 15.toString 
+        var a = ary.toString()
+        console.log(a);
+
+        // 在真正的工作中，前后和后端经常要进行数据交互；前端的数据都是从后端请求回来，后端返回给前端的数据一般都是数组的数据格式；
+        // 前端的数据一般都是用数组存储的，所以也避免不了经常操作数组；
+        
+        
+        
+
+
+
+
+      
+       
+
+
+    
+
+        
+
+    
+    
+    
+    </script>
+</body>
+</html>
