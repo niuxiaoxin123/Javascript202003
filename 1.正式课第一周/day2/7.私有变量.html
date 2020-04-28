@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局作用域  全局变量
+        // 私有作用域  
+        // 在ES6以后 块级作用域
+        // 私有变量
+        // var num = 100;// 全局的
+        // function fn(){
+        //     //var  num = 1;// 私有的；
+        //     num=10;// 如果没有var，这是全局的；
+        // }
+        // console.log(num);// 100
+        // fn();
+        // console.log(num);// 10
+        // 1.私有的可以调用全局的变量，而且在私有里面还可以修改全局的；
+    
+        // var num = 100;// 全局的
+        // function fn(){
+        //     var  num = 1;// 私有的；
+        //     num=10;// 先判断num是否是私有变量，如果私有作用域存在，那么这个只能修改私有的；不能影响全局的变量
+        // }
+        // console.log(num);// 100
+        // fn();
+        // console.log(num);// 100
+        // var num =100;
+        // function fn(num){
+        //     num=1;
+        // }
+        // fn(10)
+        // console.log(num);
+        // var num = 100;
+        // function fn(){
+        //     function num (){
+        //     }
+        //     num = 1;
+        // }
+        // fn();
+        // console.log(num);
+        
+        // 背   理解
+        // 如何判断这个变量是否是私有的呢？
+        // 1.看这个变量是否在这个私有作用域下被var过；
+        // 2.如果没有被var过，再看是否是形参，如果是形参，也是私有变量；
+        // 3.如果这个变量名被function过，那么这个变量也是私有的；
+
+        // 定义变量  var function let  const   class 
+        // console.log(num);
+        // var  num =100;
+        // console.log(num);
+        // function num(){   
+        // }
+        // console.log(num);// 100
+        
+        
+
+    </script>
+</body>
+</html>

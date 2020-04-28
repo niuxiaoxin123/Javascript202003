@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 私有作用域： 函数执行会形成私有作用域
+        // var num =100;
+        // for(var i=0;i<100;i++){
+        //     if([]==[]){
+        //         var num =100;
+        //     }
+        // }
+        // if(1==1){
+        //     var num =100;
+        // }
+        // 定义
+        //1.
+        //2.
+        //3.
+        // function fn(){
+        //     // 函数执行才会解析这里面的代码；
+        //     var num =100;
+        //     // console.log(num);
+        //     return num;// return 出的是num这个变量存储的值；
+        // }
+        // // 函数执行：让浏览器解析函数体中代码；如果不执行，函数体中的代码没有意义；
+        // var  yy = fn();
+        // console.log(yy);// yy是和函数体中num的值相等；
+        
+        // function f(){
+        //     var num =1;
+        // }
+        // 当fn()执行时，浏览器会根据fn存储的空间地址找到那块堆内存；
+        // 执行会立即在全局的栈内存形成一个私有的作用域【给函数体中的代码提供运行环境】
+        // 私有作用域是在全局作用域里面形成的；
+        // 2.形参赋值
+        // 3. 变量提升
+        // 4. 代码从上到下执行
+        // 5. 作用域是否销毁；
+
+        // var  a = function fn(){
+        //     console.log(100)
+        // }
+        // a();
+
+       
+        
+    
+    
+    
+    </script>
+</body>
+</html>
