@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fn();// 会让函数体中的代码执行一遍，再执行12行；
+        // 函数每执行一次都会形成一个新的私有作用域；
+        // fn();
+        console.log(fn);
+        // 全局作用域
+        // var  function  
+        // 1.var只声明，不赋值，function不仅声明，而且赋值
+        // 2.在代码执行之前，首先会过滤一下当前作用域下的所有代码;把带var和带function的挑出来；放到当前作用域最上面，当真正从上到下执行代码时，可以使用这些变量；
+        //console.log(num)// undefined
+        // 当执行到17行时，会对变量赋值；在赋值之前，如果获取这个变量，浏览器会给其默认一个值undefined；
+        //var num = 100;
+        //console.log(num)
+        var num= 1;
+        // 当代码执行到25行时，直接跳过；25--28这段代码已经在变量提升的时候实现了价值；
+        function fn(){
+            console.log(100)
+            var  a = 1;
+        }
+        fn();
+        
+        // 定义：3步；定义就是赋值；
+        // fn :存储了堆内存对应的空间地址；
+        // fn是在全局作用域的变量提升时，进行定义的3步；
+        
+
+        
+    
+    </script>
+</body>
+</html>

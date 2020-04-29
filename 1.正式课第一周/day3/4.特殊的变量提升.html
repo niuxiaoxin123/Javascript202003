@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Number([1])// 1
+        // 对象==对象：比较的是空间地址
+        //console.log(num);// undefined
+        // 1. 不管条件时否成立，都要进行变量提升
+        // if([1]==[1]){
+        //     var num =100;
+        // }
+        // function fn(){
+        //     var a = 1;
+        // } 
+        // console.log(a); // undefined
+        // if(!("a" in window)){
+        //     // 在变量提升的时候，就给window新增了键值对a:undefined
+        //     var a = 100;
+        // }
+        // console.log(a); // undefined
+        // var obj = {name:"zfpx"};
+        // in :判断这个属性名在对象中是否存在；如果存在返回true，不存在返回false；
+        // console.log("age" in obj)
+        //console.log(fn);//fn在块级作用域中只声明，没有赋值；
+        // 块级作用域：ES6新增的；for {}  if{}  while{} try{}
+        // 只有目前支持ES6的浏览器才会解析成块级作用域，如果不支持es6，那么这就不是块级作用域了；
+        // ES6: ECMAScript6  2015.8月发布的；
+        // ECMAScript: 规范；JS 是1998年产生的，当时是第一版的JS；
+       
+       // IE8 ：2010年 IE11：
+       // 在IE10fn是函数，在IE11,输出的是undefined；IE10不支持ES6;IE11支持ES6;
+       // 在ES6解析这个条件的大括号，默认解析成为一个块级作用域，那么块级作用域这个函数是只声明，不赋值；
+       console.log(fn);
+        if(![]==[]){
+            fn()
+            function fn(){
+                console.log(100);
+            }
+            var num  =100;
+        }
+        console.log(fn);
+        // 1.在新版本浏览器中【支持ES6】,function 在条件中只声明，不定义;只要一进到块级作用域中，会立即对函数进行赋值；
+        // 2.在老版本浏览器中，function不仅声明，而且定义；
+    
+    
+    </script>
+</body>
+</html>

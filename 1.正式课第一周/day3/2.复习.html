@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 声明：var num;
+    console.log(num); // undefined
+    // 全局作用域  
+    // window : 全局大对象
+    // 全局下的定义变量是全局变量
+    // var obj={};
+    // 1.会给全局的window新增键值对；属性名是obj,属性值是变量存储的值；
+    // 2.私有作用域可以访问全局作用域下的变量，但是全局作用域不能访问私有作用域的变量
+    //3. 需不需要向外界访问，首先先看自己的作用域有没有这个变量；如果有了那么就不再向外访问了；
+    // 私有作用域：函数执行会形成私有作用域；私有作用域是在全局作用域中形成的；
+    // 私有作用域里面定义的变量就是私有变量
+    // 私有变量：
+    // 1. 在私有作用域有没有被var过
+    // 2. 是不是形参
+    // 3. 有没有被function过;
+    // function fn(){
+    //     //里面既可以修改也可以获取 
+    //     // function obj(){
+    //     // }
+    //     console.log(obj);
+    //     // 在代码解析28行之前，30行已经做了一些事情；【变量提升】
+    //     var  obj = 1;
+    // }
+    // fn();
+    
+    // 在当前作用域下，代码执行之前，首先会对带var和function进行提前的声明；var只声明不赋值，function不仅声明，而且还要赋值；这就是变量提升；
+
+    var num = 100;
+    // console.log(a);
+    function fn(){
+        // var a;
+        // 在函数体中，当执行这个函数时，才会变量提升
+        var a = 88;
+    }
+    // 过程
+   
+    
+    
+    
+    </script>
+</body>
+</html>

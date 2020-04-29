@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span id='text'>0000</span>
+    <br></br>
+    <button id="start">开始</button>
+    <script>
+        // 1.大胆尝试试错和写代码
+        // 2.想到哪里写到哪里；
+        var text = document.getElementById("text");
+        var start = document.getElementById("start");
+        // 1. 产生一个随机的验证码
+        // 2. 点击开始，启动定时器，每隔15ms重新产生一次验证码，并且放到span的标签中
+        // 3. 点击暂停，清除定时器，并且把button中的文本改成暂停
+        function getCode(){
+            var str = "";
+            for(var i=0;i<4;i++){
+                str+=Math.round(Math.random()*9);
+            }
+            text.innerHTML=str;
+        }
+        getCode();
+        // 每当点击start时，都会执行一次函数；函数执行一次都会开辟一个新的栈内存；每次函数执行里面的私有变量都只能在本次执行时使用；
+        var timer;
+        start.onclick=function(){
+            // 由于开始和暂停是同一个按钮，绑定的点击事件都会执行这个函数
+            // 如何来设置点击开始，定时器开始，点击暂停，清除定时器
+            if(start.innerHTML==="开始"){
+                timer=setInterval(getCode,15)
+                start.innerHTML="暂停";
+            }else{
+                clearInterval(timer);
+                start.innerHTML="开始";
+            }
+        }
+        // start.onclick=function(){
+        //     clearInterval()
+        //     start.innerHTML="暂停";
+        // }
+
+        // var  obj = {a:1};
+        // obj.a=100;
+        // obj.a=200;
+
+
+        
+    
+    
+    </script>
+</body>
+</html>
