@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var total = 1;
+        function fn(){
+            // var total  =100;
+            return function(){
+                //console.log(total); // undefined
+                // var total=88;
+                total =108;
+            }
+        }
+       var f =  fn();// f 接受到的是fn函数return的小函数的空间地址；
+    //    console.log(f);
+       f();// f在全局下运行，但是函数的上一级作用域跟函数在哪个作用域中执行没有关系，跟定义有关系；
+       console.log(total);
+       
+       // 上一级作用域：看该函数这个空间地址在哪个作用域下开辟的，那么上一个作用域就是它；跟函数的执行没有关系，跟函数在哪定义有关；
+       // 上一级作用域：当在函数体中获取变量所对应的值时，先看自己的私有作用域是否存在这个变量，如果不存在，那么需要向上一级作用域查找，如果上一级作用域也没有，那么继续向上查找，直到找到window为止；如果全局作用域也不存在，那么就报错；那么这样一层一层向上查找，就会形成作用域链；
+       
+    
+    
+    </script>
+</body>
+</html>

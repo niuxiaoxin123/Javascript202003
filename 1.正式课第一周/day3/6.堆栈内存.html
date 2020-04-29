@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 堆栈内存：
+        // 浏览器打开页面，就会立即形成两个虚拟的内存；当关闭页面立即回收这两个内存；
+        // 堆内存和栈内存:1.提供代码环境 2.存储值
+        // var num = 100;
+        // console.log(num);
+        // var obj = {a:1}
+        // 基本数据类型存储到了栈内存中，引用类型存储到了堆内存中；
+        // 由于基本数据类型占用的内存比较小，所以一般存储到栈内存；
+        // 由于引用类型数据比较复杂，消耗的内存比较大。所以一般存储到堆内存中；
+
+
+        // 内存的回收和释放
+        // 性能
+        // 谷歌浏览器
+        var obj =a={};// 地址类型都是堆内存
+        obj = null;
+        a=null;
+        // 标记法
+        // 谷歌浏览器每隔一段时间都会检测一下这个空间地址有没有被占用，如果没有被占用，那么浏览器将会对该内存进行释放；
+
+        // IE ：计数法
+        // 浏览器判断该地址是否被占用，那么占用一次，就会累加1；如果不再占用，那么就减去1；如果这个次数占用为0；会立即对其回收；
+
+
+        
+    
+    
+    
+    
+    </script>
+</body>
+</html>

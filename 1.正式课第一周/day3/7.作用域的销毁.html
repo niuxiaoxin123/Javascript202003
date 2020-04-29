@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局作用域  私有作用域
+        // 全局作用域 : 全局作用域是不销毁的作用域；关闭页面或关闭浏览器时候销毁；
+        // 作用域销毁等价于栈内存回收；栈内存释放；
+        // 一旦作用域销毁，那么作用域中存储的值都会回收释放；
+        // var num = 100;
+        // box.onclick = function(){
+        //     console.log(num);
+        // }
+
+        // 私有作用域销毁：1.立即销毁  2.不销毁  3.不立即销毁
+        // 1. 立即销毁
+        // function fn(){
+        //     var  num = 100;
+        //     num++;
+        // }
+        // fn();
+        // fn();
+        // 1. 首先形成一个新的私有的作用域；
+
+        // 2. 不销毁
+        // 1. 在函数体中返回一个引用的数据类型值
+        // 2. return的引用数据类型值被外界接受；
+
+        // function fn(){
+
+        // }
+        // console.log(fn);// fn实际存储就是一个16进制的字符串，地址；
+        
+        // function fn(){
+        //     var total =100;
+        //     return function(){
+        //         console.log(total);
+        //     }
+        // }
+        // var  f  = fn();
+
+        // function fn(){
+        //     return {}
+        // }
+        // var f = fn();
+
+        // 1.开辟一个堆内存，对应一个空间地址
+        // 2.把键值对存储到堆内存中
+        // 3.把这个空间地址赋值给对象名obj;
+        // var obj = {
+        //     num:1,
+        //     fn:(function(n){
+        //         // 这个函数什么时候执行？
+        //         // 当代码执行到一行，以键值对形式存储到堆内存时，这个自执行函数就执行了；
+        //         // 这个作用域销毁吗？不销毁
+        //          console.log(n);
+        //         // fn 存储了这个小函数的空间地址
+        //         return function(){
+        //             // return的小函数的空间地址被obj的fn属性名占用着；
+        //             console.log(100); 
+        //         }
+        //     })()
+        // }; 
+        // obj.fn();
+        // obj.fn()
+        // (function(){
+        // })()
+
+        //3.不立即销毁
+        // fn形成的作用域会等待里面的小函数执行完，fn也会随着销毁了
+        // function fn(){
+        //     var total = 1;
+        //     return function(){
+        //         console.log(total);
+        //     }
+        // }
+        // var f = fn();// f是fn的返回值
+        // f();
+        // f()
+        // f();
+        // fn()();
+        // fn()()
+        // fn()()
+
+
+        function s(){
+            var num  =1;// 2
+            return function (){
+                num++;
+            }
+        }
+        var  t = s();
+        t()
+        t()
+
+        function fn(m){
+            // m=3 上一次执行让m变成了4
+            return function (n){
+                console.log(n+m++);// 7
+            }
+        };
+        var f = fn(3);
+        f(4);
+        f(5);
+        fn(6)(7);
+        fn(8)(9);
+        
+        
+
+
+
+        
+       
+
+
+    </script>
+</body>
+</html>

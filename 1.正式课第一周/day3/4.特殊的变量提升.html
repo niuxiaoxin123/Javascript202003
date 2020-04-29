@@ -36,17 +36,132 @@
        // IE8 ：2010年 IE11：
        // 在IE10fn是函数，在IE11,输出的是undefined；IE10不支持ES6;IE11支持ES6;
        // 在ES6解析这个条件的大括号，默认解析成为一个块级作用域，那么块级作用域这个函数是只声明，不赋值；
-       console.log(fn);
-        if(![]==[]){
-            fn()
-            function fn(){
-                console.log(100);
-            }
-            var num  =100;
-        }
-        console.log(fn);
+    //    console.log(fn);
+    //     if(![]==[]){
+    //         fn()
+    //         function fn(){
+    //             console.log(100);
+    //         }
+    //         var num  =100;
+    //     }
+    //     console.log(fn);
         // 1.在新版本浏览器中【支持ES6】,function 在条件中只声明，不定义;只要一进到块级作用域中，会立即对函数进行赋值；
         // 2.在老版本浏览器中，function不仅声明，而且定义；
+
+        // 2. 变量提升只发生在等号的左边；
+        // var fn = function f(){
+        // }
+        // console.log(f);
+        // function fn(){
+
+        // }
+        // var obj = {
+        //     foo:function f(){
+
+        //     }
+        // }
+
+        // 3. return下面的代码不再执行，但是需要变量提升;return 出的内容是不进行变量提升的；
+        // var num = 1;
+        // function sum(){
+        //     // var num;
+        //     // 当判断这个变量是否是私有变量时，不能仅仅看这行代码的上面，只要在当前作用域中被var,function就是私有的；
+        //     //console.log(num);// undefined
+        //     var num=100;
+        //     // 1. 把函数体中值返回
+        //     // 2. 终止代码运行，return下面的代码不再运行；
+        //     console.log(a);// undefined
+        //     return num;
+        //     var a = 19;
+        // }
+        // sum();
+
+
+        // function fn(){
+        //     var num = 1;
+        //     console.log(f);
+        //     return function f(){
+
+        //     }
+        // }
+        // fn();
+
+        // 4. 变量名如果重复；不再重复声明，但是要重新赋值；
+        // console.log(num);// undefined
+        // var num = 100;
+        // console.log(num);// 100
+        // var num =1;
+        // console.log(num);// 1
+        // function fn(){
+        //     console.log(1)
+        // }
+        // fn();// 2
+        // function fn(){
+        //     console.log(2);
+        // }
+        // fn();// 2
+        // fn();
+        // function fn(){
+        //     console.log(1);
+        // }
+        // fn()
+        // function fn(){
+        //     console.log(2);
+        // }
+        // fn=1;
+        // function fn(){
+        //     console.log(3);
+        // }
+        // fn();
+
+
+        // function fn(bar){
+        //     console.log(bar);// 函数
+        //     // var bar=1;
+        //     // console.log(bar);
+        //     function bar(){
+        //     }
+        //     console.log(bar);  
+        // }
+        // fn(100);
+
+        // function fn(num){
+        //     console.log(num);// 100 
+        //     // 只声明不赋值；当浏览器用这个值，浏览器给一个undefined；
+        //     var num = 1;
+        // }
+        // fn(100);
+        // 1. 形成一个私有的作用域
+        // 2. 形参赋值
+        // 3. 变量提升
+        // 4. 代码从上到下执行
+        // 5. 作用域是否销毁；
+
+
+        //5. 自执行函数不进行变量提升
+        // console.log(fn);
+        // 
+        // function fn(){
+
+        // }
+        // 当代码执行到148行，先进行定义（开辟堆内存），然后马上执行
+        // (function fn(){
+        // })()
+        // foo()
+        // 函数表达式；
+        // var foo = function(){
+        // }
+        // foo();
+
+        // 6. ES6中let  const;
+        // console.log(num);
+        // let 和const 没有变量提升；
+        // let num = 100;
+        // console.log(num);
+        // const a = 10;// 常量 ：常量不可以被修改
+        // a=11;// 
+        
+
     
     
     </script>
