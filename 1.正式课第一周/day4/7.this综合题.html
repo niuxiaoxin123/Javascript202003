@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 变量提升  作用域销毁  this指向
+        // 难点： 分清num是谁；
+        // var num; var obj ;
+        // 全局变量都会给window新增键值对
+        var num =2;// 1  ==> 2
+        var obj = {
+            num : 0,
+            fn : function () {
+                // this==>obj
+                    num = 1;
+                    (function (num) {// 私有变量num=0
+                        // this==> window 
+                        ++this.num;// num是属性名
+                        num++;// 私有变量
+                        console.log(num)// 1
+                    })(this.num)// 0
+                }
+        }
+        obj.fn();
+        console.log(window.num,obj.num);
+    
+    
+    </script>
+</body>
+</html>

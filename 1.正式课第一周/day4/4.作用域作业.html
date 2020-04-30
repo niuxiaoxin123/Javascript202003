@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1
+        console.log(b);// 函数
+        b();
+        var b = 1;
+        function b() {
+            console.log(1);
+        }
+        b();// 报错
+
+        //2
+        function f1() {
+            console.log(a); // f()
+            var a = 1;
+            return a;
+            function a() {
+            }
+        }
+        f1();
+
+//3
+
+  f2();
+  f3();
+  var x1 = x2 = 10;
+  function f2() {
+    console.log(x1);
+  }
+  function f3() {
+    console.log(x2);
+  }
+//4
+    console.log(a);
+    var a = 13;
+    function fn() {
+        console.log(a);
+        var a = 1;
+    }
+    fn();
+    console.log(a);
+
+
+//5
+    console.log(a);
+    var a = 13;
+    function fn1() {
+        console.log(a);
+        a = 1;
+    }
+    console.log(a);
+//6
+    console.log(a);
+    a = 13;    //window.a=13
+    function fn() {
+        console.log(a);
+        a = 1;
+    }
+    fn();
+    console.log(a);
+// 7
+    var foo = 1;
+    function bar() {
+        if (!foo) {
+            var foo = 10
+        }
+        console.log(foo);
+    }
+    bar();
+// 8
+    function f5() {
+        // ff=aabbcc var f;
+        f=ff();
+        return f;
+        function ff() {
+            return "f" in window;
+        };
+        var f;
+    }
+    console.log(f5());
+// 9
+// abc指向同一个空间地址
+        var a = b = c = [1, 2, 3, 4];
+        b = 9;
+        a[1] = 0;
+        console.log(b[0]);// undefined
+        a = [1, 2, 3, 4];
+        c = [1, 2, 3, 4];
+        a[0] = b;
+        console.log(c);
+        console.log(a);
+// 10
+
+// a和b指向同一个堆内存
+// var  a = b = [1,2];//==> 
+// a[0]=100;
+// console.log(b);
+// b=[0]
+
+// var ary; ff=aabbcc var s;
+        // var ary = [1, 2, 3, 4];// 空间地址1 // [0,2,3,4]
+        // function ff(ary) {// ary接受到外层作用域ary的空间地址
+        //     ary[0] = 0;
+        //     // ary是形参；把新的空间地址给了ary;
+        //     ary = [0];
+        //     ary[0] = 100;
+        //     return ary// [100]
+        // }
+        // var s = ff(ary);
+        // console.log(ary);// [0,2,3,4]
+        // console.log(s);// [100]
+// var a=b = [1,2,3];// a,b指向同一个堆内存；
+// b[0]=100;
+// console.log(a);// [100,2,3]
+
+// var ary = [100,2,3,4]
+// function fn(a){
+//     a[0]=100;
+//     a=[0];// 私有变量a又重新指向了一个新的空间地址
+//     a[0]=100;
+//     return a;// [100]
+// }
+// fn(ary)// ary 实际上就存储了一个空间地址
+
+// var  a = b = 100;
+// b=200;
+// console.log(a);// 100
+
+// var a = b=[];
+// a[0]=100;
+// console.log(b);
+
+
+
+
+//11
+        var a = 10, b = 11, c = 12;
+        function test(a) {
+            a = 1;
+            var b = 2;
+            c = 3;
+        }
+        test(10);
+        console.log(a);
+        console.log(b);
+        console.log(c);
+//12   在块级作用域下var和function是不可以重名的
+        if (!("aa" in window)) {
+            var aa = 1;
+            function aa() {
+                console.log(aa)
+            }
+        }
+        console.log(aa);
+
+
+//13
+        var a = 4;
+        function b(x, y, b) {
+            console.log(a);//4
+            arguments[2] = 10;// [1,2,10]
+            console.log(a);//4
+        }
+        a = b(1, 2, 3);
+        console.log(a);
+//14.
+        var fs = "hello";
+        (function (fs) { // fs='hello' // var fs
+            console.log(fs);// 'hello'
+            var fs = fs || "world"; //''
+            console.log(fs); // 'hello'
+        })(fs);
+        console.log(fs);
+//15.
+        var a = 9;
+        function ss() {
+            a = 0;
+            return function (b) {
+                return b + (a++)
+            }
+        }
+        var f = ss();
+        var m = f(5);
+        console.log(m);
+        var n = ss()(5);
+        console.log(n);
+        var x = f(5);
+        console.log(x);
+        console.log(a);
+
+// 16
+    // var i =1 ;
+    // function fn(i){
+    //     // i=2;i是私有的; =>3
+    //     // i=5  =>6
+    //     // i=7  =>8
+    //     return function (n){
+    //         // n是私有的；
+    //         console.log(n+(++i))
+    //     }
+    // }
+    // var f = fn(2);
+    // f(3);// 6
+    // fn(5)(6)// 12
+    // fn(7)(8)// 16
+    // f(4)// 8
+
+// 17
+    // var i fn=aabbcc; var f;
+    // var i =2; // 4==> 3=>2==>4==>3=>5>4
+    // function fn (){
+    //     i +=2
+    //     return function (n){
+    //         console.log(n+(--i))
+    //     }
+    // }
+    // var f =fn();
+    // f();// NaN 
+    // f(3)//  5
+    // fn()(2);// 5
+    // fn()(3);// 7
+    // f(4)// 7
+    
+ 
+
+
+    
+    </script>
+</body>
+</html>

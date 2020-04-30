@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 变量提升   作用域
+        // 1. 变量提升
+        // 在当前作用域下,代码执行之前，会对带var和function的进行提前声明；var只声明，不定义；function不仅声明，而且还要定义；
+        // console.log(fn);// 
+        // fn();
+        // function fn(){
+        //     var ar = [];
+        // }
+        // console.log(num);
+        // num = 100;
+        // console.log(a);
+        // console.log(b);
+        // var a = b = 100;// var a = 100;b=100;
+        // var a = 100;
+        // b=100;
+
+        // console.log(c);
+        // console.log(d);
+        // var c,d=100;// === var c; var d = 100;
+
+        // console.log(c);// undefined
+        // console.log(d);
+        // var a,b,c,d;
+
+        // 2.1.不管条件是否成立都要变量提升
+     
+        // console.log(a);
+        // if(true){
+        //     // 在ES6的规范中，浏览器解析这个大括号跟之前有变化；
+        //     function a(){
+
+        //     }
+        // }
+           // 2. 变量只发生在等号的左边
+        //    var fn = function(){
+
+        //    }
+        //    var obj = {
+        //        fn:function(){
+
+        //        }
+        //    }
+        // 3. return  后面的不进行变量提升，return下面要进行变量提升
+        // 4. 如果变量名字重复，只重新赋值，不再重复声明
+        // 5. 自执行函数不进行变量提升
+        // 6. let  const
+        // function fn(){
+
+        // }
+        // (function(){
+
+        // })();
+
+
+        // 作用域
+        // 1.在私有作用域获取变量的特点
+        // 1) 首先看是否是私有变量
+        //    1. 在函数体重有没有被var;
+        //    2. 是不是形参
+        //    3. 有没有被function
+
+        // 任何数字和undefined运算结果都是NaN；
+        // var total =100;
+        // function fn(){
+        //     // var  total=undefined
+        //     // console.log(total);// 100
+        //     // 函数里面不仅可以获取total的值，而且还可以对其进行更改
+        //     total+=19;
+        //     console.log(total);// NaN 
+        //     var total = 0;
+        // }
+        // fn();
+        // console.log(total);// 100
+
+
+        // function fn(a){
+        //     // 形参： 相当于 var a=100;
+        //     // a形参存储到了fn执行时的栈内存中；
+        //     // 这个栈内存是不销毁的；里面存储了变量a的值100；
+        //     //97行执行fn的栈内存 a=100  ==> 101 ==>102
+        //     //100fn执行的栈内存 a=2 ==>3
+        //     // 101 fn执行的栈内存 a=3 4
+        //     return function(b){
+        //         console.log(b+a++);// 300  401
+        //     }
+        // }
+        // var  f = fn(100);
+        // f(200);
+        // f(300);
+        // fn(2)(9); // 11// 让fn再次形成一个新的私有作用域；
+        // fn(3)(10);//13 也会形成新的私有作用域
+        // console.log(total);// 10
+
+        // var num =1;
+        // console.log(++num);// 能让自己+1；  1
+        // console.log(num);// 2
+
+
+        // 堆栈内存
+        // 堆内存： 
+
+        // var obj = {};
+
+        // 栈内存的回收
+        // 1. 立即销毁
+        function fn(){
+
+        }
+        fn();
+        fn();
+
+        //2. 不销毁
+        function fn(){
+            return function(){
+
+            }
+        }
+        var f = fn();
+
+        var  obj = {
+            fn:(function(){
+                /// 这个自执行函数形成的作用域不销毁；
+                // obj的属性名fn接受到了自执行函数的执行结果；自执行函数形成的作用域不销毁；
+                return function(){
+
+                }
+            })()
+        }
+        obj.fn();// 自执行函数只有在存储键值对时，执行一次；
+
+        // 3. 不立即销毁
+        function fn(){
+            return function(){
+
+            }
+        }
+        fn()();
+        
+
+
+
+        
+
+
+
+    
+        
+    
+    </script>
+</body>
+</html>

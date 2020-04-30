@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">点一下</div>
+    <script>
+        // this --> 关键字；在特殊情境下有特殊的作用；【代表不同的值】
+        // 在不同的情况下this的指向问题；
+        // 1. 在全局作用域下，this指向window；this和window是同一个空间地址值
+        // console.log(this===window);
+        // window.a=100;
+        // this.a=100;
+        // console.log(window);
+        // var box = document.getElementById("box")
+        // 2. 给元素的事件绑定方法，那么方法中的this指向当前这个元素；
+        // box.onclick = function(){
+        //     // console.log(this);
+        //     this.style.color="red";
+        // }
+
+        // 3. 看函数执行前有没有".",如果没有".",那么this指向window；如果有".",那么点前面是谁，this就指向谁；
+
+        // this : 函数的执行主体；谁让这个函数执行的；this就是谁
+        // var obj = {
+        //     num:1,
+        //     fn:function(){
+        //         console.log(this);
+        //     }
+        // };
+        // var f = obj.fn;
+        // f();// window
+        // obj.fn();// obj
+
+        // 4. 自执行函数中的this永远指向window
+        // (function(){
+        //     console.log(this);
+        // })();
+        // var  obj = {
+        //     fn:(function(){
+        //         console.log(this);
+        //     })(this)// 实参不属于自执行函数里面；属于自执行函数外面；
+        // }
+        // var num = 2;
+        // var obj = {
+        //     num:1,
+        //     fn:function(){
+        //         // this==> obj
+        //         (function(num){
+        //             console.log(num);
+        //         })(this.num)
+        //     }
+        // }
+        // // obj.fn();
+        // var f = obj.fn;
+        // f();
+
+        // 5. 回调函数中的this指向window
+        setTimeout(function(){
+            console.log(this); 
+        },1000);
+        var ary = [1];
+        ary.map(function(){
+            console.log(this);
+        });
+
+        // 6.类中的this指向实例
+        // 7.call\apply\bind可以改变this的指向；
+       
+        
+    
+    </script>
+</body>
+</html>
