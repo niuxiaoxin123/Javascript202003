@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"></button>
+    <script>
+        // this --> 一个关键字；在不同的场景代表不同的值；
+        // this=> 函数的执行主体；谁让这个函数执行的；
+        // 1. 全局作用域下的this；
+        // window.a = 100;
+        // this.a = 100;
+        // console.log(this);
+
+        // 2. 给元素的事件行为绑定方法，那么方法中的this指向当前被绑定的元素；
+        // btn.onclick = function(){
+        //     // this--> btn这个元素
+        //     btn.style.color="red";
+        //     this.style.color="red";
+        // }
+
+        // 3. 看函数执行前有没有点，如果有点，点前面是谁，this就是谁；如果没有点，那么this指向window
+        // function fn(){
+        //     // 在变量提升结束，代码执行之前，会对当前作用域中的this让其指向window;
+        //     // console.log(this);
+        //     // this=100;// this 不能直接被赋值不可以放置在等号的左边；
+        // }
+        // fn();
+        // var obj  ={
+        //     fn:function(){
+
+        //     }
+        // }
+        // obj.fn();// this==> obj 
+        // var f = obj.fn;
+        // f();// this--> window
+
+        // 4.自执行函数的中this永远指向window
+
+        // var obj = {
+        //     num:1,
+        //     fn:(function(){
+        //         return function(){
+
+        //         }
+        //     })()
+        // }
+        // // obj.fn 并不是代表整个自执行函数，只是代表这个自执行函数return的小函数；
+        // obj.fn();
+
+        // 5. 回调函数中的this指向window
+        // var ary =[];
+        // ary.sort(function(a,b){
+        //     console.log(this);
+        // });
+        // setInterval(function(){
+
+        // },1000)
+        // // 6. 构造函数中的this指向实例
+        // // 7. call、apply、bind可以改变this指向；
+
+        // function a(b){
+
+        // }
+        // a(function(){})
+        var obj = {
+            fn:(function(){
+                // 当对象存储键值对的时候执行；
+            
+            })()
+        }
+
+
+    </script>
+</body>
+</html>

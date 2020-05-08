@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 函数： 引用数据类型
+        // 空间地址类型
+        // fn 存储一个堆内存的空间地址
+        // fn=aabbcc11
+        function fn(){
+
+        }
+        // 1): 首先开辟一个堆内存，堆内存对应一个空间地址
+        // 2): 把函数体中的代码当作字符串存储到堆内存中
+        // 3) : 把函数的这个空间地址赋值给函数名
+        // fn(100);
+        // 函数执行
+
+        // 1.形成一个私有的作用域
+        // 2. 形参赋值 
+        // 3. 变量提升
+        // 4. 代码从上到下解析
+        // 5. 作用域是否销毁
+        // 函数的封装一般都会使用到形参和实参；
+        // 函数形参和实参；
+        // arguments : 一定要写在函数体中；代表的是实参集合；
+        // return :返回；函数的返回值；
+        // return 下面的代码不再执行；
+
+    // 匿名函数
+    // 1.函数表达式  2.自执行函数
+    // function fn(){
+
+    // }
+    // var f = function(a){
+
+    // }
+    // f(100)
+    // 代码走到45行先定义，然后直接执行；
+    // (function(){
+
+
+    // })()
+    var obj  ={
+        fn:(function(){
+            // 自执行函数，自己运行；fn存储的是自执行的函数返回值
+            return 100
+        })()
+    }
+    console.log(obj);// {fn:100}
+    
+
+    
+    
+    </script>
+</body>
+</html>

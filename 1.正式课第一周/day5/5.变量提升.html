@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正式课第一周： 浏览器解析代码的过程
+        // 正式课第一周： 变量提升  作用域  this  面向对象
+        // 全局作用域和私有作用域
+        //  一个页面只有一个全局作用域；给全局下的代码提供执行环境，在这个环境下按照特定的规则去解析代码。
+        // var num = 100;// 全局变量
+        // hh=1;// 也会给window新增键值对
+        // 会给window新增一个键值对；
+        // 在全局下定义的fn也是全局变量，也会给window新增键值对
+        // function c(){
+        //     var num = 9;
+        //     num=1;
+        //     // var  r = ff;// 浏览器会去解析ff这个值，但是没有声明过，所以会报错；
+        //     ff=666;// 浏览器解析这个ff,默认就是一个属性名
+        // }
+        // fn 执行就会形成一个私有的作用域，给函数执行提供代码运行环境
+        // c();
+        // 私有作用域是在全局作用域下形成的；
+        // var num = 1;
+        // function fn(){
+        //     num = 100;// 私有变量
+        //     // console.log(num);
+        //     function num(){
+
+        //     }
+        // }
+        // fn();
+        // 函数的外面不可以获取到函数里面的私有变量；但是函数里面可以获取函数外面的变量
+        // 私有变量： 
+        // 1）在函数体内被var过；  2)是否是形参 3） 在函数体中被function过 
+
+        // 变量提升： 在当前作用域下，代码执行之前，会对作用域下的带var和带function进行提前的声明，var只声明，不赋值；function不仅声明，而且还要赋值;
+        // var a  =1;
+        // function f(){
+        //     var a = 2;
+        // }
+        // console.log(a);// undefined
+        // //console.log(b);// 报错;
+        // var  a = 1;
+        // b=100;
+        // console.log(b);// 整个函数
+        // 全局作用域下的函数的堆内存时在变量提升的时候开辟的；把函数的空间地址赋值给函数名b;
+        // function b(){
+        // }
+
+        // 变量提升特殊情况
+        // 1. 不管条件是否成立，都要进行变量提升
+        // 块级作用域出现，变量提升函数解析发生改变；
+        // if([]==[]){
+        //    function aa(){
+        //    }
+        // }
+
+        // 2.变量提升只发生在等号的左边，等号右边不进行变量提升；
+        // 3. return 出的内容不进行变量提升，return下面的代码需要进行变量提升
+        // function fn(){
+        //     console.log(m);// undefined
+        //     return function fn(){
+
+        //     };
+        //     var m = 100;
+        // }
+        // 4. 如果变量名重复，不再重复声明，但是要重新定义
+        // function foo(){
+        //     console.log(1);
+        // }
+        // foo();// 2
+        // function foo(){
+        //     console.log(2);
+        // }
+        // 5. 匿名函数:当代码解析到这一行时，先进行变量提升，然后再执行；
+        // (function(){
+
+        // })();
+        // var f = function(){
+
+        // }
+
+        // 6. let  const:声明的变量不进行变量提升
+        // let num = 1;
+        // console.log(num);
+        
+
+        
+    
+    
+    </script>
+</body>
+</html>

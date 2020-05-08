@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //  var a; var obj1; var fn1;
+    // 全局a=1 obj1=aabbcc;
+    //     var a = 1;// 1-->3
+    //     var obj1 = {
+    //         a: 0,// 2
+    //         fn1: (function (a) { 
+    //             // 当存储这个键值对时，自执行函数执行
+    //             // 形参a=1 -->2-->3 -->4
+    //             // this->window
+    //             this.a = a;
+    //             a++;
+    //             return function () {
+    //                 //  this--> obj1
+    //                 // this -->window 第二次执行
+    //                 this.a = a++;
+    //                 console.log(a)// 3  第二次 4
+    //             }
+    //         })(a)// a取到a存储的值；1
+    //     };
+    //     // obj1.fn1的属性值是自执行函数返回的小函数；
+    //     obj1.fn1();
+    //     var fn1 = obj1.fn1;
+    //     fn1();
+    //     console.log(a);console.log(obj1.a);// 3  2 
+    
+    // 1. 代码的解析过程
+    // 2. num名字都一样；需要分清楚num;
+    // var num=1; var obj ;var f;
+//     var num =1;//-->2-->4
+//     var obj = {
+//         num : 2,//--->4
+//         fn : (function () {
+//             // 此处的自执行函数当以键值对存储时，执行这个函数
+//              这个自执行函数的栈内存不销毁
+//             // this-->window 
+//             // var num;-->NaN -->1--3-->4-->6 -->7
+//             this.num *= 2;
+//             num +=3;
+//             var num =1;
+//             // console.log(333);
+//             return function () {
+//                     num +=2;
+//                     this.num +=2
+//                     console.log(++num);// 4 7 
+//             }
+//         })()
+//     };
+//     var f= obj.fn;
+//     f();
+//     obj.fn();
+//     console.log(window.num,obj.num);// 4  4
+
+
+    // var  num; var obj;var fn;
+    // 全局 num = 10; obj=aabbcc  fn=ddeeff
+    var num = 10;// --> 20 -->30
+    var obj = {num: 15};// 30
+    obj.fn = (function (num) {// obj.fn等于自执行函数的结果
+        //  num =15 私有变量--> 30--> 29-->28
+        this.num += 10;
+        num *= 2;
+        return function (n) {
+            //  n=10
+            this.num += n;
+            console.log(n + (--num));// 39  43
+        }
+    })(obj.num);// 15
+    var fn = obj.fn;
+    fn(10);
+    obj.fn(15);
+    console.log(window.num, obj.num);
+
+
+    
+    
+    </script>
+</body>
+</html>

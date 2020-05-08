@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        function fn(){
+            // var a = 100;
+            // 当执行fn时，开辟的堆内存，存储了小函数里面的代码；所以小函数的上一级作用域就是fn执行形成的私有作用域；
+            return function(){
+                // a 是私有的吗；如果不是私有的，那么会向上一级作用域查找；
+                // 函数的上一级作用域跟函数在哪执行没有关系，跟函数在哪定义有关；
+                console.log(a);
+            }
+        }
+        var f = fn();// f代表了return的小函数；
+        f();
+        // 一级一级向上查找，直到找到为止；如果全局也没有，那么就报错；
+        // var num  =0;
+        // var  obj = {
+        //     num :1,
+        //     fn:(function(){
+        //         // 变量提升 num 是私有的
+        //         num++;
+        //         var num = 0;
+        //         return function(){
+        //             // return出去的这个小函数给了obj的fn属性名；
+        //             console.log(num,window.num);
+        //         }
+        //     })()
+        // };
+        // obj.fn();
+        // obj.fn();
+
+        
+    
+    </script>
+</body>
+</html>
