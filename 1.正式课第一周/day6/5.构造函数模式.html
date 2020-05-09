@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 什么是构造函数？
+        // 类和实例的关系?
+        // 怎么通过构造函数创建一个实例?
+
+        // function createPerson(name,age){
+        //     var  obj = {};
+        //     obj.name= name;
+        //     obj.age=age;
+        //     return obj;
+        // }
+        // var p1 = createPerson("珠峰",10);
+        // console.log(p1);
+
+        function CreatePerson(name,age){
+            // this --> window
+            // 函数执行前加上new；那么该函数中的this会默认指向一个空对象；
+            // 函数执行前加上new；那么这个函数就是一个构造函数函数；
+            // console.log(this);
+            // var  obj = {};
+            // this=obj;
+            this.name= name;
+            this.age=age;
+            // 当构造函数执行完以后，会默认返回这个对象的地址，或者说默认return了this
+            //console.log(100);
+            // return this;
+            // return {a:100};
+        }
+        // new : 是一个关键字；放在函数前面有特殊的意义；
+        // new操作符做了什么？
+        // 1. 函数执行代码解析前，先创建一个空对象
+        // 2. 让当前函数体中的this指向这个空对象
+        // 3. 代码执行完，会默认return出这个this
+        //var p1 =new CreatePerson("珠峰",10);
+        //console.log(p1);
+        //var p2 = CreatePerson("培训",11);// 普通函数执行 是不是一个构造函数跟函数定义没关系，要看函数执行前有没有new；
+        //console.log(p2);
+        
+        // 普通函数和构造函数：
+        // 1. 普通函数执行：形成一个私有作用域-->形参赋值-->变量提升---> 代码从上到下执行--> 作用域是否销毁
+         //   构造函数执行： 形成一个私有作用域-->形参赋值-->变量提升--> 先默认创建一个空对象，并且让当前作用域下的this指向这个空对象---> 代码从上到下执行-->默认返回return这个this的空间地址---> 作用域是否销毁
+         // 2. p1就是createPerson这个构造函数的一个实例；p1是createPerson被new出来的；p1是createPerson这个类的一个实例；构造函数就是一个类，createPerson既是一个构造函数，又是一个自定义类；
+         // 3.构造函数的首字母一般是大写的，为了和普通函数区分；
+         // 4.构造函数的小括号是可以省略的;如果需要传参，不要省略；
+         // 5.构造函数中return一个基本数据类型值，不能影响默认返回的实例对象；如果return一个引用类型值，那么会将默认返回那个对象覆盖掉；
+         // 6. instanceOf : 检测一个实例是否属于某个类；如果是返回true，不是则返回false；
+        // var p1 = new  CreatePerson("珠峰",10);
+        // console.log(p1 instanceof CreatePerson);
+        // console.log(p1);
+
+        var  obj = {};// obj是一个Object这个类的实例
+        console.log(obj instanceof Object);
+        function fn(){}
+        console.log(fn instanceof Function)
+        var ary = [];
+        console.log(ary instanceof Array)
+        console.log(obj instanceof Array);
+        
+
+    </script>
+</body>
+</html>

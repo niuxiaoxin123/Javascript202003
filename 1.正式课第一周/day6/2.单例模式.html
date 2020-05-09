@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在真实的项目中会经常封装一些类库： jquery
+        // 原生JS;类库都是基于原生JS封装的；
+        // 把一些公共的方法放到一起；任意数求和；
+        // 把这个变量放到全局下
+        // 在真实的项目中，如果是共用的变量不能放到全局变量
+        // var total = 100;
+        // var cwj={
+        //     sum:function(){
+        //         console.log(total);
+        //     },
+        //     aa:function(){    
+        //     }
+        // }
+        // var wwj={
+        //     sum:function(){
+        //         console.log(total);
+        //     }
+        // }
+        // cwj.sum();
+        // wwj.sum();
+        // 把描述同一个事物的属性放到一个对象中，避免了全局变量的干扰，相互之间不受影响；那么中模式就是单例模式；
+
+
+        // 高级单例模式；目前jquery源码、vue源码、react源码都是采用高级单例模式进行封装的；
+        // 用utils来接收自执行函数的返回值；
+        var utils = (function(){
+            var total = 100;
+            function sum(){
+            }
+            function unique(){
+            }
+            return {
+                sum:sum,
+                unique:unique
+            }
+        })()
+        utils.sum();
+
+        
+    
+    
+    
+    </script>
+</body>
+</html>
