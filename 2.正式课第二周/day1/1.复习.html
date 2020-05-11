@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 三周JS; 写代码 ；选项卡  input的作业 ； 案例时间段；
+        // 变量提升  作用域   this  面向对象【类、原型、实例】
+        // 作用域 ： 全局作用域和私有作用域；全局变量和私有变量
+        // var num = 1;
+        // function fn(){
+        //     num =100;
+        //     // 三种：1.有没有被var过
+        //     //       2. 有没有被function
+        //     //       3. 是不是形参；
+        //     return  function(){
+
+        //     }
+        // }
+        // var f = fn();// 消耗栈内存；
+        // fn()();
+
+        // 作用域销毁：
+        // 立即销毁;
+        // 不销毁
+        // 不立即销毁
+
+        // var  obj = {
+        //     fn:(function(){
+        //         // 这个自执行函数的返回值被obj的属性名fn占用着；
+        //         return function(){
+
+        //         }
+        //     })()
+        // };
+
+        // this:
+        // 在什么情况下this指向什么；代表什么东西
+        // 全局作用域下window和this指向同一个空间地址；
+        // window.a = 100;
+        // this.a = 100;
+        // 1. 全局下的this指向window；
+        // 2. 给元素的事件行为绑定方法，方法中的this指向被绑定的那个元素
+        // 3. 看函数执行前有没有点，点前面是谁，this就是谁
+        // 4. 自执行函数中的this永远指向window
+        // 5. 回调函数中的this一般也指向window;
+        // 6. 构造函数中的this指向实例；
+
+        // function Fn(){
+        //     var num  =1;
+        //     this.a = 100;
+        //     this.b = 200;
+        //     // return  this;
+        // }
+        // var f = new Fn();// {a:100,b:200,num:1}
+        // f是Fn的一个实例；
+
+    </script>
+</body>
+</html>   

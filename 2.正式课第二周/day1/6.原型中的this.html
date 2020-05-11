@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fn(x,y){
+            this.x = x;
+            this.y=y;
+        }
+        Fn.prototype.getX=function(){
+            console.log(this);// f这个实例
+        }
+        var f = new Fn(100,200);
+        // 函数体中的this跟函数执行有关；
+        f.getX();
+        Fn.prototype.getX();
+        f.__proto__.getX();
+        Fn.prototype===f1.__proto__;// 代表同一个空间地址；
+
+        // 看函数执行前有没有点，点前是谁，this就指向谁；
+    
+    
+    
+    </script>
+</body>
+</html>

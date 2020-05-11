@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fn(x,y){
+            this.x = x;
+            this.y=y;
+            // this.getX=function(){
+            //     console.log(100)
+            // }
+        }
+        Fn.prototype.getX=function(){
+            console.log(200);
+        }
+        var f = new Fn(100,200);// {x:100,y:200,getX:f,__proto__:{getX:f}};
+        // f.getX();
+        // console.log(f);
+        // 为什么类的原型中__proto__都指向Object的原型呢；原因是所有的类的原型都是一个对象数据类型的，对象都是Object的一个实例；
+        //var obj= {}; // 都是Object构建出来的；
+        // 所有的对象都是Object这个类的实例；
+        // console.log(f);
+        // console.log(f.hasOwnProperty)
+        // f.__proto__.__proto__.hasOwnProperty===f.hasOwnProperty
+        // console.log(f.a);
+        // 当获取对象的属性名对应的属性值时，先找自己的私有属性，如果没有会默认通过__proto__向当前类的原型查找，如果原型也不存在，那么会通过原型的__proto__继续向上查找，直到找到Object的原型位置，如果也没有，那么会输出undefined；那么这样一级一级向上查找，就会形成原型链；
+
+        // f1.toString 
+        // console.log(Fn.prototype instanceof Object)
+        //var ary = [];// ary.__proto__==> Array.prototype==>Object的原型
+        //console.log(ary.hasOwnProperty可以用来校验该属性是否是当前对象的私有属性；如果是返回true，不是返回false；
+        // hasOwnProperty : 在Object的原型上；y
+        console.log(f.hasOwnProperty("x"))
+        console.log(f.hasOwnProperty("y"))
+        console.log(f.hasOwnProperty("getX"))
+        console.log(f.hasOwnProperty("a"));
+        
+    
+    
+    </script>
+</body>
+</html>

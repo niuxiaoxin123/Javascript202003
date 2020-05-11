@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    function Fn(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+    Fn.prototype.getX=function () {
+        // this==> Fn.prototype
+        console.log(Fn.prototype.x);
+    }
+    Fn.prototype.getY = function () {
+        console.log(this.y);
+    }
+    var f1 = new Fn(100,200);// {x:100,y:200}
+    // Fn.prototype.a=300;
+    f1.__proto__.a=300;
+    var f2 = new Fn(100,200);
+    console.log(f1.getX == f2.getX);// true
+    console.log(f1.getY == f2.getY);// true
+    console.log(f1.x == f2.x);// true
+    console.log(Fn.prototype.getX === f1.getX);// true
+    console.log(Fn.prototype.getX === f1.__proto__.getX);// true
+    f1.getX()// 100
+    Fn.prototype.getX();//  undefined
+    f2.__proto__.getX();// undefined
+    Fn.prototype.getY();// undefined
+    console.log(f1.a);//300 会默认通过__proto__向原型查找
+    console.log(f1.toString);// function toString(){}
+
+    // 第二题
+    function Fn(x,y){
+        this.x=x;
+        this.y=y;
+        // 私有的
+        this.getX = function(){
+            console.log(this.x);
+        }
+    }
+    // 公有
+    Fn.prototype.getX=function(){
+        console.log(this.x);
+    }
+    Fn.prototype.getY = function(){
+        console.log(this.y)
+    }
+    //{prototype:{constructor:Fn,getX:f},getX:f}
+    Fn.getX=function(){
+        console.log(this.x);
+    }
+    var f1 = new Fn(100,200);
+    var f2 = new Fn(100,200);
+    console.log(f1.__proto__==f2.__proto__);// true
+    console.log(f1.__proto__===Fn.prototype);// true
+    f1.getX();// 100
+    f1.__proto__.getX();// undefined
+    Fn.getX();// undefined
+    console.log(f1.getX===f2.getX)// false
+    // in : 检测属性名是否在这个对象中存在；
+    console.log("x" in f1);// true
+    console.log("x" in Fn);// false
+    console.log(f1.prototype);// undefined
+    
+    
+
+
+ 
+
+
+
+
+
+
+    
+    </script>
+</body>
+</html>

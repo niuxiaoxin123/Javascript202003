@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fn(){
+            this.a =100;
+            this.b=1;
+        }
+        Fn();
+        // new 操作符做了什么？
+        // Fn:prototype:{getX:f}
+        Fn.prototype.getX=function(){
+
+        }
+        var f = new Fn;// {a:100,b:1,__proto__:{}}
+        var f1 = new Fn;
+        // a和b都是f的私有属性
+        // f的__proto__和Fn的prototype指向同一个堆内存；那么这个堆内存下的属性对于f来说就是公有属性；
+        // f实例是由Fn构建出来的；f是Fn这个类的一个实例；Fn既可以叫构造函数，也可以叫自定义类；
+
+        // 类： 内置类 自定义类；
+        // 内置类: Number  String   Boolean  Null  Undefined  Object
+        
+        // var  num = 1;// num是Number的实例；num是由Numer构建出来的；只有这个实例属于这个类，那么这个实例才可以使用这个类原型上的方法
+        // num.toFixed(2);// toFixed这个方法在Number这个类的原型上；
+
+        // var str = "1233";// String
+        // str.toFixed(2);// 报错： str不是Number的一个实例；
+        // str.push("6");
+
+
+        // 1. 执行过程不一样
+        // 2. this 指向不一样
+        // 3. 构造函数()可以省略
+        // 4. return 
+
+        // instanceOf : 检测实例是否属于某个类，属于返回true，不属于返回false
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 内置类 Number String Object Array...
+    // 自定义类
+    // function Fn(){
+    // }
+    // // 原型扩展：在类的原型上新增一些之前没有的方法；
+    // // getX:就是公有属性；
+    // Fn.proto1type.getX=function(){
+    // }
+    // var f = new Fn;
+    // f.getX();
+
+    // Null和Undefined这两个内置的类在浏览器中不允许被调用；
+    // 内置类的原型
+    // var num =1;
+    // num.toFixed(2);
+    //console.log(num.hasOwnProperty)
+    // 圆形扩展
+    // Array.prototype.getX=function(){
+    //     console.log("你很帅");
+    // }
+    // var ary = [2,3,4];
+    // ary.push();
+    // ary.getX();
+    // var a = [1,23]
+    // a.getX()
+
+    // 给Array的原型新增方法，数组调用就可以直接将数组中去重；
+    // Array.prototype.unique=function(){
+    //     console.log(this);// this指向谁调用unique，那么这个函数中的this就指向谁；
+    //     var obj = {};
+    //     for(var i=0;i<this.length;i++){
+    //         var cur = this[i];
+    //         if(obj[cur]===cur){
+    //             this[i]=this[this.length-1];
+    //             this.length--;
+    //             i--;
+    //         }
+    //         obj[cur]=cur;
+    //     }
+    // }
+    // var ary = [1,2,3,1,2,6,3];
+    // ary.unique();
+    // console.log(ary);
+    
+
+    // var a = [90,89,89,90];
+    // a.unique();
+    // console.log(a);
+
+    
+    // 这样会将内置的方法覆盖;
+    // Array.prototype.pop=function(){
+    //     console.log(100)
+    // }
+    // var ary = [1,2,34];
+    // ary.pop();
+    // console.log(ary);
+
+    // 上面都是在类原型原有的空间地址上进行的；
+
+    // function Fn(){
+    // }
+    // // 用一个空对象直接将Fn自带的prototype地址切换成空对象；
+    // // constructor会丢失；
+    // Fn.prototype = {
+    // }
+    // var f = new Fn;
+    // console.log(f);
+    // console.log(f.constructor);// undefined
+    
+    // 内置类的原型不可以直接更改其空间地址；
+    // Array.prototype={};
+    // var ary = [12,3,45.5]
+    // ary.pop();
+    // console.log(ary);
+
+
+    // 删除数组中最后一项的方法；
+    Array.prototype.myPop=function(){
+        // this ==> this指向点前面的内容
+        var val = this[this.length-1];
+        this.length--;
+        return val;
+    }
+    var a = [1,2,3];
+    var  cur = a.myPop();// 跟内置的pop方法一致；
+    console.log(a);
+    console.log(cur);
+    
+    // push  shift  unshift  slice splice reverse indexOf lastIndexOf join  sort concat 
+    
+    
+
+    
+ 
+    
+
+
+
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

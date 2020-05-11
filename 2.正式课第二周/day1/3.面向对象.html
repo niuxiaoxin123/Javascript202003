@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在JS中只要遇到{} []，function，都会开辟一个新的空间地址；
+        function Fn(){
+            this.a = 100;
+            this.b=200;
+            // this.getX=function(){// 都是获取实例上的a属性的属性值在
+            //     console.log(this.a);
+            // }
+        }
+        Fn.prototype.getX=function(){
+            console.log(this.a);
+        }
+        var f = new Fn;// {a:100,b:200,getX:function};
+        var f1 = new Fn;// {a:100,b:200,getX:function};
+        // console.log(f.getX===f1.getX)// false
+        // f.getX();// getX方法中的this指向f;
+        // f1.getX();// this==>f1;
+        console.log(f.getX===f1.getX)
+
+        // 每一个函数数据类型天生自带一个prototype属性，这个属性的属性值是一个对象
+        // 2.prototype的属性值天生自带一个constructor属性，其属性值在指向当前原型所属的类
+        // {prototype:{constructor:Fn}}
+        // console.log(Fn.prototype.constructor===Fn)
+        // 3.每一个实例天生自带一个__proto__属性，其属性值指向当前实例所属类的原型
+    </script>
+</body>
+</html>
