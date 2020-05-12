@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型继承：把类A产生的实例赋值给类B的原型，那么类B的实例就可以使用A的私有属性，还可以继承其原型的公有的属性；那么这种继承方式就是原型继承；
+        function A(){
+            // a实例的私有属性
+            this.get=function(){
+                console.log(100);
+            }
+        };
+        A.prototype.getX=function(){
+            console.log(200);
+        }
+        var a = new A;
+        function B(){
+        }
+        // 原型继承
+        B.prototype = new A;// 把类A的原型的空间地址赋值给类B的prototype
+        B.prototype.getY=function(){
+            console.log(300);
+        }
+        var b = new B;
+        b.getX();
+        b.getY();
+        
+    
+    
+    </script>
+</body>
+</html>

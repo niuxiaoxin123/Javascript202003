@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object 
+        // Function 
+
+        function Fn(){
+            this.x =100;
+            this.y=200;
+        }
+        Fn.prototype={
+            getX:function(){
+
+            }
+        }
+        var f  = new Fn;
+        console.dir(Fn);
+        // 内置类：Object  Function  Number  Array ...
+        // 类一定是函数数据类型的；
+        // 类的原型一定是个对象{};一定是Object的实例；
+        // 所有的函数都是Function的一个实例；
+        // Object ：是所有的对象的基类
+        // Function : 是所有函数的基类；
+        console.log(Object instanceof Function);
+        console.dir(Object)
+        // Function 是它自己的一个实例，Function先是一个函数；
+        // Object.prototype.hasOwnProperty;
+        Object.hasOwnProperty
+        // 在JS中所有的数据类型值都有__proto__,但是只有函数有prototype;
+        // 万物皆对象；只要是对象，就会有__proto__;
+        // var num = 1;
+        // num.__proto__.toFixed()
+
+
+                // instanceOf: 只要当前类的原型在这个实例的原型链上,那么instanceOf校验都是true；
+        // var ary =[];
+        // console.log(ary instanceof Array)
+        // var obj = {};
+        // console.log(obj instanceof Array)// false
+        // console.log(ary instanceof Object)// true
+        // console.log(Function instanceof Object);// true 
+        // console.log(Object instanceof Function);// true
+        // console.log(Function.prototype===Object.prototype);// false
+        // console.log(Function.hasOwnProperty===Object.hasOwnProperty);// true
+        // console.log(Function.call===Object.prototype.call)// false
+        // console.log(Function.prototype===Obeject.prototype.__proto__)// false
+        // console.log(f.call===Object.call);// false
+        //Object  Function  Number String  Array  Boolean
+
+        // function Fn(){
+        //     this.x =100;
+        //     this.y=200;
+        // }
+        // Fn.prototype={
+        //     getX:function(){
+        //     }
+        // }
+        // var f  = new Fn;
+        // console.log(f.constructor);// function Object(){}
+
+        // var  num = 1;// num先通过__proto__找到Number的原型，然后没有继续通过Number原型中的__proto__向上查找，Object的原型；
+        // 所有类的原型的__proto__都指向Object的原型；
+        // var str = "s";
+        // console.log(num.hasOwnProperty===str.hasOwnProperty)
+
+        // var ary1=[1];
+        // var ary=[2];
+        // ary1.push();
+        // ary.push();
+
+        // var  obj  ={
+        //     f:function(){
+        //     }
+        // }
+        // obj.f();
+        // ary.toString
+
+
+
+        
+
+
+    
+    
+    </script>
+</body>
+</html>

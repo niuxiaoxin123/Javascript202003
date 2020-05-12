@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var  num =100;
+        // let a = 1;// 在全局下let声明的变量不会给window新增键值对；
+        // Math.max([100,29,39,49])
+        //Math.max(arguments)
+        function sum(){ 
+            // 由于arguments的__proto__直接指向了Object的原型，不能直接使用Array原型上的方法；
+            // 如果能让arguments的__proto__指向Array的原型，就可以找到数组的方法了
+            //  arguments.sort(function(a,b){
+            //      return a-b;
+            //  });
+            //  console.log(arguments);
+            // 直接更改当前对象的__proto__指向一个类的原型，那么这个对象就可以使用原型上的方法；
+            arguments.__proto__=Array.prototype;
+            arguments.sort(function(a,b){
+                return a-b;
+            })
+            arguments.pop();
+            console.log(arguments);
+            // arguments.hasOwnProperty   
+        }
+        sum(100,90,95,96,85,92,98);
+
+    
+    
+    
+    </script>
+</body>
+</html>

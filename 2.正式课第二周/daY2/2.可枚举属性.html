@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fn(){
+            this.x = 100;
+            this.y = 200;
+        }
+        Fn.prototype.getX=function(){
+
+        }
+        var f  = new Fn;
+        //  in : 检测这个属性是否属于这个对象；如果这个属性在这个对象中存在，返回true，不存在返回false；
+        // 可枚举属性：可以循环遍历出来的属性；对象的私有属性或后来在原型上扩展的属性都是可枚举属性；
+        // console.log("getX" in f);// true
+        // console.log("constructor" in f);
+        // for( var key in f){
+        //     // console.log(key);
+        //     // 如果是私有属性返回true 
+        //     if(f.hasOwnProperty(key)){
+        //         console.log(key);  
+        //     }
+        // }
+
+        // Object.prototype.getX=function(){
+        // }
+        // var obj = {a:1,b:2};
+        // for(var key in obj){
+        //     console.log(key);
+        // }
+
+        // hasOwnProperty :检测是否是私有属性的；
+        // console.log(f.hasOwnProperty("getX")) 
+        // 封装一个判断是否是公有属性的方法，如果是返回true，不是返回false
+        // 判断attr这个属性是否是obj这个对象的公有属性；如果本身不是它的一个属性，那么也返回false；
+        
+        // 1.确保attr是obj的一个属性，并且它不是obj的私有属性；
+        // 2.如果是它的一个属性，但是是私有属性返回false，attr不是obj的属性，也返回false；
+        // function publicProperty(obj,attr){
+        //     if(attr in obj){
+        //         // 说明attr是obj的一个属性
+        //         if(obj.hasOwnProperty(attr)){
+        //             return false
+        //         }
+        //         return true;
+        //     }
+        //     // 如果上面条件不成立，直接返回false；因为attr不是它的一个属性
+        //     return  false;
+        // }
+        function publicProperty(obj,attr){
+           return  attr in obj&&!obj.hasOwnproperty(attr)?true:false;   
+        }
+        publicProperty(f,"getX");
+    </script>
+</body>
+</html>

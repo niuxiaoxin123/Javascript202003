@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实例和类的关系：
+        // 内置类和自定义类
+        function Fn(){
+
+        }
+        var f = new Fn;
+       // 原型链 
+    //    var obj = {};// Object
+    //    var num = 1;// Number 
+    //    var str = ""// String
+    //    var t = true// Boolean
+    //    var ary = []// Array
+    //    console.log(obj.a);
+    //    console.log(obj.hasOwnProperty)
+    //    console.log(obj);
+    //    console.log(obj.constructor);
+    //    ary.__proto__.__proto__.toString===Object.prototype.toString
+
+    function Fn(){
+
+    }
+    Fn.prototype.getX=function(){
+
+    }
+
+
+    // slice:
+    // Array.prototype.unique=function(){
+    //     // this; // this 和a是听一个空间地址；操作this就当与操作a;
+    // }
+    // var a = [1,2,3,1,2,3];
+    // a.unique();// 
+
+    // push : 向数组的末尾新增一项或多项;该方法的返回一个新增之后的数组的长度；
+    // Array.prototype.myPush=function(){
+    //     //this
+    //     for(var i=0;i<arguments.length;i++){
+    //         this[this.length]=arguments[i];
+    //     }
+    //     return this.length;
+    // }
+    // var ary=[1,2,3];
+    // var len = ary.myPush(10,20);
+    // console.log(ary);
+    // console.log(len);
+
+    // shift  unshift  indexOf  lastIndexOf  reverse  join  concat 
+
+    // Fn.prototype = {};// 会导致原型中constructor丢失；
+    // Array.prototype={};// 对内置类的原型不能直接修改其空间地址；
+
+    
+    
+
+
+
+       
+       
+
+    
+    
+    
+    </script>
+</body>
+</html>

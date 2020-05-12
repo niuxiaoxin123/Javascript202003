@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 作用域   面向对象   同步异步 ajax;
+        // 写代码能力；
+        // function Fn(){
+        //     var num =100;
+        // }
+        // Fn();// 普通函数
+        // var f = new Fn;// 构造函数；类
+        // 新增键值对；
+        // Fn.a =100;// 对象
+        // 函数的三种角色：普通函数、类、对象
+        // 函数定义开辟的堆内存
+        // Fn();
+
+   var num = 0;// 20
+   function Fn(num) {
+       // num =10;
+       arguments[0] = 10;
+       this.num = 20;
+       return num;// 10;基本数据类型不能影响返回的实例；
+   }
+   Fn.num = 40;// 对象角色
+   Fn.prototype.num = 30// 构造函数
+   Fn.prototype.getNum = function () {
+       console.log(this.num);
+   };
+   var f = new Fn(num);// 构造函数 {num:20}
+   console.log(f.num);// 20
+   f.getNum();// 20
+   Fn.prototype.getNum();// 30
+   console.log(num);// 0
+   var n = Fn(num);// 普通函数角色
+   console.log(n);// 10
+   console.log(num);// 20
+        
+    
+    
+    
+    </script>
+</body>
+</html>
