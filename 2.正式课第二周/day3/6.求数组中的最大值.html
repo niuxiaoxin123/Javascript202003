@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+    <script>
+        var ary = [10,2,35,66,88,56,78];
+
+        // 1. 排序
+        // ary.sort(function(a,b){return a-b});
+        // var max = ary[ary.length-1];
+        // console.log(max);
+
+        // 2. 利用相邻的两项进行比较，如果前面一项比后面一项大，那么交换位置，如果比后面一项小，那么不交换位置
+        // for(var i=0;i<ary.length-1;i++){
+        //     if(ary[i]>ary[i+1]){
+        //         var temp = ary[i];
+        //         ary[i]=ary[i+1];
+        //         ary[i+1]=temp;
+        //         // var l = ary[i]+ary[i+1];
+        //         // var r = ary[i]-ary[i+1];
+        //         // ary[i]=(l-r)/2;
+        //         // ary[i+1]=(l+r)/2;
+        //     }
+        // }
+        // console.log(ary[ary.length-1]);
+        // 会把当前数组的最大值放到数组的最后面；
+        var ary = [10,2,35,66,88,56,78];
+        // 假设法；
+        // var max = ary[0];
+        // for(var i=1;i<ary.length;i++){
+        //     if(ary[i]>max){
+        //         // 通过判断，只要比max这个变量大，直接对max重新赋值；
+        //         max=ary[i];
+        //     }
+        // }
+        // console.log(max);
+
+        // Math.max: 获取一组数的最大值；
+        // console.log(Math.max([10,2,35,66,88,56,78]))
+        // console.log(typeof  Math.max);
+        // Math.max(10,2,35,66,88,56,78)
+        // apply： 可以改变，还可以解决传参问题
+        // 这个为了占位；因为ary必须是第二个实参；才可以将数组每一项传给apply方法
+        console.log(Math.max.apply(null,ary));
+        // console.log(Math.max(...ary))// 将ary数组左右两边的[]去掉；
+        
+        
+        
+    
+    
+    </script>
+</body>
+</html>  

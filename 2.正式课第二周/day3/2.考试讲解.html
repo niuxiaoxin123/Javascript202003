@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 
+        var ary = [10,20,3,5,122,3,4];
+        // ary.sort(function(a,b){return b-a});
+        // pop   push  shift unshift  splice  slice  sort reverse concat join  indexOf lastIndexOf forEach  map  toString
+        // var  a = ary.toString();
+        // console.log(ary);
+        // ary.pop()  ary.length--  ary.splice(ary.length-1,1)
+        // slice(n-1,m)
+        // appendChild  insertBefore
+        // previousElementSibling
+        // Math.round(Math.random()*(m-n)+n)
+        // replace
+        // document.getElementById("tab")
+        // document.getElementsByClassName("tabCon")[0]
+        // document.getElementsByTagName("div")[0]
+        // 
+
+        // var name = "中国";
+        // var age = 5000;
+        // name=(function(name,age){
+        //     arguments[0]="珠峰";
+        //     age =age||this.age;
+        //     console.log(name,age);
+        // })(name)
+        // console.log(name,age); 
+
+        // [300] 
+
+        // ~function(){
+        //     console.log(1)
+        // }()
+
+
+        // function Fn(num){
+        //     this.x =this.y=num;
+        // }
+        // Fn.prototype={
+        //     x:20,
+        //     sum:function(){
+        //         console.log(this.x+this.y);
+        //     }
+        // }
+        // var f  = new Fn(10);// {x:10,y:10}
+        // console.log(f.sum===Fn.prototype.sum);// true
+        // f.sum();// 20
+        // Fn.prototype.sum();// NaN 
+        // console.log(f.constructor);// function Object(){}
+        // 第一种解决方案
+        for(var  i=0;i<inpList.length;i++){
+            var cur=inputList[i];
+            cur.index = i;
+            cur.onclick = function(){
+
+                document.body.style.background=ary[this.index];
+            }
+        }
+
+        for(var  i=0;i<inpList.length;i++){
+            var cur=inputList[i];
+            cur.onclick =(function(i){
+                // 循环一次执行一次；
+                // i的值被这个自执行函数存储起来了; 
+                return function(){
+                    document.body.style.background=ary[i];
+                }
+            })(i)// 0
+        }
+        // 在用for循环时，如果这个变成let,for循环执行一次，都会在本轮循环形成作用域，每轮循环的作用域都存储i的值；
+        for(let i=0;i<inpList.length;i++){
+            var cur=inputList[i];
+            cur.onclick = function(){
+                document.body.style.background=ary[i];
+            }
+        }
+
+
+
+
+        
+    </script>
+</body>
+</html>

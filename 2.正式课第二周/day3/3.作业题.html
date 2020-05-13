@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function C1(name) {
+    //     if (name) {
+    //         this.name = name;
+    //     }
+    // }
+    // function C2(name) {
+    //     this.name = name;
+    // }
+    // function C3(name) {
+    //     this.name = name || 'join';
+    // }
+    // C1.prototype.name = 'Tom';
+    // C2.prototype.name = 'Tom';
+    // C3.prototype.name = 'Tom';
+    // console.log(new C1().name)// "Tom"
+    // console.log(new C2().name)// undefined
+    // console.log(new C3().name)// "join"
+
+
+    // function fun() {
+    //     this.a = 0;
+    //     this.b = function () {
+    //         alert(this.a);
+    //     }
+    // }
+    // fun.prototype = {
+    //     b: function () {
+    //         this.a = 20;
+    //         alert(this.a);
+    //     },
+    //     c: function () {
+    //         this.a = 30;
+    //         alert(this.a)
+    //     }
+    // }
+    // var my_fun = new fun();
+    // my_fun.b();// 0
+    // my_fun.c();// 30
+
+
+    // function Foo() {
+    //      getName = function () {
+    //          console.log(1);
+    //      };
+    //      // this --> window 
+    //      return this;
+    //  }
+    //  Foo.getName = function () {
+    //     console.log(2);
+    //  };
+    //  Foo.prototype.getName = function () {
+    //     console.log(3);
+    //  };
+    //  var getName = function () {
+    //     console.log(4);
+    //  };
+    //  function getName() {
+    //     console.log(5);
+    //  }
+    //  Foo.getName();// 2
+    //  getName();// 4
+    //  Foo().getName();// 1先执行Foo这个函数，根据Foo的返回值去调用getName方法执行
+    //  getName();// 1
+    //  new Foo.getName();//2 点的优先级高于new
+    //  new Foo().getName();// 3  () 优先级比点高
+    //  new new Foo().getName()// 3
+
+
+
+    // function Fn() {
+    //     this.x = 100;
+    //     this.y = 200;
+    //     this.getX = function () {
+    //         console.log(this.x);
+    //      }
+    //  }
+    //  Fn.prototype.getX = function () {
+    //     console.log(this.x);
+    //  };
+    //  Fn.prototype.getY = function () {
+    //     console.log(this.y);
+    //  };
+    //  var f1 = new Fn;
+    //  var f2 = new Fn;
+    //  // 原型链： 如果自己私有有这个属性，不再通过__proto__向上查找了
+    //  console.log(f1.getX === f2.getX);// false
+    //  console.log(f1.getY === f2.getY);// true
+    //  console.log(f1.__proto__.getY === Fn.prototype.getY);// true
+    //  console.log(f1.__proto__.getX === f2.getX);// false
+    //  console.log(f1.getX === Fn.prototype.getX);// false
+    //  console.log(f1.constructor);// function Fn(){}
+    //  console.log(Fn.prototype.__proto__.constructor);// function Object(){}
+    //  f1.getX();// 100
+    //  f1.__proto__.getX();// undefined
+    //  f2.getY();// 200
+    //  Fn.prototype.getY()// undefined
+
+
+
+    
+    // var name = 'zhufengpeixun';
+    // var Fn =function (name) {
+    //     var name = 'world';
+    //     this.name = 'zhufeng';
+    //     this.sex = function () {
+    //         this.name = 'hello';
+    //     }
+    // }
+    // var f1 = new Fn(name);//{name:"zhufeng",sex:function(){}}
+    // var f2 = new Fn('age');//{name:'zhufeng',sex:function(){}}
+    // console.log(f1.name);// "zhufeng"
+    // console.log(f2.age);// undefined
+    // f1.sex();// 把name属性值改成hello;
+    // console.log(f1);// {name:"hello",sex:function(){}}
+    // f1.sex === f2.sex// false
+    // Fn.name == f1.name// false
+
+    // function Fn() {
+    //     var a = 1
+    //     this.a = a;
+    // }
+    // Fn.prototype.say = function () {
+    //     this.a = 2
+    // }
+    // Fn.prototype = new Fn;//{a:1} 更改了Fn的原型，指向Fn的实例；
+    // var f1 = new Fn;// {a:1}
+    // f1.__proto__.b = function () {
+    //     this.a = 3
+    // };
+    // console.log(f1.a)// 1
+    // console.log(f1.prototype)//undefined 
+    // console.log(f1.b)// function(){this.a = 3}
+    // f1.hasOwnProperty('b')// false
+    // 'b' in f1// true 
+    // console.log(f1.constructor == Fn)// true 
+    // "say" in f1// true 
+
+
+    // function Fn() {
+    //     var a = 1
+    //     this.a = a;
+    // }
+    // Fn.prototype.say = function () {
+    //     console.log(100);
+    // }
+    // var f1 = new Fn;
+    // // 当f1被new时，Fn的原型没有发生改变；f1的__proto__仍然指向Fn被改之前的原型;这个原型的堆内存不回收，原因是f1的__proto__占用了这个空间地址；
+    // Fn.prototype ={
+    //     say:function(){
+    //         console.log(200); 
+    //     }
+    // }
+    // var f2 = new Fn;
+    // var f3 = new Fn;
+    // f1.say===f2.say// false
+    // f3.say===f2.say// true
+
+
+    
+    let n=10,// 11 --> 32--->53
+        obj = {
+            n:20// -->73
+        }
+    let fn = obj.fn =  (function () {
+                            n++;
+                            return function (m) {
+                                n+=10+(++m);
+                                this.n+=n;
+                                console.log(n);// 32  53
+                            }
+                        })(obj.n)
+    fn(10);
+    obj.fn(10);
+    console.log(n,obj.n)
+
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call、apply、bind :都是在Function的原型上；
+        // 只有是Function的一个实例才可以使用这三个方法；也就是说所有的函数才可以使用这三个方法；
+        // 改变函数体中this的指向；
+        // function fn(){
+        //     // this不能直接放到等号的左边，不能直接被修改；
+        //     // this=100;
+        //     console.log(this);
+        //     // console.log(a);
+        // }
+        //fn.call([100,200],12);// 让fn的属性名是call的属性值执行，但是fn没有call属性，所以需要通过__proto__向原型查找，找到了Function原型中的call，并且让call函数执行了；
+        // 当call执行时，改变了fn中的this，让这个this指向call方法第一个实参，并且让fn执行；
+        //  fn  === call的this；
+        // 当call执行时，改变了call的this中的this，让这个this指向call方法第一个实参，并且让this执行；
+        //1. 如果call中，传入null\undefined\或不传参，那么fn的this指向window；
+        // fn.call(null)
+        // fn.call(undefined) 
+        // fn.call() 
+        // fn.call(100);
+        // fn();
+
+        // function fn1(){
+        //     console.log(1)
+        // }
+        // function fn2(){
+        //     console.log(2)
+        // }
+        // // fn1===Call方法中的this；
+        // fn1.call(fn2);// 1 改变call方法中this的this，让其指向fn2;让call方法的this运行；
+        // fn1.call.call(fn2);// 2 最右面call先运行；里面的this是fn1.call;改变了fn1.call中的this指向fn2，并且让fn1.call运行，当fn1.call运行时，会让这个fn1.call中的this【fn2】执行,所以fn2运行；
+        // fn1.call.call.call.call(fn2);// 2
+
+
+        // apply :  
+        // 传参不一样，apply必须传一个数组
+        // function fn(a,b){
+        //     console.log(this);
+        //     console.log(a);// 数组第一项
+        //     console.log(b);// 数组第二项
+        // }
+        // fn.apply(100,[1,2]);
+
+
+        // bind : 预处理this；执行bind以后，并不能立即让fn运行，需要再次调用bind的返回值，让fn执行；
+        // bind传参和call一样；
+        function fn(a,b,c){
+            console.log(this);
+            console.log(a,b);// 1 2 
+            console.log(c);
+        }
+        var  f = fn.bind(100,1,2);
+        // 如果bind参数不够，那么才会使用f中的实参；
+        f(3);
+    
+    
+    
+    </script>
+</body>
+</html>
