@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="utils.js"></script>
+    <script>
+        function sum(){
+            // 将arguments转成数组；
+            console.log(utils);
+            console.log(utils.toArray);// undefined
+            
+            var ary = utils.toArray(arguments);
+            ary.sort(function(a,b){return a-b});
+            ary.pop();// 删除最后一项
+            ary.shift();// 删除第一项
+            // var total =0;
+            // for(var i=0;i<ary.length;i++){
+            //     total+=ary[i];
+            // }
+            // return total/ary.length;
+            // 将子字符串转成真正的表达式的方法 ： eval
+            console.log(eval(ary.join("+"))/ary.length)
+        }
+        var  avel = sum(100,102,88,76,36,99);
+        console.log(avel);
+        
+    
+    
+    </script>
+</body>
+</html>

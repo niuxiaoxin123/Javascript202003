@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 写代码: 大胆写 不要怕错；
+        // 有个大体的思路；不要总想着把每一步都想全，再动手； 
+        // 大胆尝试
+        // 学会分解功能 
+        // 面试的时候： 理论知识   原理 
+        // 上班时候：写代码能力 
+
+        // call  apply  bind： 在Function的原型上；可以改变执行函数中this；
+        // function bar(a,b,c){
+        //     // this 不能放在等号的左边，直接被修改；
+        // }
+        // bar.call(100,1,2,3);
+        // // apply : 第二个参数是个数组，但是也是一个一个传递给bar的形参的；
+        // bar.apply(100,[1,2,3]);
+        // // bind : 预处理this；bar没有立即运行，需要调用bind的返回值才能让函数执行；
+        // var f = bar.bind(100)
+        // f();
+        // bar();// this ==> window 
+
+        // 求数组中的最大值
+        // 1. sort  
+        // 2. 相邻两项比较换位
+        // 3. 假设法
+        // 4. apply ： 解决数组一个个传参
+        // 5. ...
+
+        // ES6： ... 展开运算符
+
+        // console.log(Math.max(11,34,2,66,77));
+        // var ary1 = [1,2];
+        // var ary2 = [3,4,5,6];
+        // // ary1.concat(ary2)
+        // var ary = [...ary1,...ary2];
+        // console.log(ary);
+
+        var  obj1 = {a:1,b:2};
+        var obj2 = {a:3,d:4};
+        // for(var key in obj2){
+        //     // 给obj1 新增键值对
+        //     obj1[key]=obj2[key]
+        // }
+        // console.log(obj1);
+        var obj = {...obj1,...obj2};
+      
+        
+
+        
+        
+
+
+    </script>
+</body>
+</html>

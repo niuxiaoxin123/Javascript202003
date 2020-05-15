@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="a"></div>
+    <script>
+        // 中间类继承在IE10以下不兼容
+        // function sum(){
+        //     arguments.__proto__=Array.prototype;
+        //     arguments.pop(); 
+        // } 
+        // sum(100,90,97,95,92,99,86);
+        // document.getElementsByClassName("a")
+
+
+        function sum(){
+            var ary = toArray(arguments);
+            console.log(ary);
+            
+        } 
+        sum(100,90,97,95,92,99,86);
+
+        // 将类数组转成真正的数组；
+        // arguments  document.getElementsByTagName ;
+
+        function toArray(likeAry){
+            // var a = [];
+            // // 借用数组的slice方法；
+            // // 循环类数组的每一项，给a新增；
+            // for(var i=0;i<likeAry.length;i++){
+            //     a[i]=likeAry[i];
+            // }
+            // 通过数组原型中的slice，找打call方法，让call运行，改变slice方法中的this，让其指向arguments,那么在slice循环就是循环的arguments
+            var a = Array.prototype.slice.call(likeAry)
+            return a;
+        }
+        // var newAry = [1,2,3,4];
+        // newAry.slice()
+        // Array.prototype.slice=function(){
+        //     var ary = [];
+        //     for(var i =0;i<this.length;i++){
+        //         ary[i]=this[i];
+        //     }
+        //     return ary;
+        // }
+     
+
+    
+    
+    
+    </script>
+</body>
+</html>

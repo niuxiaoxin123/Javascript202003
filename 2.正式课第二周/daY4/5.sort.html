@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组中的sort 排序
+        // ary.sort(function(a,b){return a-b})
+        // ary.sort(function(a,b){return b-a})
+        var  ary = [89,58,66,86,78,63];
+        // ary.sort()
+        // 商城排序
+        ary.sort(function(a,b){
+            // 回调函数  a,b是形参
+            // a和b对应的实参 是怎么传递进来的呢？这个回调函数实在sort执行时，执行了这个回调函数；
+            // 快速算法结合相邻两项比较；
+            // 根据return a-b是否大于0来决定是否交换顺序；
+            console.log(a,b);
+            return a-b;
+        })
+
+        
+        
+    </script>
+</body>
+</html>
