@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在真实的项目中，前端的数据来源于后台。前端就需要采用一种可以从后台获取数据的技术，那么这种技术就是ajax;前端都是采用ajax来从后端获取数据和向后端发送数据；那么获取到的数据和发送的数据的格式一般都是JSON格式；
+        // JSON : JSON是一种数据格式，而不是一种数据类型；  
+        var  obj = {name:"zfpx",age:'12'};// 这种格式的就是JSON格式的对象；
+        // JSON格式的字符串
+         var str = '{"name":"zfpx","age":12}';
+        // ajax 获取到的是JSON格式的字符串；所以需要转成JSON格式对象才可以得到里面的值
+        // 1.JSON.parse : 将JSON格式的字符串转成JSON格式的对象
+
+        var  f = JSON.parse(str);
+        console.log(f);
+        // console.log(str);
+
+        // 2. JSON.stringify : 将JSON格式的对象转成JSON格式的字符串
+        console.log(JSON.stringify(obj))
+        
+        
+
+        
+        
+        
+    </script>
+</body>
+</html>

@@ -11,17 +11,26 @@
         // 数组中的sort 排序
         // ary.sort(function(a,b){return a-b})
         // ary.sort(function(a,b){return b-a})
-        var  ary = [89,58,66,86,78,63];
-        // ary.sort()
-        // 商城排序
+        // var  ary = [89,58,66,86,78,63];
+        // // ary.sort()
+        // // 商城排序
+        // ary.sort(function(a,b){
+        //     // 回调函数  a,b是形参
+        //     // a和b对应的实参 是怎么传递进来的呢？这个回调函数实在sort执行时，执行了这个回调函数；
+        //     // 快速算法结合相邻两项比较；
+        //     // 根据return a-b是否大于0来决定是否交换顺序；
+        //     console.log(a,b);
+        //     return a-b;
+        // })
+        
+        // sort 的原理： 相邻两项传给回调函数的a和b;a和b进行运算相减，如果大于0；那么可以交换位置，如果小于0;那么不需要交换位置，如果NaN，也不交换位置
+        // 按照age的属性值进行排序；
+        var ary =[{age:18},{age:20},{age:24},{age:21}]
         ary.sort(function(a,b){
-            // 回调函数  a,b是形参
-            // a和b对应的实参 是怎么传递进来的呢？这个回调函数实在sort执行时，执行了这个回调函数；
-            // 快速算法结合相邻两项比较；
-            // 根据return a-b是否大于0来决定是否交换顺序；
-            console.log(a,b);
-            return a-b;
-        })
+            return a.age-b.age;
+        });
+        console.log(ary);
+        
 
         
         

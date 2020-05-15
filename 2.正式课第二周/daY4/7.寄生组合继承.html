@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object : 基类；所有的对象{}都是它的一个实例
+        // var obj = {a:1};// obj.__proto__==> Object.prototype
+        // var  ary = [];
+        // ary.__proto__==> Array.prototype
+        // ary.__proto__.__proto__==> Object.prototype;
+
+        // 函数三种角色
+        // Object.assign
+        // Object.create: 创建一个空对象;让这个空对象的__proto__指向了Object.create传进来的第一个参数
+        // var  obj = {name:"zfpx"};
+        // var  a = Object.create(obj);
+        // console.log(a);
+
+        function A(){
+            this.a = 1;
+        }
+        A.prototype.getX=function(){
+
+        }
+        function B(){
+            A.call(this);
+            this.b = 100;
+        }
+        // 直接将A的原型地址给了类B的原型地址；
+        // 当向类B的原型扩展方法，那么类A也会随着发生变化；
+        B.prototype = Object.create(A.prototype);
+        // 实现了类B创建的实例继承了类A的私有属性；
+        var b = new B;
+        // 寄生组合继承： 让类B继承了类A的私有属性和公有属性；
+        // 原型继承： 继承私有和公有；
+
+        
+
+        
+        
+        
+    </script>
+</body>
+</html>

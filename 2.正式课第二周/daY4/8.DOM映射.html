@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list{
+            width:300px;
+            margin:auto;
+        }
+        #list li{
+            height:30px;
+            width:100%;
+            border-bottom: 1px dashed red;
+            text-align:center;
+            list-style: none;
+            line-height: 30px;
+        }
+        #btn{
+            cursor: pointer;
+            display: block;
+            margin: auto;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>90</li>
+        <li>88</li>
+        <li>95</li>
+        <li>66</li>
+        <li>86</li>
+    </ul>
+    <button id="btn">排序</button>
+    <script src="utils.js"></script>
+    <script>
+        // 操作谁 就要先获取谁；
+        var list = document.getElementById("list");
+        var btn = document.getElementById("btn");
+        var oLis = list.getElementsByTagName("li");// [{}]
+        console.log(oLis);
+
+        var newLi = document.createElement("li");
+        list.appendChild(newLi);
+        console.log(oLis.length);// 6
+
+        // sort :数组
+        // 1.给btn这个按钮绑定点击事件，当点击的时候，进行排序sort; 
+        // 2.把oLis集合转成真正的数组，然后调用sort，对这个数组排序
+        // 3.把排序好的数组再重新appendChild到list元素中；
+        // 元素在JS中都是对象数据类型的，由大量的键值对组成；
+        btn.onclick = function(){
+            var ary = utils.toArray(oLis);
+            // debugger
+            // 按照a和b的innerHTML属性值对数组进行排序；
+            ary.sort(function(a,b){
+                return a.innerHTML-b.innerHTML;
+            });
+            // ary这个数组确实排好了顺序，但是页面不会自动排序；
+            // console.log(ary);[{innnerHTML:66},{innerHTML:86}...]
+            for(var i=0;i<ary.length;i++){
+                // 把排好顺序的li，都依次放进了list中；
+                 // 断点： 能让代码停到这一行，经常用于调试
+                list.appendChild(ary[i]);
+            }
+            // debugger 
+        }
+        // DOM 映射： 在JS中，类数组集合中的对象和页面的DOM元素存在一一对应的关系，当概念其中一个的位置时，另一个也会随着发生改变；
+
+    
+    
+    </script>
+</body>
+</html>

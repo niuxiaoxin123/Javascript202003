@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 继承的目的： 让B类产生的实例可以使用类A原型上的方法；
+        // 原型继承 中间类继承  call继承  寄生组合继承   class继承
+        // call 
+        // function A(){
+        // }
+        // function B(){
+        // }
+        // B.prototype = new A;// 原型继承： 私有属性和公有属性都继承
+        // 函数体中的this跟函数的执行有关系
+        function A(){
+            this.a = 1;
+            this.getA = function(){}
+        }
+        // A.prototype.getY =function(){
+        // }
+        function B(){
+            // this -> B 的实例
+            // 把A中的this换成了B的实例，并且让A执行了
+            A.call(this);// 让A执行，并且A中的this是B的实例；
+            this.c = 100;
+        }
+        var  b = new B;
+        console.log(b);// {a:1,getA:function(){},c:100}
+        // 类B继承了类A的私有属性
+        b.getY();
+        
+
+
+
+
+
+
+
+        
+        
+        
+    </script>
+</body>
+</html>
