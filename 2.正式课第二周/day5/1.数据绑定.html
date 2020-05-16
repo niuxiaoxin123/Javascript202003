@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        
+    </ul>
+    <div>1234</div>
+
+    <script>
+    // 深克隆 ：复制出一份完全独立的两个对象
+    // var  obj = {a:{b:{}}}
+    // 浅克隆
+
+    // 代码放在了服务器上；当浏览器想访问京东首页时，浏览器会通过网络向京东服务器发送请求，京东服务器接收到了浏览器的请求，然后把对应的资源发送给浏览器；当浏览器接收到京东发过来的文件资源以后，会对其进行解析
+
+    // 浏览器可以HTML css  js;
+    // 数据：动态绑定的；
+    // 在真实的项目中，数据经常采用动态绑定的方式；来生成DOM元素
+    var ary = ["决战决胜习近平指挥脱贫攻坚进行时","理上网来习近平走秦晋关注脱贫攻坚三问题","中央政治局常委会召开会议 点了这五个地方 央视快评","王娟:应构建铁路安全运行外部网络 代表委员履职故事","外交部:美政客一味解决不了问题 停止诬蔑抹黑","《求是》：凝聚起实现民族复兴的强大力量 复工复产"];
+
+    // 1.循环数据ary;
+    // 2.每循环一次创建一个li;
+    // 3.并且把ary中的值给了当前li;
+    // 4.最后把li放到list这个元素中；
+    var list = document.getElementById("list");
+    // for(let i =0;i<ary.length;i++){
+    //     var curLi = document.createElement("li");
+    //     curLi.innerHTML=ary[i];
+    //     每向list中添加一个li,都会回流一次
+    //     list.appendChild(curLi);
+    //     // debugger
+    // }
+    // DOM回流： 当页面中的元素的大小、位置发生改变，浏览器要对其他元素进行重新计算和排布；那么这种现象就是DOM的回流；这样是非常消耗性能的；
+
+    // 2. 文档碎片
+    // 文档碎片可以把将要添加到页面中元素先储存起来，
+    // var  frg = document.createDocumentFragment();// 创建文档碎片
+    // for(let i =0;i<ary.length;i++){
+    //     var curLi = document.createElement("li");
+    //     curLi.innerHTML=ary[i];
+    //     // 将创建好的li提前先放到一个容器中，这个容器就是文档碎片，循环完以后，一起添加到页面中
+    //     frg.appendChild(curLi);
+    // }
+    // // 把所有的li存储，最后添加到list中；
+    // list.appendChild(frg);
+    // frg=null;
+
+    // 3. 字符串拼接: 一次回流
+    // var str = "";
+    // for(var i=0;i<ary.length;i++){
+    //     str+="<li>"+ary[i]+"<img src=''>"+"</li>";
+    // }
+    // list.innerHTML=str;
+
+    // 4. ES6模板字符串
+    var str=  ``;// 反引号
+    // 用${}把变量套起来
+    for(let i =0;i<ary.length;i++){
+        str+=`<li>${ary[i]}</li>`
+    }
+    list.innerHTML=str;
+
+    
+    
+    </script>
+</body>
+</html>
