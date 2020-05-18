@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 字符串： toUpperCase  toLowerCase  charAt charCodeAt substr  substring  slice indexOf lastIndexOf concat split  replace trim
+        // 正则： 在真实的项目中，进行表单验证；也可以用来处理比较复杂的字符串；
+        // var str = "12,345,678,987,654";
+        // 正则： 处理字符串的一种规则； 
+        var  reg = /\d/;// 表示包含一个0-9的数字
+        // reg.test()// 匹配；检测当前字符串是否符合这个正则的；
+        // console.log(reg.test("0.12px"));// 来判断这个字符串符合这个正则；
+        // console.log(reg.test("abcpx"));
+        // console.log(reg.test("0"));
+        // console.dir(reg);
+
+        // 捕获： 把符合正则的内容获取到
+        // exec: 返回一个数组；
+        // 第一项： 代表捕获到的内容
+        // 第二项： index是捕获到的内容在原字符串中的索引位置
+        // 第三项： input是要捕获的整个字符串内容
+        // 如果正则捕获到内容，那么获取的结果就是null；
+        console.log(reg.exec("px16.12px"))
+        console.log(reg.exec("pxpx"))// null 
+        
+    </script>
+</body>
+</html>
