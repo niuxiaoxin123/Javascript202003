@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <span></span>
+        </li>
+        <li id="ad">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span id="pan_4"></span>
+        </li>
+    </ul>
+
+
+
+
+    <script>
+        // var ad=document.getElementById("ad");
+        // var span=ad.getElementsByTagName("span")
+
+        // var pan_4=document.getElementById("pan_4");
+        // console.log(pan_4.parentNode.nodeName=="LI")
+        // console.log(pan_4==span[3])
+        //初始化
+        function Fn(x) {
+            // debugger
+            var str = "";
+            var x = document.getElementById(x);
+            str = fn(x, str);
+            return str;
+        }
+        function fn(value, str) {
+            // debugger
+            var a = (value.parentNode).nodeName //获得形参的父亲元素名
+            valueType(value, str, a)
+            return str;
+        }
+        function valueType(value, str, a) { //判断值是body还是别的,是别的执行什么方法，是body执行什么方法
+        // debugger
+            if (a === "BODY") {
+                isBody(value, str);
+                console.log(1)
+            } else {
+                isOther(value, str);
+                console.log(2)
+            }
+        }
+        function isBody(va, str) {
+            // debugger
+            str = "body" + ">" + str;
+            return str;
+        }
+        function isOther(value, str) {
+            // debugger
+            //如果不是,判断子元素在他里面是第几
+            var g = value.parentNode //获得形参的父亲元素
+            var valueclass = (value.nodeName).toLowerCase()
+            var c = (value.parentNode).getElementsByTagName(valueclass);
+            for (var i = 0; i < c.length; i++) {
+                if (c[i] == value) {
+                    str = valueclass + "[" + i + "]" + ">" + str;
+                    fn(g, str)
+                }
+            }
+        }
+        console.log(Fn("pan_4"));
+    </script>
+
+</body>
+
+</html>

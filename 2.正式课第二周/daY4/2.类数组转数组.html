@@ -39,15 +39,15 @@
             var a = Array.prototype.slice.call(likeAry)
             return a;
         }
-        // var newAry = [1,2,3,4];
-        // newAry.slice()
-        // Array.prototype.slice=function(){
-        //     var ary = [];
-        //     for(var i =0;i<this.length;i++){
-        //         ary[i]=this[i];
-        //     }
-        //     return ary;
-        // }
+        var newAry = [1,2,3,4];
+        newAry.slice()
+        Array.prototype.slice=function(){
+            var ary = [];
+            for(var i =0;i<this.length;i++){
+                ary[i]=this[i];
+            }
+            return ary;
+        }
      
 
     
