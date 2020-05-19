@@ -19,6 +19,9 @@ xhr.onreadystatechange = function(){
 }
 // 4) 发送请求
 xhr.send();
+console.log(data) 
+
+
 // 三个请求 1s  1.2s  1.8s；
 // 三个同步：4s;
 // 三个异步：1.8s
@@ -63,6 +66,7 @@ for(var i =0;i<navs.length;i++){
         addArrow.call(this);// 让addArrow中的this指向当前的a;
     }
 }
+
 var  ary = utils.toArray(oLis);// 把类数组转成数组；[{},{},{}...]
 function sortList (){
     //  console.log(index)
@@ -70,6 +74,7 @@ function sortList (){
     var that  = this;// 把this存储到变量that上
     ary.sort(function(a,b){
         // a, b : 代表的每一个li元素对象 
+        // console.log(newAry[that.index])
         var  cur = a.getAttribute(newAry[that.index]);
         var next = b.getAttribute(newAry[that.index]);
         if(that.index===0){
@@ -77,9 +82,12 @@ function sortList (){
             cur = cur.replace("-","").replace("-","");
             next = next.replace("-","").replace("-","");
         }
+        //console.log(cur,next)
+        // console.log(this)// undefined
         return (cur-next)*that.flag;
     });
-    // console.log(ary);// ary根本没有排序
+    // 如果ary已经排好了的，说明下面代码有问题，如果ary没排好，那说明上面有问题；
+    console.log(ary);// ary根本没有排序 ary没有变化顺序；
     // 重新把li放回页面中
     var frg = document.createDocumentFragment()
     for(var i=0;i<ary.length;i++){
@@ -154,5 +162,16 @@ function removeArrow(){
 
 // 对DOM进行排序
 // 对data这个数据进行排序
+
+// Cannot read property 'length' of undefined : 不能读取undefined的length属性
+
+// 排错的步骤：
+// 1. 打开控制台；看控制台有没有报错；
+
+// var ary = [12,78,66,45,20,48,62]
+// ary.sort(function(a,b){
+//     return NaN;// 如果大于0；数组不进行任何换位；
+// });
+// console.log(ary);// 倒序
 
 

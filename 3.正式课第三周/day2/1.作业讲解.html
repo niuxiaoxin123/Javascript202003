@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <ul>
+                <li>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span id="span_4"></span>
+                </li>
+            </ul>
+    <script>
+        // 1.封装一个方法，检测str在str1中出现的索引位置，如果不存在返回-1；要求（性能尽可能最高，不能使用indexOf，substr,substring;用原生的方法实现）
+
+        // var str ="345";
+        // var str1 = "231334567434";
+
+        // function myIndex(a,b){
+        //     for(var i=0;i<b.length-a.length+1;i++){
+        //         var  c = "";
+        //         for(var j=0;j<a.length;j++){
+        //             c+=b[j+i]
+        //         }
+        //         if(a===c){
+        //             // 如果a==c说明已经找到了；
+        //             return i;
+        //         }
+        //     }
+        //     return -1;// 如果没找到return-1;
+        // }
+        // myIndex(str,str1)
+
+        // 2.分析 
+        var ele = document.getElementById("span_4");
+        function getIndex(curEle){
+            // children ： 得到兄弟元素的集合
+            // 把集合转成真正的数组；
+            //var ary = Array.prototype.slice.call(curEle.parentNode.children);// 当前元素的兄弟元素
+            if(curEle===document.body){// 找到body元素中止；不需要再向上查找；
+                return "body";
+            }
+            var ary = [].slice.call(curEle.parentNode.children);
+            // indexOf检测第几个
+            var index = ary.indexOf(curEle);
+            // 获取当前元素的标签名，然后将其转成小写；
+            var name = curEle.nodeName.toLowerCase();
+            // 采用递归依次向上查找；直到找到body元素为止；
+            return getIndex(curEle.parentNode)+">"+name+"["+index+"]";
+        }
+        console.log(getIndex(ele));// "body>ul[0]>li[1]>span[3]"
+        // 1. 一层一层网上查找父元素，找到body为止
+        // 2. 找到当前元素在兄弟元素中的索引；
+
+        // 排错能力  思考能力
+
+        // var ary = [12,8,26,89,5,67,43,25];
+        // function change(a){
+        //     // sort : 如果小函数中返回负数，那么两个位置交换顺序；如果是正数，不交换；
+        //     a.sort(function(a,b){
+        //         return (a-b)*Math.round(Math.random()*10-5)// [-5,5]
+        //     })
+        //     console.log(a)
+        // }
+        // change(ary);
+
+        var  obj = {
+                    a:[{b:1,c:{d:2}}],
+                    e:{f:1,h:[{i:1}]},
+                    x:{y:2}
+                }
+        
+        var ary = [];
+        function getKey(obj){
+            for(var key in obj){
+                // 如果obj是对象类型的，那么key就需要放到ary数组中；
+                if(Object.prototype.toString.call(obj)==="[object Object]"){
+                    // 如果条件成立，说明传进来的实参是个对象
+                    ary.push(key);
+                }
+                // 需要继续对属性值进行处理
+                getKey(obj[key]); // 把其属性值再传给getKey的实参
+            }
+        }
+        getKey(obj);
+        console.log(ary);
+        
+        // var arr = [100,200,300];
+        // // for in  : 可以用来循环数组；
+        // for(var key in arr){
+        //     console.log(arr[key]);
+        // }
+    </script>
+</body>
+</html>

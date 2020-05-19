@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // replace : 替换;返回值得到一个替换后的字符串，原字符不变；
+    //    var str = "zfpxzfpx";
+    //    console.log(str.replace("zf","zhufeng"))
+    // var  str = "zhufengzhufeng";
+    // console.log(str.replace("zhufeng","zhufengpeixun").replace("zhufeng","zhufengpeixun"));
+    // console.log(str);
+
+    // 正则：
+    // replace: 第一个参数可以传正则；原字符串是不变的，会返回一个处理之后的新字符串
+    var  str = "zhufengzhufeng";
+    var newStr = str.replace(/zhufeng/g,function(){
+        // replace(正则，callback): 
+        // 1. 用这个正则去捕获对应的字符串，匹配几次，这个回调函数就会执行几次
+        // 2. 回调函数的返回值会默认将匹配到的内容替换掉
+        // 3. arguments： 是该正则每一次捕获到的内容，以及捕获内容的索引；
+        // replace ： replace 方法中，如果第一个参数是正则，第二个是函数，那么就会利用这个正则对字符串进行捕获，把捕获的内容，索引都传递给这个回调函数的实参；
+        // console.log(arguments);
+        // return "zhufengpeixun";
+        // console.log(100);
+    });
+    console.log(newStr);
+    console.log(str);
+    
+    
+    
+        
+        
+        
+    </script>
+</body>
+</html>

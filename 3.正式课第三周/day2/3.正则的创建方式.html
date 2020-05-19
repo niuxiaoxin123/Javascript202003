@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正则的创建方式
+        var name = "zhufeng";
+        // 在正则中直接写变量，那么不代表变量所存储的值；而是代表变量这几个字母；
+        // var  reg = /\dname/;
+        // console.log(reg.test("0name7890"));// true
+        // var reg = /\d"+name+"/;
+        // console.log(reg.test('1""nameeeee"'))
+
+        // 2. 正则第二种创建方式 实例创建
+        // 实例创建会默认丢掉\;
+        // RegExp
+        var r = /\dzhufeng\w/;
+        var reg = new RegExp("\\d"+name+"\\w");
+        console.log(reg);// /\d/
+        
+        
+        
+        
+    </script>
+</body>
+</html>

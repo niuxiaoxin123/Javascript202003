@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // 1. 正则的分组 ();
+    //    var reg = /^-?(\d|[1-9]\d+)(\.\d+)?$/
+    //    console.log(reg.test("0000"))
+    //    // 1. 小括号改变了正则的优先级；
+    //    var reg1 = /^-?(\d|[1-9]\d)+(\.\d+)?$/
+    //    console.log(reg1.test("0000"))
+    //    var  reg = /^z|food$/;// 以z开头或以food结尾的字符串都能匹配成功
+    //    console.log(reg.test("zabc"))// true
+    //    console.log(reg.test("abbfood"))
+
+        // var reg1 = /^(z|food)$/;// 要么是字符串z,要么是字符串food;
+        // console.log(reg1.test("zaaaa"))
+        // console.log(reg1.test("z")) 
+        // console.log(reg1.test("food"))
+    // x|y
+
+    // 2.括号的引用
+    // \1 \2: 代表和第一个分组或第二个分组出现一模一样的内容；
+    // var reg = /(\d)(m)\1\2/;
+    // console.log(reg.test("1m2m"))// false
+    // console.log(reg.test("1m1m"))// true
+
+    // 3. 分组捕获: 先让整个大正则进行捕获，然后从左到右依次用小正则捕获里里面的内容
+    // var reg = /^-?(\d|[1-9]\d+)(\.\d+)?$/;
+    // console.log(reg.exec("12.889"))
+    // ["12.889", "12", ".889", index: 0, input: "12.889", groups: undefined]
+    // 正则捕获： 第一项是整个大正则捕获的内容
+    //           第二项是正则中第一个括号捕获的内容
+    //           第三项是正则第二个小括号捕获的内容
+
+    var str = "13042519990606178X";
+    var reg = /^[1-9]\d{5}([12]\d{3})(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])(\d{3}([0-9]|X))$/;
+    console.log(reg.exec(str));
+    
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // exec ： 在RegExp原型上，所有的正则都可以使用这个方法；返回一个数组，数组的第一项就是在字符串中捕获的内容；在字符串中把符合正则那部分的字符串给挑出来；
+        // 如果没有合适的，那么捕获结果是null;
+        // test : 返回true或false；验证这个字符串是否符合这个正则；符合返回true，不符合返回false
+
+        // var  reg = /\d{2}/;
+        // console.log(reg.exec("zhufeng112"))
+
+        // 修饰符： i g 
+        // 正则的捕获具有懒惰性，每次都是从索引0开始查找；
+        // g: 全局捕获： 更改了下一次开始捕获的索引位置，lastIndex每次都会记录上一次捕获内容的最后一个字符索引，当再次捕获时，根据上一次捕获的记录+1
+        // var reg = /\d+/g;
+        // console.log(reg.lastIndex)// 0
+        // console.log(reg.exec("zhufeng2009peixun2020"));
+        // console.log(reg.lastIndex)// 11
+        // console.log(reg.exec("zhufeng2009peixun2020"))
+        // console.log(reg.exec("zhufeng2009peixun2020"))// null;
+
+        // 2.贪婪性
+        // ? ： 放在正则量词的后面，取消正则捕获的贪婪性；
+        var reg = /\d+?/g;// 匹配需要+,捕获时需要一个一个获取
+        console.log(reg.exec("zhufeng2009peixun2020"));
+        console.log(reg.exec("zhufeng2009peixun2020"));
+
+        // 3. 分组捕获
+        // 小括号也要进行捕获 从左往右依次捕获
+        var reg = /(\d|([1-9])\d+)(\.\d+)/;
+        console.log(reg.exec("99.66"));
+    </script>
+</body>
+</html>
