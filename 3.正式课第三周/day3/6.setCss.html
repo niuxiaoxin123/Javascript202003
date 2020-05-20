@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            padding:20px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        // box.style.width="200px"
+        function getCss(curEle,attr){
+            //在IE9及以上用到了getComputedStyle,以下用currentStyle
+            var val;
+            if("getComputedStyle" in window){
+                val = getComputedStyle(curEle)[attr];
+            }else{
+                val = curEle.currentStyle[attr];
+            };
+            // 获取到的样式，需要去掉单位，并且转成数字，为了后期方便计算；
+            // 如果得到的值带px单位的字符串，那么需要去掉单位，转数字
+            var reg = /^(width|height|left|top|right|bottom|margin|padding|fontSize|opacity)$/;
+            if(reg.test(attr)){
+                val = parseFloat(val);
+            }
+            return val;
+        };
+        function setCss(curEle,attr,val){
+            var reg = /^(width|height|left|top|right|bottom|margin|padding|fontSize)$/;
+            // 通过正则判断是否需要拼接"px";再通过是number类型的，直接拼接"px";
+            if(reg.test(attr)){
+                if(typeof val==="number"){
+                   val = val+"px";
+                }
+            }
+            curEle.style[attr]=val;
+        }
+        // 为了方便计算，一般获取元素样式或者设置元素样式，都是以数字的形式设置的
+        //  setCss(box,"width",200);// 
+        //  setCss(box,"background","yellow");
+         // setCss 是设置一个样式
+         function setGroupCss(curEle,obj){
+            for(let key in obj){
+                setCss(curEle,key,obj[key]);
+            }
+         }
+        //  setGroupCss(box,{width:300,background:"yellow",height:200});
+
+         // getCss  setCss  seyGroupCss==> css;
+         // jquery : css;
+         // 根据传入的参数不同，调用不同的方法
+        function css(){
+            let curEle=arguments[0],
+                attr=arguments[1],
+                val = arguments[2];
+            if(arguments.length===2){
+                if(typeof attr==="string"){
+                    return  getCss(curEle,attr);
+                }else{
+                    setGroupCss(curEle,attr);
+                }
+            }else{
+                setCss(curEle,attr,val);
+            }
+        };
+        var val = css(box,"width")// 获取box的宽度
+        css(box,"width",300)// 设置box的宽度是300
+        css(box,{width:100,height:200,background:"yellow"})// 设置一组样式
+
+        // 哥哥元素节点
+
+        // 1. 作业：
+        // children : 当前元素所有子元素
+
+        // 1.获取上一个哥哥元素节点
+        // 2.获取所有的哥哥元素节点
+        // 3.获取下一个弟弟元素节点
+        // 4.获取所有的兄弟节点
+        // 5.获取当前元素在兄弟元素中的索引  数字
+        // 6.children :获取所有的子元素（兼容IE）
+
+
+
+        // $("#box").prev().next().index()
+        // scrollTop  scrollLeft  回到顶部  单张图片延迟加载  瀑布流
+        // jquery  
+
+        // Es6
+         
+    
+    
+
+    
+    
+    
+    
+    </script> 
+</body>
+</html>

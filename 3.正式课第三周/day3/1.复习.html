@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1. 正则的创建方式 ： 两种
+    // var name="a"
+    // var reg = /\dname/;
+    // var reg = new RegExp("\\d"+name);
+    // console.log(reg);
+
+    // 2. 正则的分组
+    // 1) () : 可以改变正则的优先级
+    // 2) :分组引用 \1 \2 \3
+    // 3) ：分组捕获；
+    
+    // 3. 正则的捕获
+    //  test   
+    //  exec 1:懒惰性  g  2.贪婪性 ?放在量词的后面
+    // var  reg = /\d/g;
+
+    // 4. replace : 原字符串不发生改变；replace的返回值就是替换以后的字符串；
+    // var str = "abc";
+    // var newStr = str.replace("a","z")
+    var  str = "珠峰2009培训2020";
+    // var newStr= str.replace(/\d+/,"前端").replace(/\d+/,"前端");
+    // console.log(newStr);
+
+    str.replace(/\d+/g,function(){
+        console.log(100);
+        // 1. 正则匹配到几次，那么这个函数就执行几次
+        // 2. return 这个函数的返回值会将匹配到的内容进行替换
+        // 3. arguments : arguments就是正则每次捕获的内容；
+    });
+    
+
+    
+    
+    </script>
+</body>
+</html>

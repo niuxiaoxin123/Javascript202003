@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background: red;
+            border:10px solid lavenderblush
+        }
+        #inner{
+            /* position: relative; */
+            width: 200px;
+            height: 200px;
+            margin:auto;
+            background:yellow;
+           
+        }
+        #center{
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            background: blue;   
+            border:10px solid black;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="center"></div>
+        </div>
+    </div>
+    <!-- <div>
+        <div>
+            <div>
+                <div>
+                    <div id="a"></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <script>
+        var  outer = document.getElementById("outer");
+        var  inner = document.getElementById("inner");
+        var  center= document.getElementById("center");
+        // 父亲节点： parentNode 
+        // html--> document--> null
+        // console.log(outer.parentNode.parentNode.parentNode.parentNode)
+
+        // 父级参照物：offsetParent
+        // 一般情况下，所有的元素的父级参照物都是body;如果给当前元素加上position属性（relative,absolute,fixed）;会让当前元素的所有子孙元素的父级参照物指向当前这个元素；
+        // console.log(outer.offsetParent)// body
+        // console.log(inner.offsetParent)// outer
+        // console.log(center.offsetParent)// outer
+
+        // 偏移量： 当前元素距离父级参照物的像素
+        // 盒子的外边框到父级参照物的内边框的距离，就是偏移量；
+        /// 偏移量 offsetLeft  offsetTop;
+        // offerLeft : 左偏移量 从当前元素的左外边框到腹肌参照物的左内边框
+        // offsetTop: 上偏移量：从当前元素的上边框到父级参照物的上内边框
+        // console.log(outer.offsetLeft)
+        // console.log(inner.offsetLeft)
+        // 计算盒子距离body的左上距离；就可以计算出当前盒子的位置
+        // 封装一个获取当前元素距离body的做边框的距离；
+        // 封装 ： 写一个方法，只要传入不同的参数，就可以得到对应的数据；
+        function offset(curEle){
+            let  left = curEle.offsetLeft;// 当前元素的左偏移量
+            let t = curEle.offsetTop;
+            let  parent = curEle.offsetParent;// 当前元素的父级参照物
+            while(parent!==document.body){
+                // 一旦parent是body,那么循环中止；
+                // 加上父级参照物的边框和父级参照物的左偏移量
+                left +=parent.clientLeft+parent.offsetLeft;
+                t+=parent.clientTop+parent.offsetTop;
+                parent=parent.offsetParent;// 把父级参照物的父级参照物给了parent
+            }
+            return {left:left,t:t}  
+        }
+        console.log(offset(center))
+
+        // offsetParent  :父级参照物
+        // offsetLeft : 左偏移量【相对于父级参照物】
+        // offsetTop : 上偏移量
+    </script>
+</body>
+</html>

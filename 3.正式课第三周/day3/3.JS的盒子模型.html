@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 150px;
+            padding:20px;
+            border:10px solid red;
+            border-top:20px solid red;
+            margin:20px auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">习近平的扶贫故事
+            习近平论人类卫生健康共同体 团结合作战胜疫情
+            今年全国两会7大看点 |人大代表建议男性陪产假延至38天
+            特朗普:美国感染数全球最高是好事 是荣誉勋章 |2020两会习近平的扶贫故事习近平论人类卫生健康共同体 团结合作战胜疫情
+            今年全国两会7大看点 |人大代表建议男性陪产假延至38天
+            特朗普:美国感染数全球最高是好事 是荣誉勋章 |2020两会</div>
+    
+    <script>
+        // css的盒子模型： margin [外边距]-->border--> padding[内边距]-->width[内容的宽度]
+        // JS 盒子模型：在JS中获取盒子的某些宽度；
+        // 获取元素
+        var box  = document.getElementById("box");// 元素对象
+        // client系列
+        // 1. clientWidth  clientHeight : 不带单位，就是一个数字
+        // clientWidth : width + 左右两个padding值 240
+        // clientHeight: height + 上下两个padding值 190
+        // console.log(box.clientWidth);
+        // console.log(box.clientHeight)
+        // 当前浏览器可视窗口的宽度；
+        // 存在兼容性；
+        // console.log(document.documentElement.clientWidth)
+        // console.log(document.body.clientWidth)
+        // console.log(document.documentElement.clientHeight)
+        // console.log(document.body.clientHeight)
+
+        // 2. clientLeft clientTop
+        // 1) clientLeft : 是左边框的宽度
+        // 2) clientTop : 上边框的宽度
+        //box.clientLeft : 元素对象.属性名 
+        // console.log(box.clientLeft)// 10 
+        // console.log(box.clientTop)// 10
+        // console.log(box.clientRight)// undefined 
+        // console.dir(box)
+        // console.log(box.clientTop)
+
+        // 3. offset 系列
+        // offsetWidth  offsetHeight
+        // offsetWidth: 盒子的总宽度：clientWidth + 左右两个border的宽度
+        // 从左边框的外边框到右边框的外边框；
+        // offsetHeight: 盒子总高度
+        // console.log(box.offsetWidth)// 260
+        // console.log(offsetHeight);
+
+
+        // 4. scroll 系列 : 滚动条
+        // scrollWidth  scrollHeight
+        // console.log(box.scrollWidth)
+        // 1. 在没有溢出的情况下，那么clientWidth 和scrollWidth一样的；
+        // 2. 在有溢出的情况下；clientHeigt=上padding+内容的真实高度
+
+        console.log(box.scrollHeight)
+        console.log(box.clientHeight)   
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>

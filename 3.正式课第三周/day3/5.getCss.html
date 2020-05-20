@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            padding:20px;
+            opacity: 0.5;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="bar"></div>
+    <script>
+        // 在JS中，通常需要获取当前元素的一些样式，来进行DOM的操作；
+        // clientWidth 240   复合属性
+        var  box = document.getElementById("box");
+        var  bar = document.getElementById("bar");
+        // console.log(box.width)// undefined
+        //console.log(box.style.width)// "200px"
+        // 1. 元素.style.width
+        // 这种方法只能获取行内设置的css样式，没办法获取在样式表中设置的样式；
+        // box.style.width="500px";// 设置样式；设置行间的
+        // 2. getComputedStyle: 获取浏览器计算的样式
+        // getComputedStyle是window上的一个方法；
+        // console.log("getComputedStyle" in window)
+        // console.log(getComputedStyle(box).width)// "100px"
+        // console.log(getComputedStyle(box))
+
+        // IE8以下不存在这个方法;
+        // 3.currentStyle 
+        // currentStyle 在IE8以下获取到css中设置的样式；
+        // console.log(box.currentStyle.width)
+
+        // var  a="b";
+        // var obj = {a:1,b:2};
+        // console.log(obj.a);// 1 
+        
+
+        // 封装的思想
+        // jquery : 里面封装了好多的方法；
+        // 1.兼容  2. 选择器  3.封装好的库
+        function getCss(curEle,attr){
+            //在IE9及以上用到了getComputedStyle,以下用currentStyle
+            var val;
+            if("getComputedStyle" in window){
+                val = getComputedStyle(curEle)[attr];
+            }else{
+                val = curEle.currentStyle[attr];
+            };
+            // 获取到的样式，需要去掉单位，并且转成数字，为了后期方便计算；
+            // 如果得到的值带px单位的字符串，那么需要去掉单位，转数字
+            var reg = /^(width|height|left|top|right|bottom|margin|padding|fontSize|opacity)$/;
+            if(reg.test(attr)){
+                val = parseFloat(val);
+            }
+            return val;
+        };
+        // 参数：1.元素  2.属性
+        console.log(getCss(box,"opacity"));
+        getCss(bar,"opacity")
+    
+    
+    
+    
+    </script> 
+</body>
+</html>
