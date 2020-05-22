@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // css盒子模型
+        // js盒子模型：13个  11个：只可以读取，不可以修改
+    // 1.client：
+        // clientHeight  height+上下padding
+        // clientWidth   width+左右padding
+        // clientTop   当前元素上边框的宽度 
+        //clientLeft  当前元素左边框的宽度
+
+        // 获取当前屏幕可视区域的高度和宽度
+
+    // 2.offset：
+        // offsetWidth: 当前元素的总宽度 clientWidth+左右的border
+        // offsetHeight:当前元素的总高度 clientHeight+上下的border
+
+        // offsetParent：父级参照物(一般情况下，所有元素的父级参照物都是body，如果给当前元素加上position属性，就会让所有子孙元素的父级参照物统统指向当前这个元素)
+        // offsetLeft:左偏移量(当前元素的左外边框到父级参照物的左内边框)
+        // offsetTop:上偏移量(当前元素的上外边框到父级参照物的上内边框)
+
+        // 封装一个offset方法，用来获取当前元素距离body的左、上边框的距离
+    
+    // 3.scroll系列：
+        // scrollWidth：如果元素的内容没有溢出，那就等于clientWidth，如果溢出了，那就等于左padding+加上内容真实的宽度
+        // scrollHeight：如果元素的内容没有溢出，那就等于clientHeight，如果溢出了，那就等于上padding+加上内容真实的高度
+
+        // 以上11个属性都是只读属性，不可以修改
+    </script>
+</body>
+</html>

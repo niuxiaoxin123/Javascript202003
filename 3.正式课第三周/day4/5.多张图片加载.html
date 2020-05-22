@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 300px;
+            margin: 1000px auto;
+        }
+
+        #box img {
+            width: 100%;
+            height: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img src="./img/default.jpg" id="test" address="./mg/1.jpg" alt=""> -->
+    <div id="box">
+        <img src="./img/default.jpg" address="./mg/1.jpg" alt="">
+        <img src="./img/default.jpg" address="./img/2.jpg" alt="">
+        <img src="./img/default.jpg" address="./img/3.jpg" alt="">
+        <img src="./img/default.jpg" address="./img/4.jpg" alt="">
+    </div>
+    <script src="./utils.js"></script>
+    <script>
+        var box = document.getElementById('box');
+        var imgs = box.getElementsByTagName('img');
+
+        function delay() {
+            // 当滚动滚动条的时候，去循环每一张图片，判断他们是否应该加载出来
+            for (var i = 0; i < imgs.length; i++) {
+                checkImg(imgs[i])
+            }
+        }
+        function checkImg(curImg) {
+            if (curImg.flag) {
+                return
+            }
+            // 在这里进行图片是否做加载的逻辑判断
+            var winH = utils.win('clientHeight'); // 当前屏幕可视区域的高度
+            var winT = utils.win('scrollTop'); // 当前屏幕滚动条卷曲的高度
+            var imgH = curImg.offsetHeight; // 当前图片的总高度
+            var imgT = utils.offset(curImg).top; // 获取当前图片距离body顶部的上偏移量
+
+            if (winH + winT >= imgH + imgT) {
+                // 为了防止图片二次加载，当图片第一次加载成功以后，给他加一个flag属性，
+                console.log(1)
+                var address = curImg.getAttribute('address');
+                // 当把真实路径赋值给图片的src之前，要进行一次校验，校验当前的路径是否正确
+                var newImg = document.createElement('img'); // 动态创建img元素
+                newImg.src = address;
+                // newImg不会再页面中展示，他就是为了校验当前路径是否正确
+                newImg.onload = function () {
+                    // 当图片加载成功有，就会执行onload对应的函数，如果图片加载不成功，那onload对应的函数不会执行
+                    curImg.src = address;
+                    newImg = null;
+                }
+                curImg.flag = true;
+
+
+
+            }
+
+        }
+        window.onscroll = delay;
+
+        // window.onload = function(){
+        //     console.log(333)
+        // }
+        // console.log(666)
+
+        // let imgaa = document.createElement('img');
+        // let testAddress = test.getAttribute('address');
+        // imgaa.src = testAddress;
+        // imgaa.onload = function () {
+        //     console.log('路径正确')
+        //     test.src = testAddress
+        // }
+    </script>
+</body>
+
+</html>

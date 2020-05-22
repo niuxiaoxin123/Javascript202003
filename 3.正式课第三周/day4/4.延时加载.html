@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 300px;
+            height: 150px;
+            margin: 1000px auto;
+        }
+        #box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./img/default.jpg" alt="">
+    </div>
+    <script src="./utils.js"></script>
+    <script>
+        var box = document.getElementById('box');
+        var curImg = box.getElementsByTagName('img')[0];
+
+        // 当盒子的底边框和浏览器的底边框重合的时候，就是图片需要加载的临界条件
+        // 盒子的总高度+盒子距离body顶部的上偏移量 === 当前屏幕的可视区域的高度+屏幕滚动条卷曲的高度
+        var boxH = box.offsetHeight; // 获取当前盒子的总高度
+        var boxT = utils.offset(box).top; // 盒子距离body顶部的上偏移量
+        var winH = utils.win('clientHeight'); // 当前屏幕的可视区域的高度
+        window.onscroll = function(){
+            var winT = utils.win('scrollTop')
+            // console.log(boxH,boxT,winH,winT)
+            // 当滚动条卷曲的告诉+当前屏幕可视区域的高度 大于等于 当前盒子的总高度+当前盒子距离body顶部的上偏移量的时候，到达临界值，图片该加载了
+            if(winH+winT >= boxH+boxT-100 ){
+                console.log(1)
+                curImg.src = './img/1.jpg'
+            }
+        }
+
+    </script>
+</body>
+</html>

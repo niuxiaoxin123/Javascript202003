@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #goBack {
+            display: none;
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            color: red;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div><img src="./1.png" alt=""></div>
+    <div><img src="./1.png" alt=""></div>
+    <div><img src="./1.png" alt=""></div>
+    <div><img src="./1.png" alt=""></div>
+    <div id="goBack">回到顶部</div>
+    <script src="./utils.js"></script>
+    <script>
+        // 想操作谁就获取谁
+        let goBack = document.getElementById('goBack');
+        goBack.onclick = function () {
+            // 我想让回到顶部2秒运行完
+            var curT = utils.win('scrollTop'); // 100
+            var flag = curT / 100;
+            var timer = setInterval(function () {
+                // 定时器每运行一次，
+                // 当前滚动条卷曲的总告诉就累减一次，
+                // 设置一次滚动条卷曲的高度
+                curT -= flag;
+                utils.win('scrollTop', curT)
+                if (curT <= 0) {
+                    clearInterval(timer);
+                }
+            }, 20)
+            // 当前需要运动的总时间：我把需要运动的总高度分为100份，没运动一次需要20ms，那总共需要移动100次才能够把高度移动完，所以需要你运动的总时间为100X20 = 2000ms
+            // utils.win('scrollTop',0)
+        }
+
+        var winH = utils.win('clientHeight'); // 获取当前屏幕可视窗口的高度
+        window.onscroll = function () {
+            // 监听当前屏幕的滚动条一旦发生滚动就会执行
+            // 咱们就可以在这里进行判断当前回到顶部小按钮时候需要展示了
+            var winT = utils.win('scrollTop');
+            // 当滚动条卷曲的高度大于等于当前屏幕的高度的时候，再让回到顶部小按钮展示出来
+            if (winT >= winH) {
+                // goBack.style.display = 'block'
+                utils.css(goBack, 'display', 'block');
+            }
+            else {
+                utils.css(goBack, 'display', 'none');
+            }
+        }
+    </script>
+</body>
+
+</html>
