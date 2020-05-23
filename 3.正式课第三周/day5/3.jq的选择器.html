@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="notMe">div class="notMe"</div>
+    <div class="myClass">div class="myClass"</div>
+    <div class="myClass">span class="myClass"</div>
+    <!-- <p><span>Hello</span><span>me</span>, how are you?</p> -->
+
+    <p>Hello</p>
+    <p>Hello Again</p>
+    <p class="selected">And Again</p>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+
+        // console.log($(".myClass"))
+        //     console.log($('div:lt(1)'))
+        //     console.log($('p span'))
+
+        //    console.log($("p").find("span")) 
+        // console.log($("p").find("span:eq(1)"))
+        console.log($('p').filter('.selected'))
+        /*
+        1、获取dom的方法
+            $('选择器')  jq的选择器
+            eq(index):找到索引对应的元素
+            gt(index):找到大于索引对应的元素
+            lt(index):找到小于索引对应的元素
+            find('选择器')：找到对应的后代元素
+            filter('选择器'):把符合条件的元素过滤出来
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">点击</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        // box.onclick=function(){}
+        // function fn(){
+        //     console.log(this)
+        //     // 函数里的this是原生的元素，不能够使用jq的方法
+        // }
+        // // $('#box').on('eventType',fn) // 增加事件
+        // // $('#box').on('click',fn)
+        // $('#box').click(fn)
+
+        // $('#box').off('click',fn) // 移除事件
+        
+        // let ary = ['a','b','c','d'];
+        // ary.forEach(function(item,index){
+        //     console.log(item,index)
+        // })
+
+        // $('ul li').each(function(index,item){
+        //     // 和原生的forEach不一样的地方是数组的每一项和索引是倒过来的
+        //     // index是数组的每一项的索引
+        //     // item是数组的每一项
+        //     console.log(index,item)
+        // })
+
+        // let obj = {
+        //     name:1,
+        //     age:2
+        // }
+        // $.each(obj,function(index,item){
+        //     // 如果遍历对象的话，那index是每一项的属性名，item数每一项的属性值
+        //     console.log(index,item)
+        // })
+
+        $('ul li').click(function(){
+            // 给每一个li增加点击事件
+            console.log($(this).index())
+            // index获取当前jq实例在兄弟姐妹里的索引
+        })
+
+
+
+    </script>
+</body>
+</html>

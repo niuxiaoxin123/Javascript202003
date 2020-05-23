@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // (function (global, factory) {
+        //   // global-->window  factory-->是一个函数
+        //         factory(global);
+        //         // global-->window
+
+
+
+        // }(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {}))
+
+        //   console.log(module) // 报错
+        // console.log(typeof module) // 暂时性死区
+
+        //-----------------------------------------------------------
+
+
+        (function (global, factory) {
+            // global-->window  factory-->是一个函数
+            factory(global);
+            // global-->window
+        }(typeof window !== "undefined" ? window : this, function (window, noGlobal) {
+
+            var deletedIds = [];
+            var slice = deletedIds.slice;
+            var concat = deletedIds.concat;
+            var push = deletedIds.push;
+            var indexOf = deletedIds.indexOf;
+
+            var class2type = {};
+            var toString = class2type.toString;
+            var hasOwn = class2type.hasOwnProperty;
+            var support = {};
+            // 把数组和对象上的一些方法拿过来，以备一会使用
+
+            var version = "1.11.3";
+            var jQuery = function (selector, context) {
+                    // return new jQuery();
+                    // 如果在这块直接new jQuery，会陷入死循环
+                return new jQuery.fn.init(selector, context);
+            };
+
+            jQuery.extend = jQuery.fn.extend = function() {}
+            // 这是一个给jQuery新增方法的入口，每一次新增方法时候，就要执行这个函数
+
+            jQuery.fn = jQuery.prototype = {
+                // 原型重定向，重定向之后的原型没有constructor
+                jquery: version,
+
+                constructor: jQuery,
+                toArray: function () {
+                    return slice.call(this);
+                },
+
+            };
+
+
+            var init = jQuery.fn.init = function (selector, context) { };
+
+            init.prototype = jQuery.fn; // 把init原型指向jQuery的原型
+
+            window.jQuery = window.$ = jQuery; // 给全局的window新增两个属性，其睡醒值都是jQuery
+
+        }))
+
+        // $() //  jQuery.fn.init 的实例
+        // console.log($('#box').offset().left)
+        // $('#list').toArray()
+    </script>
+</body>
+
+</html>

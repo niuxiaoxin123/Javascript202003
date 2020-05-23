@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 10px solid pink;
+            padding:20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id='box' class="">111</div>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        // console.log($('#box').css('width')) // 获取css样式
+        // $('#box').css('width',100) // 设置css样式
+        // $('#box').css({
+        //     width:100,
+        //     height:100
+        // })
+        //------------------------------------
+        $('#box').addClass('active')
+        // $('#box').removeClass('active')
+        console.log( $('#box').hasClass('active')) // 检测当前class名在元素中有没有，如果有，就是true，如果没有，那就返回false
+        $('#box').toggleClass('s') // 他会自动检测当前元素有没有这个class名，如果有那就给他删掉，如果没有，就给他新增
+
+        // js盒子模型
+       $('#box').offset() // 获取距离body的左上偏移量
+       $('#box').position() // 获取相对于父级参照物的偏移量
+       $('#box').innerHeight() // 等于clientHeight
+       $('#box').outerHeight(true) // 如果是参数第false，等于offsetHeight，如果参数是true，那就加上margin
+       $('#box').scrollTop() // 等于scrollTop
+
+       
+       console.log($(document).scrollTop())
+  
+    </script>
+</body>
+</html>

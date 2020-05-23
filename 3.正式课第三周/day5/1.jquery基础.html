@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">11111</div>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        // 网页制作 : html css  js   浏览器兼容
+        // 网页制作-->前端工程师   jq   js 大大的促进了js的发展
+
+        // angular  react  vue
+
+        /* 
+        jQuery就是那原生js封装的一个类库，他里面封装了大量的方法，基于这些方法，我们可以快速的获取dom或者构建我们的项目
+
+        // 如何学习jq
+        1.看api
+        2.做demo
+        3.看源码：可以提高你自己封装插件的能力，也可以提高你阅读其他代码的能力
+
+        // jq的版本：
+        v1.xxx：他兼容所有的浏览器，也是用的最多的版本，一般用在兼容浏览器的pc端
+        v2.xxx: 他就有支持移动端了(不兼容IE)，但是刚打不不久，就死掉了，zepto，生不逢时
+        v3.xxx: 变化不是太大，因为jq是操作dom的，但是在这时候，市场上一些框架(angular  react  vue)逐渐火爆起来了，
+         */
+
+        // var box = document.getElementById('box');
+        var box = $('#box'); // 返回值是jQuery的实例
+    
+        // 想要获取原生的元素 $('#box')[0]
+        // console.log(box,35)
+        console.log($('#box').offset().left) // 获取当前元素距离body的左偏移量
+        console.dir($,39)
+        $.ajax()
+
+
+
+    </script>
+</body>
+
+</html>
