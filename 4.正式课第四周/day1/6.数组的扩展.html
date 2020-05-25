@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 扩展运算符 ... 
+        // 合并数组
+        // var ary = [1,2,3]
+        // var a = [100,200]
+        // console.log([...ary,...a]);
+
+        // 如果属性名重复，那么后面总会将前面的覆盖掉；
+        // var  obj={name:"纪安"};
+        // var  obj1 = {name:"纪",age:18};
+        // console.log({...obj1,...obj});
+
+        // apply : 可以把数组中每一项一个个传递给函数
+        // let ary = [1,2,3]
+        // function fn(x,y,z){
+        // }
+        // // fn.apply(null,ary)
+        // fn(...ary);
+        // let a = [1,2,3];
+        // let b = a;// a和b存储同一个空间地址
+        // let c = [...a];// c和a不是同一个空间地址
+        // function fn(){
+        //     let a = [...arguments];
+        //     console.log(a); 
+        // }
+        // fn(1,2,3,4)
+
+        // 对象的
+        // Array.from 
+        // Array.from : 可以将类数组和可遍历的数据【Set Map】转成真正的数组
+        // 类数组：arguments 元素集合；
+        // function fn(){
+        //     let a = Array.from(arguments);
+        //     console.log(a); 
+        // }
+        // fn(1,2,3,4)
+
+        // Array.of : 将一组数转成数组
+        var ary = Array.of(1,2,34,55,66);
+        console.log(ary);
+        
+
+        
+        
+        
+        
+    </script>
+</body>
+</html>

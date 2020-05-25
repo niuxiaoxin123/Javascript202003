@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fn(){}    
+        // let fn = function(){}
+        // 1.形态不一样
+        // 2.执行不一样
+        // 1. 去掉了function，()和{}之间加了=>;
+        // 2.  如果只有一个形参，小括号可以省略
+        // 3.  如果只有return一条语句，可以省略外面的大括号和return；
+        // 4.  浏览器不能分辨出到期是对象的大括号还是函数的大括号；如果需要返回一个对象，并且没有return；那么在对象外面加();
+        // 箭头函数
+        // let fn =(a,b)=>{
+        //     console.log(a,b);
+        // }
+        // fn(100,200);
+        // let fn = a =>{
+        //     // var b = 1;
+        //     return a;
+        // };
+        // let fn = a =>a;
+        // console.log(fn(100));
+        // 浏览器不能分辨出到期是对象的大括号还是函数的大括号；如果需要返回一个对象，并且没有return；那么在对象外面加();
+        // let fn =()=>({a:1});
+        // console.log(fn());
+
+        // function fn(a){
+        //     return function(b){
+        //         return function(c){
+        //             return a+b+c;
+        //         }
+        //     }
+        // }
+        // // let fn=a=>b=>c=>a+b+c;
+        // let fn=a=>b=>c=> a+b+c;
+
+        // 箭头函数的执行
+        // 1. 箭头函数中没有this，this指向箭头函数上一级作用域中的this指向哪，这个就指向哪；
+        // 2. 箭头函数没有arguments;
+        // 3. 箭头函数不能被new，不能作为构造函数；
+        // 4. 不能使用yield命令，不能作为generator函数
+        let fn=(...a)=>{
+            //console.log(this); // window
+            console.log(arguments);
+        } 
+        new fn(1,2,3);
+        // let obj = {
+        //     a:1,
+        //     fn:function(){
+        //         // 当前作用域下的this指向obj;
+        //         let f = ()=>{
+        //             console.log(this); // 
+        //         }
+        //         f();
+        //     }
+        // }
+        // obj.fn();
+        // var f = obj.fn;
+        // f();
+           
+        
+        
+        
+    </script>
+</body>
+</html>

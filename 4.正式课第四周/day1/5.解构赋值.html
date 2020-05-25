@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在ES6中，允许按照一定的模式去数组或对象中对变量进行赋值，这种方式就是解构赋值
+        // a,b,c 就是变量;
+        // 数组解构：让等号的变量一一去匹配等号右边数组中的每一项，如果数组中没有对应的这项，那解构出undefined；
+        // let  a = 1;
+        // let [a,b]=[1,2,3];
+        // console.log(a);// 1
+        // console.log(b);// 2
+        // console.log(c);// 3
+        // console.log(d)
+        // let [x,[y]]=[1,[2]];
+        // console.log(y);
+        // let [,,c]=["x","y","z"]
+        // console.log(c);
+        // let [a,...b]=[1,2,3,4,5]
+        // console.log(b);
+        
+        // let [x,[y]]=[1,2];
+        // console.log(y); 报错
+
+        // 可以赋默认值
+        // let [a]=1;
+        // let [a=1,b=2]=[undefined];
+        // console.log(a);
+        // 对象的解构赋值要求属性名必须保持一致；解构不成功，也是undefined；
+        // 会根据属性名进行匹配；
+        // let  {age,name=1,c}={name:"zhufeng",age:11};
+        // console.log(age,name);
+
+        // 字符串的解构赋值
+        // let [a,b,c]="hello";
+        // console.log(a);
+        
+        
+        
+        
+    </script>
+</body>
+</html>

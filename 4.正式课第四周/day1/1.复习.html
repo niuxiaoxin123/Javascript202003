@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="list">
+        <!-- aaa -->
+        <ul></ul>
+        <span></span>
+        <!-- 注释 -->
+        <div id="box"></div>
+    </div>
+    <script>
+        // 正式课第四周  请你珍惜
+        // 1.获取上一个哥哥元素节点
+        // 2.获取所有的哥哥元素节点
+        // 3.获取下一个弟弟元素节点
+        // 4.获取所有的兄弟节点
+        // 5.获取当前元素在兄弟元素中的索引  数字
+        // 6.children :获取所有的子元素（兼容IE）
+        // prev
+
+        // $(".box").next().sibilings().children().prev()
+        var  box = document.getElementById("box");
+        var  list = document.getElementById("list");
+        // 封装一个方法：传进不同的元素，就能得到不同的结果；
+        // 所有的哥哥元素节点
+        // 1.基础薄弱;
+        
+        // 1.DOM的知识点
+        // 2.函数的细节
+        // 3.while
+
+        // 4.思路： 
+         //1) 通过查找上一个哥哥节点，判断是否是元素节点，如果是放到数组中，不是不放到数组中
+
+
+        // function prevSiblings(curEle){
+        //     var ary = [];
+        //     // 上一个哥哥节点
+        //     var  prev = curEle.previousSibling;
+        //     while(prev){
+        //         if(prev.nodeType===1){
+        //             ary.push(prev);
+        //         }  
+        //         prev = prev.previousSibling;
+        //     }
+        //     return ary;
+        // }
+        // console.log(prevSiblings(box))
+        // 获取当前元素的所有的子元素节点；
+        // 先获取所有的子节点 childNodes
+        function myChildren(ele){
+            var childs = ele.childNodes;
+            var ary = [];
+            for(var i =0;i<childs.length;i++){
+                if(child[i].nodeType===1){
+                    ary.push(child[i])
+                }
+            }
+            return ary;
+        }
+        myChildren(list)
+
+        // offset
+        // 13个属性
+        // client系列 ： clientWidth clientHeight  clientLeft  clientTop
+        // offset系列： offsetWidth  offsetHeight  offsetParent  offsetLeft  offsetTop
+        // scrollWidth  scrollHeight  scrollLeft  scrollTop
+
+        // 延迟加载： 临界条件
+        // 性能优化
+
+
+        // jquery 
+        // 库： utils  : 性能低；操作的DOM元素；
+        // 框架： vue  react  ； 数据
+        // jquery: 封装、兼容；
+        // $(".box").css("width",100);
+        // juery的实例
+        // jquery把封装的方法都放在了jquery这个类的原型上
+        // 设置class名是box的元素的哥哥节点的width，设置成1000；
+        // prev和css都是在jquery的原型上；
+        // 方便链式调用方法；
+        $(".box").prev().css("width",1000).addClass("bg").index()
+        // jquery的选项卡： 链式写法；
+        // extend:  往原型扩展方法；
+        // 原型方法 $().addClass()
+        //  $.ajax({})
+
+    </script>
+</body>
+</html>
