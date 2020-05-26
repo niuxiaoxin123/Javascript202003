@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 闭包作用域    面向对象    同步异步
+        // JS : 单线程 ：JS同一时间只能执行一行代码；同一时间只能执行一个任务；
+        // 浏览器： 多线程；浏览器可以同时执行很多任务；
+        // JS 同一时间只能做一件事；
+        // 同步和异步；
+        // 定时器是异步的；
+        // for循环是同步的；
+        // 浏览器解析代码时候，会先把同步的代码执行完成，然后再回来执行异步的代码
+        // 异步： 定时器  ajax请求  事件  promise async await ;
+        // 
+        // setTimeout(function(){
+        //     console.log(100);
+        // },10);
+        // // 解析定时器，直接越过执行下面的代码；
+        // let now = Date.now();
+        // for(let i=0;i<1000000000;i++){ 
+        // }
+        // let a = Date.now();
+        // console.log(a-now);
+        // console.log(200); 
+
+        // 当JS代码解析时，分为主任务队列和等待任务队列
+
+        // setTimeout(function(){
+        //     console.log(1);
+        // },100);
+        // setTimeout(function(){
+        //     console.log(2);
+        // },80);
+        // for(let i=0;i<1000000000;i++){ 
+
+        // }
+        // setTimeout(function(){
+        //     console.log(4);
+        // },60)
+        // console.log(3);
+        // 3214
+        // 当执行完同步任务以后，会去等待对列找到最先到达时间的异步任务，然后把这个异步的任务拿到主任务队列中执行；
+
+        // ajax : 异步；ajax是浏览器向服务器请求数据的；打开首页需要发送三个请求
+        // 第一个请求 $.ajax   100ms
+        // 第二个请求 $.ajax   200ms
+        // 第三个请求 $.ajax   300ms;  同步：600ms;异步：300ms
+
+        // 如果第二个请求需要第一个请求返回来的数据作为参数，才能发第二个，那么这种情况下，第一个请求应该设置成同步的；
+        // 能异步别同步
+
+
+        
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            color:white;
+            font-size: 20px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 什么是防抖和节流？
+        // 在项目中什么时候需要防抖和节流？
+        // 性能；
+
+        // onscroll : 滚动条发生滚动，这个事件就会被触发
+        // onmousemove :当鼠标在元素上滑动时，就会触发这个事件
+        // 跟时间有关系；
+        // 每隔一段时间就会触发一次；频繁的触发；
+        // window.onscroll=function(){
+        //     console.log(100);   
+        // }
+        // box.onmousemove=function(){
+        //     console.log(100);  
+        // }
+        var box = document.getElementById("box");
+        let num =1;
+        function count(){
+            // console.log(this);
+            box.innerHTML = num++;
+        }
+        // 非立即执行版函数
+        // function debounce(fn,time){
+        //     // debounce形成作用域不销毁，存储了timer;当下一次再执行里面的小函数，每次都是先把上一次的给清除掉；之前绑定的fn也不再运行了；
+        //     let timer;
+        //     return  function(){
+        //         clearTimeout(timer);
+        //         // this==>box
+        //         timer=setTimeout(()=>{
+        //             // this： 
+        //             fn.call(this);
+        //         },time);
+        //     }
+        // }
+        // 相当于把debounce的返回值给了box的onmousemove事件；
+        // box.onmousemove = debounce(count,1000);
+
+        // 防止恶意频繁的点击，n秒内只让触发一次；
+        // 立即执行版的防抖
+        // function debounce(fn,time){
+        //     let timer;// null
+        //     return function(){
+        //         clearTimeout(timer);
+        //         // console.log(timer);
+        //         let now = !timer;
+        //         timer=setTimeout(()=>{
+        //             timer=null;
+        //         },time);
+        //         /// 第一次进来立即执行
+        //         if(now){
+        //             fn.call(this);
+        //         }
+        //     }
+        // }
+        // box.onmousemove = debounce(count,1000);
+        // var t = setTimeout(()=>{},1000);
+        // clearTimeout(t);// 
+        // console.log(t);
+
+        // 节流： 稀释了函数的执行频率 
+        // 时间戳版：
+        // 这一次和上一次的执行时间间隔1000ms，那么能够执行下一次；
+        // 需要保证每两次之间执行的时间差都大于等于1000ms;
+        // function throttle(fn,time){
+        //     let  previous=0;// previous记录了每一次执行的时间戳
+        //     return function(){
+        //         // 当前时间的时间戳；
+        //         let now = Date.now();
+        //         if(now-previous>=time){
+        //             fn.call(this);
+        //             previous=now;// 把此时执行的时间赋值给previous;
+        //         } 
+        //     }
+        // }
+
+        // 定时器版
+        function throttle(fn,time){
+            let timer;
+            return function(){
+                // 不满足条件，不能让它成立
+                if(!timer){
+                    // 当执行过fn以后，再让其设置这个定时器
+                    timer=setTimeout(()=>{
+                        timer=null;
+                        fn.call(this)
+                    },time);
+                }
+            }
+        }
+        box.onmousemove=throttle(count,1000);
+
+
+        function throttle(func, wait ,type) {
+            if(type===1){
+                let previous = 0;
+            }else if(type===2){
+                let timeout;
+            }
+            return function() {
+                let context = this;
+                let args = arguments;
+                if(type===1){
+                    let now = Date.now();
+
+                    if (now - previous > wait) {
+                        func.apply(context, args);
+                        previous = now;
+                    }
+                }else if(type===2){
+                    if (!timeout) {
+                        timeout = setTimeout(() => {
+                            timeout = null;
+                            func.apply(context, args)
+                        }, wait)
+                    }
+                }
+            }
+        }
+
+        
+
+        
+    </script>
+</body>
+</html>

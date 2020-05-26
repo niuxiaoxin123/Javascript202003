@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型继承  
+        // call 继承
+        // 中间类继承
+        // 寄生组合继承
+        // class 
+        class A{
+            constructor(){
+                this.x =100;
+                this.y = 200; 
+            }
+            getX(){
+                console.log(this.x);
+            }
+        }
+        var a = new A;//{x:100,y:200}
+        console.log(a);
+        // 让类B继承类A;
+        // class 的extends继承：让类B不仅继承了类A的私有属性，而且还继承了类A的原型上的公有属性；
+        class B extends A{
+            constructor(num){// constructor可以接受传过来的参数；
+                //super执行完以后，才能调用this；把类A的this拿到了这里；实现了继承 
+                super();
+                this.a = 1;
+                this.b = 2;
+                this.num = num;
+            }
+        }
+        var b = new B(666);
+        console.log(b);
+        
+
+        
+        
+    </script>
+</body>
+</html>

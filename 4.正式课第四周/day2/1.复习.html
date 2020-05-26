@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6 ： ECMAscript6 
+        // let 和 const
+        // 1. 不进行变量提升
+        // 2. 不能重名
+        // 3. 如果在全局作用域，不能给window新增键值对
+        // 4. let在for循环中，会形成父作用域，每一轮循环形成子作用域
+        // console.log(num);
+        // let num = 100; 
+        // let num =1;
+
+        // 解构赋值
+        // 保持左右数据格式是统一的；
+        // let [a,b,[c]]=[1,2,[3]];
+        // a b c 就是一个变量；一一对应数组中的值
+        // 根据对应的属性名解构，如果没有，那么解构出undefined；
+        // let {name}={name:"zfpx"}
+
+
+        // ... :展开运算符
+        // 经常用于传参；数组的合并，对象的合并；
+    
+
+        //  数组 Array.from: 将类数组转真正的数组  Array.of :将一组数转数组
+
+        //  函数的扩展： 参数；可以有默认值 解构赋值
+        // function fn({x,y}){
+        //     // x:1 y:2
+        // }
+        // fn({x:1,y:2});
+
+
+        // 箭头函数：
+        // 1. 形态
+        // function fn(){};
+        // let fn = function(){};
+        // let fn =()=>{};
+        // let fn =a=>a;
+        // 形参只有一个的时候，可以省略小括号
+        // 如果只有一条语句可以省略；如果这一条还有return，那么return也可以省略
+
+        // 2. 执行
+
+        // 1. 没有this，this指向了上一级作用域的this
+        // 2. 没有arguments
+        // 3. 不能被new
+        // 4. 不能使用yield命令，不能作为generator函数；
+        // 
+        let  fn =()=>{
+            console.log(this);
+        }
+
+
+    
+     
+    
+    </script>
+</body>
+</html>

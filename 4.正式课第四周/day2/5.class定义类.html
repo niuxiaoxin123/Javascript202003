@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function fn(){
+    //     this.x = 1;
+    //     this.y=2;
+    // }  
+    // // 给fn这个类原型新增方法
+    // fn.num = 100;// fn的对象角色；num会放到fn的私有属性上
+    // fn.prototype.getX=function(){} 
+    // var f  = new fn;//{x:1,y:2}
+    // 1. 普通函数 
+    // 2. 类 构造函数
+    // 3. 对象
+
+    // let  fn=()=>{};
+    // new fn;
+    class Fn{
+        // 如果需要类中有代码，需要写在constructor中
+        constructor(){
+            var num = 9;
+            // this ==> 实例
+            this.a=1;
+            this.b=2;
+        }
+        // 这个地方就是原型上的方法
+        getX(){
+            console.log(this.a); 
+        }
+        getY(){
+        }
+        // static 去给Fn这个类新增私有属性；
+        // Fn的实例不能调用到类的私有属性
+        static num=1;
+    }
+   
+    // console.dir(Fn);
+    // var f1  = new Fn;
+    // console.log(f1);
+    // f1.getX()
+    
+        
+    </script>
+</body>
+</html>
