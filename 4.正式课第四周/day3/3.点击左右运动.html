@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left:0px;
+        }
+        button{
+            position: absolute;
+            top:200px;
+            width:80px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #right{
+            left:150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="left">向左</button>
+    <button id="right">向右</button>
+    <script>
+        let box= document.getElementById("box");
+        let left = document.getElementById("left");
+        let right  =document.getElementById("right");
+        var winW = document.documentElement.clientWidth||document.body.clientWidth;
+        var w = box.offsetWidth;
+        let maxL = winW-w;
+        let timer;
+        right.onclick = function(){
+            clearInterval(timer);
+            timer=setInterval(()=>{
+                // 获取在css表中设置的样式
+                let curLeft = parseFloat(getComputedStyle(box).left)
+                curLeft+=10;
+                if(curLeft>maxL){
+                    clearInterval(timer);
+                    box.style.left=maxL+"px";
+                }
+                box.style.left = curLeft+"px";
+            },20)
+        }
+        // 每次定时器保留一个
+        left.onclick =function(){
+            clearInterval(timer);
+            timer= setInterval(()=>{
+                // 获取在css表中设置的样式
+                let curLeft = parseFloat(getComputedStyle(box).left)
+                curLeft-=10;
+                if(curLeft<=0){
+                    clearInterval(timer);
+                    box.style.left=0+"px";
+                }
+                box.style.left = curLeft+"px";
+            },20)
+        }
+    
+    
+    </script>
+</body>
+</html>

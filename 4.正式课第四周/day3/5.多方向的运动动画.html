@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                width:100px;
+                height:100px;
+                background: red;
+                border-radius: 50%;
+                position: absolute;
+                left:0px;
+            }
+            #box1{
+                width:100px;
+                height:100px;
+                background: red;
+                border-radius: 50%;
+                position: absolute;
+                left:200px;
+            }
+        </style>
+</head>
+<body>
+    <div id="box" style="left:0px;"></div>
+    <div id="box1"></div>
+    <script>
+        // 匀速运动公式
+        // t : time
+        // b : begin 
+        // c : change 变化
+        // d : duration 
+        function linear(t,b,c,d){
+            return t/d*c+b;//  t / d * c + b
+        }
+        let box = document.getElementById("box");
+        // let  curStart = getComputedStyle(box);
+        // // 同时改变盒子的宽度 ，高度，left，top;
+        // // 用begin对象存储了盒子初始的位置；
+        // let begin={
+        //     width:parseFloat(curStart.width),
+        //     height:parseFloat(curStart.height),
+        //     left:parseFloat(curStart.left),
+        //     top:parseFloat(curStart.top)
+        // };
+        // let duration = 3000;// 动画的总时间
+        // // 盒子的目标位置 ;此时此刻盒子的目标位置；
+        // let target ={
+        //     width:20,
+        //     height:20,
+        //     left:800,
+        //     top:300
+        // }
+        // let change ={};// 存储每个属性变化的值
+        // for(let key in begin){
+        //     change[key]=target[key]-begin[key];
+        // }
+
+        // box.onclick = function(){
+        //     let t =0;
+        //     let timer = setInterval(()=>{
+        //         t+=20;// 走过的时间
+        //         // 每隔20ms，要对盒子的left值，top值、width、height 同时进行设置
+        //         for(let key in change){
+        //             // key : 
+        //             let cur = linear(t,begin[key],change[key],duration);
+        //             box.style[key] = cur+"px";
+        //         }
+        //         if(t>=duration){
+        //             // 当到达目标时间，停止动画
+        //             clearInterval(timer);
+        //         }
+        //     },20);
+        // }
+
+
+        // 封装动画
+        // curEle : 要有动画的元素
+        // target : 盒子的目标位置
+        // duration ： 动画的总时间
+        function animate(curEle,target,duration,callBack){
+            let begin={};
+            let change = {};
+            for(let key in target){
+                // 给begin这个对象新增键值对
+                begin[key]=parseFloat(getComputedStyle(curEle)[key]);
+                change[key]= target[key]-begin[key];
+            }
+            let t=0;
+            let timer = setInterval(()=>{
+                t+=20;
+                for(let key in change){
+                    // cur : 得到的是此时此刻的状态 left:0    left:800   3000ms 1500ms
+                    //            t    /     d   *    c +b
+                    // 此时的位置=(走过的时间/总时间)*总距离 + begin
+                    let cur = linear(t,begin[key],change[key],duration)
+                    curEle.style[key]=cur+"px";
+                }
+                if(t>=duration){
+                    clearInterval(timer);
+                    callBack();
+                }
+            },20);
+        }
+        animate(box,{left:800,top:300,width:200,height:50},3000,function(){
+            box.style.background="blue";
+        })
+        animate(box1,{left:1500,top:100,width:400,height:50},3000)
+    </script>
+</body>
+</html>

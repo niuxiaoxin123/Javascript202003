@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="left:0px;"></div>
+    <script>
+        // 正式课第四周： ES6   防抖和节流   同步异步  动画  轮播图  jquery版渐隐渐现轮播图   事件； 
+        // 如何让小球动起来；让它的位置改变；
+        // 点击小球，让其从页面的左端运行到最右端，当小球右边框和屏幕重合时，小球停下；
+        // 屏幕可视区域的宽度-小球自身的宽度=小球的left的值；
+        let box= document.getElementById("box");
+        var winW = document.documentElement.clientWidth||document.body.clientWidth;
+        var w = box.offsetWidth;
+        // 逐渐改变盒子的位置，不能一下子改变；需要用到定时器setInterval,不断设置改变盒子的left的值；
+        (function(){
+            let timer;
+            box.onclick = function(){
+            // box.style.left=winW-w+"px";
+            // 每隔20ms重新设置一次盒子的位置，让其left+10;
+            let maxLeft = winW-w;
+            clearInterval(timer);// 避免了重复点击；
+            timer=setInterval(function(){
+                // 先把拿到的值转成数字再运算
+                // console.log(box.style.left);// "" parseFloat("")->NaN
+                let curLeft = parseFloat(box.style.left);
+                // console.log(curLeft);
+                curLeft+=1;
+                // console.log(100);
+                if(curLeft>maxLeft){
+                    box.style.left =maxLeft+"px";
+                    clearInterval(timer);
+                    return;// 中止代码不再向下运行
+                }
+                box.style.left =curLeft+"px";
+            },20)
+        }
+        })()
+        
+    
+    
+    
+    </script>
+</body>
+</html>

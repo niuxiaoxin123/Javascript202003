@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                width:100px;
+                height:100px;
+                background: red;
+                border-radius: 50%;
+                position: absolute;
+                left:100px;
+            }
+        </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 从左边运动到最右端 3000ms;
+        let box = document.getElementById("box");
+        let time = 3000;// 3000
+        let  begin=parseFloat(getComputedStyle(box).left)
+        let winW = document.documentElement.clientWidth-box.offsetWidth-begin;// 总距离
+     
+        let speed = winW/time;// 每1毫秒走的像素
+        // box.onclick =function(){
+        //     let timer = setInterval(()=>{
+        //         let curLeft = parseFloat(getComputedStyle(box).left);
+        //         curLeft+=speed*20
+        //         if(curLeft>=winW){
+        //             clearInterval(timer);
+        //             // 如果curLet>winW :说明已经到达了最右端，把最大值给了curLeft；重新设置left值
+        //             curLeft = winW;
+        //         }
+        //         box.style.left  = curLeft+"px";
+        //     },20)
+        // }
+        box.onclick =function(){
+            let  t=0;
+            let timer = setInterval(()=>{
+                t+=20;
+                // 开始的位置  走过多少时间   总时间 总距离；能不能计算此时此刻盒子应该在位置；
+                let  curLeft=linear(t,begin,winW,time);
+                if(t>time){
+                    clearInterval(timer);
+                    box.style.left=winW+100+"px";
+                    return;
+                } 
+                box.style.left  = curLeft+"px";
+            },20)
+        }
+
+        // 北京-石家庄 300公里  3小时   1.5小时；  150公里
+        // 此时的位置=(走过的时间/总时间)*总距离+初始的位置
+        // t: 走过的时间  b : 初始的位置  c:总距离   d:总时间
+        function linear(t,b,c,d){
+            return t/d*c+b;
+        }
+    
+    
+    </script>
+</body>
+</html>
