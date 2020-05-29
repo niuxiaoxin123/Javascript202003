@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        // 1、我要向服务器发送一个请求-->后台给咱们返回数据
+        // 2、我要在第一次请求成功之后，把第一次请求回来的数据当做参数发送第二次请求
+        // Promise：是ES6中新增的一个类，是专门用来解决异步回调地狱问题的,将异步的代码已同步的方式展现出来
+        // $.ajax({
+        //     url: 'xxxx',
+        //     async: true,
+        //     params: 'xxx', // 请求时携带的参数
+        //     success: (data) => {
+        //         $.ajax({
+        //             url: 'xxxx',
+        //             params: 'xxx', // 请求时携带的参数
+        //             success: (data) => {
+        //                 $.ajax()
+        //             }
+        //         })
+        //     }
+        // })
+
+        // axios fetch
+        // promise有三个状态：pending  fulfilled rejected
+        //                    等待态     成功态    失败态
+        // promise的状态一旦发生变化，就不可能在改变了，状态就凝固了
+        // 状态要么从pending -->fulfilled
+        // 那么从pending -->rejected
+
+        // let p  = new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         // 当第一次请求成功之后，就把promise的状态改为成功态
+        //         console.log('第一次请求成功')
+        //         resolve() // 让promise的状态改为成功态
+        //         // reject()
+        //     },5000)
+        // })
+        // // console.log(p)
+
+        // p.then(()=>{
+        //     console.log('发送第二次请求')
+        //     // setTimeout(()=>{
+
+        //     // })
+        // },()=>{
+        //     console.log('请求失败')
+        // }).then(()=>{
+        //     console.log('第三次请求')
+        // })
+
+        // let p = new Promise((resolve,reject)=>{
+        //     // resolve()
+        //     reject()
+        // })
+
+        // p.then(()=>{
+        //     console.log(1)
+        //     return new Promise((resolve,reject)=>{
+        //         // setTimeout(()=>{
+        //         //     reject()
+        //         // },3000)
+        //         resolve()
+
+        //     })
+        // }).then(()=>{
+        //     console.log(2)
+        // }).then(()=>{console.log(4)}).catch(()=>{
+        //     console.log('catch')
+        // })
+        // console.log(3)
+
+        function Fn(url, data) {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    params: data,
+                    success: (data) => {
+                        // console.log(data)
+                        resolve(data)
+                    }
+                })
+            })
+        }
+
+        let p = Fn('./banner.json', { name: 1, age: 2 })
+        p.then((data) => {
+            console.log(data,1)
+           return  Fn('./list.json',{})
+        }).then((data)=>{
+            console.log('继续发送第三次请求',data)
+        })
+        console.log(1)
+    </script>
+</body>
+
+</html>

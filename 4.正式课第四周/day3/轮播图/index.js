@@ -46,7 +46,7 @@ let  autoMove=(n)=>{
         step=1;
     }
     changeTip();
-    utils.animate(wrapper,{left:-800*step},300)
+    utils.animate(wrapper,{left:-800*step},300);
 }
 // 每隔2000ms切换一张图片；
 let timer = setInterval(autoMove,3000);// 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        111
+    </div>
+    <button id="btn">点击</button>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        // show：显示
+        // hide：隐藏
+        // toggle：如果元素是隐藏的，那就显示，如果元素是显示的，那就隐藏
+
+        // slideDown:从上往下显示元素
+        // slideUp：从下往上隐藏元素
+        // slideToggle：如果显示那就是隐藏，如果隐藏，那就是显示
+
+        // fadeIn:淡入
+        // fadeOut:淡出
+        // fadeTo：可以指定opacity的程度
+        // fadeToggle:如果显示就隐藏，如果隐藏就显示
+
+        // animate: 多方向运动的动画
+
+        // $('#btn').click(()=>{
+        //     $('#box').show(2000,function(){
+        //         console.log('我执行完了')
+        //     })
+        // })
+
+        // $('#btn').click(()=>{
+        //     $('#box').toggle(2000,function(){
+        //         console.log('我执行完了')
+        //     })
+        // })
+
+        // $('#btn').click(() => {
+        //     $('#box').fadeTo("slow", 0.66)
+        // })
+
+        $('#btn').click(() => {
+            $('#box').animate({
+                width:300,
+                height:300,
+                opacity:.5,
+            },5000,function(){
+                console.log('执行完了')
+                 $('#box').css('background','pink')
+            })
+        })
+
+        $('#box').click(()=>{
+            $('#box').stop() // 让其正在运动的动画停止
+        })
+
+    </script>
+</body>
+
+</html>
