@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 解决异步地狱回调问题的
+        // Promsie默认是pending等待态
+        // pending-->fulfilled
+        // pending-->rejected
+        // 一旦状态发生变化，就会凝固，不会在变了
+        let p  = new Promise((resolve,reject)=>{
+            // setTimeout(()=>{
+            //     reject()
+            // })
+                // resolve(123)
+                // reject(456)
+                console.log(r)
+        })
+        p.then((data)=>{
+            console.log(data)
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve()
+                },5000)
+            }) // 等待态
+        },(data)=>{console.log(data,33)}).then(()=>{console.log(4)})
+        // console.log(111)
+
+        //第二个then里的回调函数执行要看上一个then中的回调函数的执行结果是啥，如果是一个promise实例，那这个实例的状态就会控制下一个tnen中回调函数的执行，如果不是promise实例，默认执行成功的回调(默认返回一个成功态的promise实例)
+
+        // 如果promise里的代码出现错误了，就默认改为失败的状态
+        // catch:不管是哪的promise的实例变成失败的状态，catch就会执行
+
+
+
+
+        // let p = new Promise((resolve, reject) => {
+        //     reject()
+        // })
+        // p.then(() => {
+        //     console.log(1)
+        // }).then(() => {
+        //     console.log(2)
+        // }).then(() => { console.log(4) }).catch(() => {
+        //     console.log('catch')
+        // })
+    </script>
+</body>
+
+</html>

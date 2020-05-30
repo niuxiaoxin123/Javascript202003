@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <script>
+        /* 
+        表单元素的事件
+        1.onfocus:获取焦点(光标)
+        2.onblur：失去焦点(光标)
+        3.onchange：inout框的内容发生变化而且失去焦点才会触发
+        4.oninput：input框的内容一旦发生变化就会触发
+        5.onkeydown：键按下就会触发
+        6.onkeyup：当键抬起的时候就会触发
+        7.onkeypress：和onkeydown类似
+        这个事件在用户按下并放开任何字母数字键时发生。系统按钮(例如，箭头键和功能键)无法得到识别。(不支持中文)
+         */
+        // inp.onchange = function(){
+        //     console.log(this.value,'onchange')
+        // }
+        // inp.oninput = function(){
+        //     console.log(this.value,'oninput')
+        // }
+        // inp.onkeydown = function(){
+        //     // 拿到的this.value是上一次的值
+        //     console.log(this.value,'onkeydown')
+        // }
+        // inp.onkeyup = function(){
+        //     // 拿到的this.value是最新的值
+        //     console.log(this.value,'onkeyup')
+        // }
+        // inp.onkeypress = function(){
+        //     // 拿到的this.value是上一次的值
+        //     console.log(this.value,'onkeypress')
+        // }
+
+        inp.onkeyup = function(e){
+            // 拿到的this.value是最新的值
+            console.log(e.keyCode,'onkeyup') // 获取键盘按键对应的keyCode码
+            // 上：38  下：40    左：37    右：39
+        }
+        // 当用户按下键盘上的按键的时候，去判断当前按键的keyCode是啥，从而判断用户按的是哪个键，从而改变盒子的位置
+        window.onkeydown = function(){
+            // 
+        }
+    </script>
+</body>
+</html>

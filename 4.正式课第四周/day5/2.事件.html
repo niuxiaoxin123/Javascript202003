@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">dainji </div>
+    <input type="text" id="inp">
+    <script>
+        let box = document.getElementById('box')
+        /* 
+            事件：
+            在元素上有一些天生自带的属性，比如onclick、onmouseover、onmouseout，点击的鼠标触发了相应的操作，就执行这个执行对应的值(一般情况下都是函数)
+
+            事件：元素天生自带的一种行为
+           
+         */
+        box.onclick = function () { console.log(1) } // DOM0级事件绑定(默认会存在冒泡机制)
+        // (onmouseover、onmouseout【支持冒泡】)   (onmouseenter、 onmouseleave)、onmousemove、onclick  onbdlclick、onmouseup  onmousedown
+
+        // 表单元素：onkeydown onkeyup onkeypress focus onblur  onchange(当input内容发生而且失去焦点的时候才会触发)    oninput(只要内容发生变化就会触发)
+
+
+        // onkeydown和onkeypress的区别：onkeypress =>Fires when the user presses an alphanumeric key.(当用户按数字字母键时触发)
+
+
+        // onkeypress
+        // 这个事件在用户按下并放开任何字母数字键时发生。系统按钮(例如，箭头键和功能键)无法得到识别。
+
+
+        inp.onkeydown = function () { console.log('按下') }
+        // inp.onkeyup = function () { console.log('抬起') }
+        inp.onkeypress = function () { console.log('press') }
+        // inp.onfocus = function () { console.log('获取焦点') }
+        // inp.onblur = function () { console.log('失去焦点') }
+        // inp.onchange = function () { console.log('内容发生变化') }
+        // inp.oninput = function () { console.log('input') }
+
+
+    </script>
+</body>
+
+</html>

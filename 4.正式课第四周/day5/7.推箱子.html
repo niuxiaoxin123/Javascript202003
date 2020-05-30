@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border-radius: 50%;
+            position: absolute;
+            left: 400px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.getElementById('box');
+        // 上：38 下：40  左：37  右：39
+        window.onkeydown = function (e) {
+            // console.log(e.keyCode) // keyCode是number类型
+            let modal = getComputedStyle(box);
+            // getComputedStyle获取的值不是numnber类型的，当使用的时候要转数字
+            switch (e.keyCode) {
+                case 37: // 按键左
+                    box.style.left = parseFloat(modal.left) - 10 + 'px';
+                    break;
+                case 40: // 按键下
+                    box.style.top = parseFloat(modal.top) + 10 + 'px';
+                    break;
+                case 38: // 按键上
+                    box.style.top = parseFloat(modal.top) - 10 + 'px';
+                    break;
+                case 39: // 按键右
+                    box.style.left = parseFloat(modal.left) + 10 + 'px';
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

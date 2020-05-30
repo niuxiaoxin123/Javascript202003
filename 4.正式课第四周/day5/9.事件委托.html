@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul {
+            width: 400px;
+            margin: 100px auto;
+            border:1px solid green;
+            text-align: center;
+            list-style: none;
+        }
+        li {
+            width: 100%;
+            border-bottom: 1px solid palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        /* 
+        页面上有三个li元素，
+        当我鼠标划上第一个li时，控制台显示红色
+        当我鼠标划上第二个li时，控制台显示绿色
+        当我鼠标划上第三个li时，控制台显示黄色
+         */
+         let box = document.getElementById('box');
+         // 事件委托：主要利用时间的冒泡传播机制，给最外层的盒子绑定对应的事件，根据判断事件源的不同，从而来判断你点击的是哪个元素，然后在序偶出不同的逻辑处理
+         box.onclick = function(e){
+            //  console.log(e.target)
+             let target = e.target
+             if(target.innerHTML === '1'){
+                 // 说明点击的是第一个元素li
+                 console.log('red')
+             }
+             else if(target.innerHTML === '2') {
+                console.log('green')
+             }
+             else if(target.innerHTML === '3'){
+                console.log('yellow')
+             }
+         }
+        
+    </script>
+</body>
+</html>

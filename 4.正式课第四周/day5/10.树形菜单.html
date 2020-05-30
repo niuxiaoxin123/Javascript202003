@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /**{
+            margin: 0;
+            padding: 0;
+        }*/
+        .box {
+            width: 500px;
+            /*1.角度  颜色*/
+            background: linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+            background: -webkit-linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+        }
+
+        .box span {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .box span.close:before {
+            content: "+";
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .box span.open:before {
+            content: "-";
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box" id="box">
+        <li><span>第一级菜单</span>
+            <ul>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span>
+                            <ul>
+                                <li><span>第四级菜单</span></li>
+                                <li><span>第四级菜单</span></li>
+                            </ul>
+                        </li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+                </li>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+
+                </li>
+                <li><span>第二级菜单</span>
+                </li>
+                <li><span>第二级菜单</span></li>
+            </ul>
+        </li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+    </ul>
+    <script>
+        // 1.获取所有的span元素
+        let spans = document.getElementsByTagName('span');
+        let box = document.getElementById('box');
+        // 2.循环所有的span元素，判断span有没有兄弟元素，如果有，就给当前span加上一个close类名，如果没有，给其加上open类名
+        for (var i = 0; i < spans.length; i++) {
+            let cur = spans[i] // 代表每一个span元素
+            if (cur.nextElementSibling) {
+                cur.classList.add('close')
+                cur.nextElementSibling.style.display = 'none' // 让span的兄弟元素隐藏
+            }
+            else {
+                cur.classList.add('open')
+            }
+        }
+        box.onclick = function (e) {
+            console.log(e.target) // 事件源
+
+            let cur = e.target;
+            if(e.target === this){
+                return;
+            }
+            let next = cur.nextElementSibling;
+            // 先判断当前点击的span到底有没有兄弟元素，如果有再说站不展开，如果没有，那就什么都不做
+            if (next) {
+                // 如果当前点击的span的class名是close，那就是要打开，让他的兄弟元素显示
+
+                if (cur.className === 'close') {
+                    cur.className = 'open';
+                    next.style.display = 'block';
+                }
+                else {
+                    // 获取当前span兄弟元素里的所有ul
+                    // let uls = next.getElementsByTagName('ul');
+                    // // 让点前点击的元素的兄弟元素里的所有的ul全部隐藏,并且让每一个ul的哥哥元素(span)的class名改为close
+                    // for (var i = 0; i < uls.length; i++) {
+                    //     uls[i].style.display = 'none';
+                    //     uls[i].previousElementSibling.className = 'close';
+                    // }
+                    
+                    // 如果else执行，那就是关闭，让他的兄弟元素隐藏
+                    next.style.display = 'none';
+                    cur.className = 'close';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

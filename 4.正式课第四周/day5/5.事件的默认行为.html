@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="http://www.baidu.com" id="jump">百度</a>
+    <script>
+        let jump = document.getElementById('jump');
+        // a标签点击默认进行跳转就是a标签的默认行为
+        jump.onclick = function (e) {
+            console.log(e)
+            // e.preventDefault() // 阻止事件的默认行为(阻止事件的默认行为(IE8级以下不兼容))
+            e.returnValue = false
+        }
+    </script>
+</body>
+
+</html>

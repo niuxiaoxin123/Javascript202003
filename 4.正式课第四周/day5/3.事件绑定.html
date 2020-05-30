@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">点击</div>
+    <script>
+        var box = document.getElementById('box')
+        /* 
+        事件绑定
+         */
+
+         function fn1(){
+             console.log(1)
+             console.log(this === window)
+         }
+         function fn2(){
+             console.log(2)
+         }
+
+        //  box.onclick = fn1
+        //  box.onclick = fn2
+         // DOM0级事件绑定：只能给元素的同一个事件行为绑定一个方法，如果绑定了多个，下面的会把上边的就行覆盖
+        //  box.onclick = null // 移除绑定的事件
+
+         // DOM2级事件绑定
+        //  addEventListener:增加事件监听者
+        // ele.addEventListener('事件类型【没有on】',函数,布尔值)
+        // false：冒泡阶段执行  true：捕获阶段执行
+        // box.addEventListener('click',fn1,false)
+        // box.addEventListener('click',fn2,false)
+
+         // 但是他不能够给元素的同一个事件行为相同执行阶段绑定相同的方法
+        // box.addEventListener('click',fn1,false)
+        // box.addEventListener('click',fn1,false)
+
+        // 事件的移除
+        // 移除的时候传入的参数和绑定时的参数要保持一致
+        // box.removeEventListener('click',fn1,true) // 移除失败，用为移除的事件池不一样
+        // box.removeEventListener('click',fn2,false)
+
+        // attachEvent // 兼容IE8级以下
+        box.attachEvent('onclick',fn1)
+        box.attachEvent('onclick',fn1)
+
+        /* 
+        addEventListener和attachEvent的区别
+
+        attachEvent函数的执行顺序和绑定的顺序是倒着的,
+        attachEvent可以给元素的同一个事件行为绑定同一个方法
+        attachEvent绑定的函数里的this是window
+         */
+
+
+    </script>
+</body>
+</html>
