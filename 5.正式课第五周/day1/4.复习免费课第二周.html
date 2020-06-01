@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <script>
+        // 免费课第二周： 数组的算法去重  DOM操作【获取DOM、属性节点、动态操作DOM】 Date  Math  定时器   回调函数
+        // 去重  面试中最常见的算法；
+        // 排序   ： 熟悉熟练代码；
+        // 在HTML中是标签，在JS中就是映射一个元素对象；{}； 当在JS中改变这个对象时，那么页面中的元素也会随着发生变化；
+        // DOM :8种方法
+        // [{}]
+        // document.getElementsByTagName("div")[0]
+
+        // 节点一定是对象
+        //        1         3        8      9
+        // 四种 元素节点 文本节点 注释节点 document
+        // nodeType  nodeName  nodeValue
+        // ele.nodeType===1
+
+
+
+        // DOM : 元素对象
+        // document.createElement   appendChild  insertBefore  removeChild  replaceChid  cloneNode  getAttribute classList
+
+        // Math : Math就是window中一个属性名，属性值是对象；对象中存储好多处理数学的方法
+        // Math.max() Math.min()  Math.ceil  Math.floor Math.round  Math.random() Math.round(Math.random()*(m-n)+n) Math.pow  Math.sqrt()  Math.abs()
+
+
+        // Date : 时间
+        // new Date() : 自己电脑的系统时间 
+        // getTime : 得到时间距离1970-1-1的时间戳【毫秒差】
+        // Date.now() : 得到时间戳
+        // getFullYears() ...
+
+
+        //  定时器：  setTimeout  setInterval 
+        // 先走同步的代码，同步代码解析完毕，再走异步；
+        // 最小识别时间
+        // 定时器的返回值 ： 返回的是在当前是第几个定时器
+        // clearTimeout  clearInterval(1)
+        // var timer = setTimeout(function(){
+        //     console.log(10)
+        // },1000);
+        // console.log(11);
+        function fn(){
+            setTimeout(function(){
+                console.log(888);
+            },1000) 
+        }
+        setTimeout(function(){
+            console.log(666);
+        },1000);
+        fn();
+        clearTimeout(1);
+
+
+        function A(B){
+        }
+        // 把函数作为实参传递给另一个函数，那么这个就是回调函数
+        A(function(){})
+        ary.sort(function(a,b){return a-b})
+        function move(){
+
+        }
+
+
+        
+
+    </script>
+</body>
+</html>

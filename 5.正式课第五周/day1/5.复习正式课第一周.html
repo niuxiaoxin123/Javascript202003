@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(fn);
+        // 代码的解析过程
+        // 正式课第一周：
+        // function fn(){
+        // } 
+        // let obj = {
+        //     fn:(function(){
+        //         console.log(100);
+        //         // fn 的属性值是自执行函数的返回的小函数；
+        //         return function(){
+        //         }
+        //     })()
+        // };
+        // obj.fn();
+        // obj.fn();
+        
+        // 变量提升   作用域     this   面向对象
+        // 1. 先对function进行提升
+        // var a = 1;
+        // function b(){  
+        // }
+        // 对带var和带function进行提前声明
+        // function fn(){
+
+        // }
+        // fn// 存储了空间地址
+        
+        // console.log(fn);
+        // if([]){
+        //     function fn(){
+
+        //     }
+        // }
+
+        // 变量提升的特殊提升；
+        // 1.不管条件是是否成立，都要进行变量提升
+        // 2. 变量提升发生在等号的左边
+        // 3. return 后面的代码不提升，但是下面的代码需要提升
+        // 4. 如果重名，不再重复声明，但要重新定义
+        // 5. 自执行函数定义和执行一起完成
+
+
+        // 作用域： 全局作用域 私有作用域 块级作用域
+        // 
+        // num =1;
+        // 函数执行会形成私有作用域；执行一次就会形成一个；
+        // 销毁回收：销毁里面的存储的值也都会发生改变栈内存
+
+        // 上一级作用域
+        // 全局变量
+        // 私有： 1. 看是否是形参  2. 有没有被var或被function  3. let 也是私有的
+        // 作用域链
+        // function fn(){
+        //     console.log(num);  
+        //     let  num= 1;
+        // }
+        // fn();
+
+
+        // this : 在不同的情况下，就代表不同的内容
+        // 1.全局下的this指向window
+        // 2.给元素的事件绑定方法，方法中的this指向被绑定的元素
+        // 3.函数执行前有没有点，点前面是谁，this就指向谁，没有点，this指向window
+        // 4.自执行函数中的this永远指向window
+        // 5.回调函数中的this一般也指向window
+        // 6.构造函数中的this指向实例
+        // 7. call apply bind 可以改变this指向的；
+
+        // function A(B){
+        //     var obj = {};
+        //     obj.B = B;
+        //     obj.B();
+        // }
+        // A(function(){
+        //     console.log(this);
+        // })
+
+
+        // 面向对象： 
+        // 有类，实例的概念；实例可以通过__proto__调用类原型上的方法;
+        // 类： 内置类和自定义类
+        // 数据类型：Number String Boolean  Null Undefined Object Function RegExp Date ... 
+        // var  ary = []
+        // var ary1 = [];
+        // function Fn(){
+        //     // this ==> 实例
+        //     this.x=100;
+        //     // return  this;
+        //     // return {100:9};
+        // }
+        // var f1  = new Fn();// 构造函数
+        // // f1.100 f1["100"]
+        // Fn.prototype.getX=function(){
+
+        // }
+        // 一定是一个对象{}
+        // instanceof 
+        // Fn.prototype={}
+        // Array.prototype.a=function(){}
+        // // Arrap.prototype ={};// 
+        // // 内置类不可以修改其内置的空间地址；
+        // // Function  Object 
+        // f Fn Function  Object 
+        
+    </script>
+</body>
+</html>

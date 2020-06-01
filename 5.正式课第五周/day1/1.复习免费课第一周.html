@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 免费课第一周：数据类型【基本数据类型、引用数据类型】   三个判断三个循环   function【函数的定义、形参实参、arguments、执行过程、return、匿名函数】  数组方法  
+    
+    // 浏览器只识别特定的这几种数据类型，做为值存在
+    // var a = b;// b is not defined
+    // 1.数据类型【number string boolean  null unfined symbol】【对象、数组、正则、Math、Date的实例、函数...】
+    // 操作值一个是操作空间地址；
+    // Number :  数字、NaN;
+    // Number parseInt  parseFloat isNaN  toFixed  
+    // "100.5px"
+    // Number("12px")// NaN 
+    // Number([])// 0
+    // Number({})// NaN 
+    // parseFloat("")// 
+
+    // 2. string : 字符串 "" '';// 运算 + - * /
+    // 索引  length  
+    // "2px"-"3px" 先转数字，再运算；  
+    //  charAt  charCodeAt indexOf lastIndexOf  slice  substring  substr  toUpperCase toLowerCase   replace  split  trim   concat 
+
+    // 3. Boolean : true false 
+    // Boolean : 将其他的数据类型强制转成boolean 类型的
+    //  0  NaN  undefined "" null ; 
+    // 是大家以什么条件作为判断的逻辑；
+    // var  obj = {};
+    // if(obj.a){// undefined
+    // }
+    // ! :取反；
+    // !{} // 先把后面的值转成布尔值，再取反；
+
+    // 4. undefined 
+    // 5. null 
+    // var  obj ={};
+    // obj=null;
+
+    // 引用类型 ： 空间地址对应堆内存；
+    // var a = b= 100;
+    // b=300;
+    // console.log(a);
+    // var c = d = {f:1};
+    // d.f=0;
+    // console.log(c);// {f:0}
+
+    var obj = {a:1};// 后台的属性名叫字段；或者key;
+    // 键值对  属性名和属性值
+    // 增删改查
+    // obj.a =100;
+    // var a = "c";
+    // obj[a]=100;// {c:100}
+    // for(let key in change){
+    //     // key 是一个字符串；是change这个对象的属性名
+    //     obj[key]=change[key];
+    // }
+    // obj.a = 2;
+    // var f = obj.a;
+    // if(obj.a){}
+    // in : 判断属性是否在某个对象中存在
+
+
+
+    // 数组： 后台经常以数组的形式返回给前端；
+    // 索引 length   数组的方法；
+    // var ary = [1,2,3,89];
+    // pop  push  shift unshift slice splice indexOf lastIndexOf  concat join  forEach  map  sort  reverse  tostring 
+
+
+    // 三个判断
+    // if(1==1){}else{}
+    // 三元运算符；使用于简单的三元运算符
+    // swicth case
+
+    
+    // 循环
+    // for  for  in  while
+    // 阻塞线程;定时器可以设置经过多少秒之后做什么事；但是是异步的；同步经过多少秒执行；
+    // console.log(1);
+    // setTimeout(function(){
+    //     console.log(2);
+    // },2000)
+    // console.log(3);
+    // console.log(1);// 过了两秒之后放行
+    // let  time = Date.now();
+    // while(Date.now()-time<2000){};
+    // console.log(2);
+    
+
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>

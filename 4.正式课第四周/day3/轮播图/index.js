@@ -2,6 +2,8 @@
 let  wrapper = document.getElementsByClassName("wrapper")[0];
 let list = document.getElementById("list");
 let outer = document.getElementById("outer");
+let right = document.getElementById("right");
+let left = document.getElementById("left");
 // 2. 同过ajax请求banner.json中的数据
 let data;
 let xhr= new XMLHttpRequest();// 创建一个ajax的实例
@@ -91,6 +93,19 @@ for(let i=0;i<oLis.length;i++){
     }
 }
 
-// 周末的时间 
+// 点击左右按钮
+right.onclick = function(){
+    autoMove();
+}
 
-
+left.onclick = function(){
+    step--;
+    // 当显示第一张，step=0;当再点击，step--变成了-1;
+    if(step===-1){
+        // 说明现在显示第一张// 让其wrapper迅速回到最后一张
+        wrapper.style.left="-3200px";
+        step=3;
+    }
+    utils.animate(wrapper,{left:-800*step},300);
+    changeTip();// 让点跟随高亮
+}
