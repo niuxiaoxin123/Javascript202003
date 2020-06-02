@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     // 什么事件 ： 鼠标： onclick  onmouseout  onmouseover onmousemove  onmousedown  onmouseup  onmouseleave   onmouseenter 
+     // ontouchstart  ontouchmove  ontouchend ontouchchange 
+     // input 的事件 ： onfoucs  onblur  oninput  onchange  onkeydown  onkeyup onkeypress
+     // onmouseenter 和onmouseover什么区别？onmouseenter 不会进行冒泡；
+
+     // 事件对象
+     box.onclick = function(e){
+        //e : 事件对象；包含了一些事件的信息；
+        // 根据点击的位置进行的相应的处理；
+        // clientX  clientY 
+        // pageX  pageY
+        // offsetX offsetY
+        // target ：事件源
+        // type: 事件的类型
+        // e.cancelBubble =true
+        // e.stopPropagation();
+        // e.returnValue=false;
+        // e.preventDefault();
+     }
+
+     // 事件的传播
+     // 捕获===> 目标===> 冒泡
+     // 事件委托： 事件冒泡；给最外层的元素绑定方法，那么触发里面元素的事件，外面的事件也会跟着触发，根据事件源的不同，进行不同的处理和操作；
+
+     // DOM2级事件
+    //  box.onclick = function(){
+    //      console.log(1); 
+    //  }
+    //  box.onclick = function(){
+    //      console.log(2); 
+    //  }
+
+    // addEventListener
+    box.addEventListener("click",fn1,true)
+    box.addEventListener("click",fn2,true)
+    // attachEvent : IE8下需要用attachEvent来进行事件的绑定
+    
+    // 1.this问题  2.重复问题  3. 顺序问题；
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box,#bigBox{
+            width:350px;
+            height:350px;
+            border:1px solid black;
+            float:left;
+            overflow: hidden;
+            position: relative;
+            margin:30px;
+        }
+        #bigBox img{
+            position: absolute;
+            width:700px;
+            height:700px;
+            left:0;
+            top:0;
+        }
+        #mark{
+            position: absolute;
+            width:175px;
+            height:175px;
+            background: rgba(0,0,0,0.2);
+            left:0;
+            top:0;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="img/iphone.jpg" alt="">
+    </div>
+    <div id="bigBox">
+        <img src="img/iphone_big.jpg" alt="">
+    </div>
+    <script>
+        let box = document.getElementById("box");
+        let bigBox = document.getElementById("bigBox");
+        let bigImg = bigBox.getElementsByTagName("img")[0];
+        // 划入、划出、在上面滑动；
+        let  mark;
+        box.onmouseenter=function(){
+            mark = document.createElement("div");
+            // 用js方式给元素新增id是mark;
+            mark.id="mark";
+            box.appendChild(mark);
+        }
+        box.onmousemove=function(e){
+            let  curLeft = e.clientX-box.offsetLeft-mark.offsetWidth/2;
+            let  curTop = e.clientY -box.offsetTop-mark.offsetHeight/2;
+            let minL = 0;
+            let maxL = box.offsetWidth-mark.offsetWidth;
+
+            let minT=0;
+            let maxT = box.offsetHeight-mark.offsetHeight;
+            // 如果比0还小，那么让curLeft=0;
+            // 分析能力==>把需求转成代码；
+            if(curLeft<=minL){
+                curLeft=minL;
+            }
+            if(curLeft>maxL){
+                curLeft=maxL;
+            }
+            if(curTop<=minT){
+                curTop=minT;
+            }
+            if(curTop>maxT){
+                curTop=maxT;
+            }
+            mark.style.left = curLeft+"px";
+            mark.style.top = curTop+"px";
+            // 小盒子向右移动1px；大图片需要向左移动2px;
+            bigImg.style.left=-2*curLeft+"px";
+            bigImg.style.top=-2*curTop+"px";
+
+        };
+        box.onmouseleave=function(){
+            box.removeChild(mark);
+        }
+    
+    </script>
+</body>
+</html>
