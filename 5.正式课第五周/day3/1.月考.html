@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="b"></div>
+    <script>
+        // 1.
+        // 1). 基本数据类型是操作值的，引用数据类型是操作空间地址
+        // 2). 基本数据类型存储到栈内存，引用存在堆内存
+        // 1). typeof instanceof  constructor  toString.call();
+        // 2. 谷歌： webkit   IE : trident  火狐: Gecko   欧朋 : opera
+
+        // 3. 迭代： 循环
+        // forEach  map  find  every  filter  some 
+
+        // 4. 闭包  1. 保护里面的私有变量不受干扰 2.储存值
+        // function fn(){
+        //     // 不销毁
+        //     return function(){
+        //     }
+        // }
+        // var f = fn();
+        // // 封装 
+        // var utils = (function(){
+        //     return {}
+        // })();
+        // "NaN珠峰培训null[object Object]"
+
+        // var a = 10,
+        //     b = 20;// 13
+        // function func() {
+        //     console.log(a, b);// undefined  20
+        //     var a = b = 13;
+        //     console.log(a, b);// 13 13 
+        // }
+        // a = func();
+        // console.log(a, b);// undefined  13 
+
+        // 11.
+        // var x = 4; // 3   2  1
+        // function func() {
+        //     return function(y) {
+        //         console.log(y + (--x));
+        //     }
+        // }
+        // var f = func(5);
+        // f(6);// 9
+        // func(7)(8);// 10
+        // f(9);// 10
+        // console.log(x);// 1
+
+        // 12.
+        // var x=5,// 11 10
+        //     y=6;
+        // function func(){
+        //     x+=y;
+        //     func=function(y){
+        //         console.log(y + (--x));// 13
+        //     };
+        //     console.log(x, y);// 11  6
+        // }
+        // func(4);
+        // func(3);
+        // console.log(x, y);// 10  6
+
+
+
+        // 14.
+        // let obj = {
+        //     0: 3,
+        //     1: 4,
+        //     length:0,
+        //     push: Array.prototype.push
+        // }
+        // // console.log(obj);
+        // obj.push(10);// this[this.length]=10
+        // obj.push(20);// this[this.length]=20
+        // console.log(obj);// {0:10,1:20,length:2,push:f}
+        // Array.prototype.push=function(a){
+        //     this[this.length]=a;
+        //     return this.length;
+        // }
+
+
+        // var x = 3,// 12  // 13 234
+        //     obj = {x: 5};// 95
+        // obj.fn = (function () {
+        //     this.x *= ++x;
+        //     return function (y) {
+        //         // 12
+        //         this.x *= (++x)+y;
+        //         console.log(x);// 13  234
+        //     }
+        // })();
+        // var fn = obj.fn;
+        // obj.fn(6);
+        // fn(4);
+        // console.log(obj.x, x);// 95  234
+
+
+        // let a={}, b='0', c=0;  
+        // a[b]='珠峰';
+        // a[c]='培训';  
+        // console.log(a[b]); 
+        // a[1]=99;
+        // a["1"]=88;
+        
+        // let a={}, b=Symbol('1'), c=Symbol('1');  
+        // a[b]='珠峰';
+        // a[c]='培训';  
+        // console.log(a[b]);
+
+        // 如果属性名是对象，那么会默认转成字符串"[object Object]"
+        // let a={}, b={n:'1'}, c={m:'2'};  
+        // a[b]='珠峰';
+        // a[c]='培训';  
+        // console.log(a[b]);
+
+
+        // function Fn() {
+        //     this.x = 10;
+        //     this.y = 20;
+        //     this.getX = function () {
+        //         console.log(this.x);
+        //     }
+        // }
+        // Fn.prototype.y=40;
+        // Fn.prototype={
+        //     x:30,
+        //     getY:function(){
+        //         this.y+=1;
+        //         console.log(this.y);
+        //     },
+        //     sum:function(){
+        //         console.log(this.x+this.y);
+        //     }
+        // };
+        // let f1 = new Fn;
+        // let f2 = new Fn;
+        // console.log(f1.getX === f2.getX);// false
+        // console.log(f1.getY === f2.getY);// true
+        // console.log(f1.constructor);// Object
+        // f1.getX();// 10
+        // f2.getY();// 21
+        // f1.sum();// 30
+        // var name = '珠峰培训';
+        // function A(x,y){
+        //     console.log(x);
+        //     var res=x+y;
+        //     console.log(this);// this==> 20
+        //     console.log(res,this.name);
+        // }
+        // console.dir(A);
+        // function B(x,y){
+        //     // console.log(this);//A
+        //     var res=x-y;
+        //     console.log(res,this.name);// 10   'A'
+        // }
+        // B.call(A,40,30);// B 
+        // B.call.call.call(A,20,10);// A  NaN undefined
+        // call： 改变call方法中的this的this指向，指向call的第一个参数；并且让call的this执行；
+        // 最后一个call 
+        // B.call.call(20,10) ==> 让里面的this执行，里面的this是A；并且让第一个参数成为A中的this；所以A中指向20；
+        // Function.prototype.call(A,60,50);
+        //Function.prototype.call.call.call(A,80,70); // NaN  undefined
+        // function fn(x,y){}
+        // fn.call([],10,20)
+
+        // function A(){
+        //     alert(1);
+        // }
+        // function Fn() {
+        //     A=function(){
+        //         alert(2);
+        //     };
+        //     return this;
+        // }
+        // Fn.A=A;
+        // Fn.prototype={
+        //     A:()=>{
+        //         alert(3);
+        //     }
+        // };
+        // A();// "1"
+        // Fn.A();// "1"
+        // Fn().A();// "2"
+        // new Fn.A();// "1"
+        // new Fn().A();// 3
+        // new new Fn().A();// 报错
+        // function Fn(){
+
+        // }
+        // var  obj  ={c:1};
+        // Fn.a = obj;
+        // obj={d:1};
+        // console.log(Fn.a);
+
+        
+        // var name = "WINDOW",
+        //     obj = {
+        //         name:"OBJ",
+        //         fn:(()=>{
+        //             console.log(this.name);// "WINDOW"
+        //             return function(){
+        //                 console.log(this.name);// "OBJ"
+        //             }
+        //         })()
+        //     },
+        //     fn=()=>{
+        //         console.log(this.name);
+        //     };
+        // fn();// "WINDOW"
+        // obj.fn();
+        // fn.call(obj);// "WINDOW"
+        // let fn=()=>{
+        //     // call不能更改箭头函数中的this的指向；箭头函数中没有this的；
+        //     // 箭头函数中的this永远指向上一级作用域的this；
+        //     console.log(this);
+        // }
+        // fn.call(100)
+
+        
+        // function A1(name) {
+        //     this.name = name;
+        // }
+        // function A2(name) {
+        //     this.name = name || 'Jerry';
+        // }
+        // function A3(name) {
+        //    this.name = name;
+        // }
+        // A1.prototype.name = 'Tom';
+        // A2.prototype.name = 'Tom';
+        // A3.prototype.name = 'Tom';
+        // // undefined               "Jerry"           undefined    
+        // alert((new A1().name) + (new A2().name) + (new A3().name));
+
+        // $.each(btnList,function(item,index){
+        //     $(item).click(function(){
+        //         $("#box").css("backgroun",ary[index]);
+        //     })
+        // })
+        // 数组的扁平化
+        // let a =[1,2,[3],4]
+        // a.toString();// "1,2,3,4"
+
+        // let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9,[11, 12, [12, 13, [14]]]], 10]
+        //console.log(arr.toString());// "1,2,2,3,4,5,5,6,7,8,9,11,12,12,13,14,10"
+        // Array.prototype.flatten=function(){
+        //     var ary = this.toString().split(",").map(function(item){
+        //         return Number(item);
+        //     })
+        //     return ary; 
+        // }
+        // arr.flatten();
+        // var newAry = [];
+        // function flatten(ary){
+        //     for(let i=0;i<ary.length;i++){
+        //         var cur = ary[i];
+        //         if(cur instanceof Array){
+        //             flatten(cur)
+        //         }else{
+        //             newAry.push(cur);
+        //         }
+        //     }
+        // }
+        // flatten(arr);
+        // console.log(newAry);
+
+        // 手写new 
+        // function Dog(name) {
+        //     this.name = name;
+        // }
+        // Dog.prototype={
+        //     bark(){
+        //         console.log('wangwang');
+        //     },
+        //     sayName(){
+        //         console.log('my name is ' + this.name);
+        //     }
+        // };
+        // // new 是怎么实现的；
+        // function _new(fn,...arg){// arg会接受到一个数组
+        //     let obj ={};
+        //     // console.log(arg);
+        //     // 通过__proto__修改obj的原型;
+        //     obj.__proto__=fn.prototype;// obj可以访问fn原型的方法；
+        //     // 让fn执行，并且改变了fn中的this指向obj;在fn中关于this的，都会给obj新增键值对；
+        //     fn.call(obj,...arg);
+        //     return obj;
+        // }
+        // _new(Dog,"三毛",30);
+
+        // function Foo(){
+
+        // }
+        // new Foo();
+        
+
+     // 
+    //  function getAry(attr,value){
+    //     let arr = [];
+    //     // * : 通配符；获取document下所有的元素
+    //     let eles = document.getElementsByTagName("*");
+    //     for(let i=0;i<eles.length;i++){
+    //         let val = eles[i].getAttribute(attr);
+    //         if(val===value){
+    //             arr.push(eles[i])
+    //         }
+    //     }
+    //     return  arr;
+    //  }
+    // console.log(getAry("class","a"))
+
+
+
+    // ~function(){
+    //     // 重写call方法
+    //     function change(a,...args){
+    //         //=>实现你的代码
+    //         // 改变func的this指向change第一个参数，并且让func执行
+    //         // this -> func
+    //         a.$fn = this;
+    //         let result = a.$fn(...args);
+    //         a.name="Alibaba";
+    //         delete a.$fn;
+    //         return result;
+    //     };
+    //     Function.prototype.change=change;
+    // }();
+    // let obj = {name:'zhufeng'};
+    // function func(x,y){
+    //     console.log(this);
+    //     this.total=x+y;
+    //     return this;
+    // }
+    // let res = func.change(obj,100,200);
+    // //res => {name:'Alibaba',total:300}
+    // console.log(res);
+
+    // 兼容IE678
+    // function fn(){
+    //     // this==> 100
+    // }
+    // var f = fn.bind([],200);
+    // f()
+    // bind ：预处理this; 
+    // 1. 兼容 call   2. 参数    3. 预处理
+    // Function.prototype.myBind=function(a,...arg){
+    //     // this==> fn
+    //     let that = this;// 把当前作用域this给了that变量；
+    //     return function(...agr1){
+    //         that.call(a,...arg,...agr1);
+    //     }
+    // }
+    // function fn(a,b,c){
+    //     console.log(this,a,b,c);
+    // }
+    // var f = fn.myBind({},100,200);
+    // f(300);
+
+    // let url="http://www.zhufengpeixun.cn/?lx=1&from=wx&a=ji#video";
+    // String.prototype.queryURLParams=function(attr){
+    //     // this ==> url 
+    //     // split： 分隔；
+    //     // ？后面 # 前面是参数；
+    //     // 请求： 
+    //     let obj ={};
+    //     let index = this.indexOf("?");
+    //     let index2 =this.indexOf("#");
+    //     // hash值；
+    //     obj["_HASH"]=this.substring(index2+1);
+    //     let newStr = this.substring(index+1,index2);
+    //     var a = newStr.split("&");
+    //     for(let i=0;i<a.length;i++){
+    //         let curStr = a[i].split("=");
+    //         // console.log(curStr);
+    //         // 第一项作为属性名，第二项作为属性值；
+    //         obj[curStr[0]]= curStr[1];
+    //     }
+    //     return  obj[attr];
+    //     // console.log(a);
+    //     // console.log(newStr)
+    // }
+    // console.log(url.queryURLParams("from"))// 
+    // console.log(url.queryURLParams("lx"))// 
+    // console.log(url.queryURLParams("a"))// 
+    // console.log(url.queryURLParams("_HASH"))// 
+
+
+
+    // function Modal(x,y){
+    //     this.x=x;
+    //     this.y=y;
+    // }
+    // Modal.prototype.z=10;
+    // Modal.prototype.getX=function(){
+    //     console.log(this.x);
+    // }
+    // Modal.prototype.getY=function(){
+    //     console.log(this.y);
+    // }
+    // Modal.n=200;
+    // console.dir(Modal)
+    // Modal.setNumber=function(n){
+    //     this.n=n;
+    // };
+    // let m = new Model(10,20);
+    // class Modal{
+    //     constructor(){
+    //         this.x=x;
+    //         this.y=y;
+    //     }
+    //     z=10
+    //     getX(){
+    //         console.log(this.x);
+    //     }
+    //     getY(){
+    //         console.log(this.y);
+    //     }
+    //     static n=200
+    //     static setNumber(){
+    //         this.n=n;
+    //     }
+    // }
+    // console.dir(Modal);
+    
+    </script>
+</body>
+</html>  

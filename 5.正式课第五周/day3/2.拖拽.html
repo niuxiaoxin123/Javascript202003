@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{   
+            width:300px;
+            height:300px;
+            position: absolute;
+            background: chartreuse;
+            /* left:50%;
+            top:50%;
+            margin-left:-150px;
+            margin-top:-150px; */
+            /* left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin: auto; */
+        }
+        #box h2{
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            color:white;
+            background:lightskyblue;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2 id="title">珠峰培训welcome you </h2>
+    </div>
+    <script>
+        let box = document.getElementById("box");
+        let title = document.getElementById("title");
+        let left =(document.documentElement.clientWidth-box.offsetWidth)/2;
+        let t = (document.documentElement.clientHeight-box.offsetHeight)/2;
+        box.style.left = left+"px";
+        box.style.top = t+"px";
+        // 当鼠标按下，进行拖拽，让盒子跟随鼠标移动；
+        // 鼠标按下： onmousedown
+        // 只要当触发了onmousedown 以后，才会绑定鼠标移动的事件
+        // 鼠标横向和纵向移动多少，那么box横向和纵向就应该移动多少；所以先计算出鼠标移动的距离，那么再设置盒子移动距离
+        // 当按下时，记录鼠标的距离body的距离；记录盒子初始的位置；
+        title.onmousedown=function(e){
+            // this --> title;把点击的初始位置放在title的curL属性上；
+            // 记录鼠标点击距离body左右窗口的横向和纵向的距离；
+            this.curL = e.clientX;
+            this.curT = e.clientY;
+            // 记录盒子初始的位置
+            this.x=  parseFloat(box.style.left);
+            this.y = parseFloat(box.style.top);
+            title.onmousemove=move;
+            title.onmouseup=up;
+        }
+        // move： 当鼠标移动，move就会执行；move执行就应该不断设置box的最新left和top值；
+        // 鼠标最新的clientX-点击时的clientX的值+盒子初始的left=> 盒子最新的left值
+        // 排错能力；
+        function move(e){
+            // console.log(e.clientX,this.curL,this.x);
+            // 计算出鼠标移动的距离+盒子初始的位置
+            box.style.left =  e.clientX-this.curL+this.x+"px";
+            box.style.top =  e.clientY-this.curT+this.y+"px";
+        }
+        function up(){
+            // 当鼠标抬起，清掉onmousemove的事件；
+            title.onmousemove=null;
+            title.onmouseup=null;
+        }
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>
