@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{   
+            width:300px;
+            height:300px;
+            position: absolute;
+            background: chartreuse;
+            left:50%;
+            top:50%;
+            margin-left:-150px;
+            margin-top:-150px;
+            /* left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin: auto; */
+        }
+        #box1{
+            position: absolute;
+            left:0;
+            top:0;
+            /* width:300px;
+            height:300px; */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+    </div>
+    <div id="box1"></div>
+    <!-- <div class="tab">
+        <ul>
+            <li></li>
+        </ul>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div> -->
+    <script>
+        // 封装一个拖拽效果
+        function Drag(str){
+            // 通过传进来的字符串，获取对应的元素；
+            // this ==> Drag的实例；
+            let  ele= document.getElementById(str.slice(1));
+            // bind 改变down的中this指向；
+            this.ele = ele;// 把ele这个元素给了this实例；
+            ele.onmousedown  = this.down.bind(this);
+        };
+        Drag.prototype.down=function(e){
+            // down : 记录位置；记录鼠标按下的初始位置【横向和纵向】 记录盒子初始的位置
+            // 原型中的this最好是能够指向Drag的实例；方便后期的调用；
+            // console.log(this);// this=> Drag的实例
+            this.x = e.clientX;
+            this.y = e.clientY;
+            this.startL = parseFloat(getComputedStyle(this.ele).left)
+            this.startT = parseFloat(getComputedStyle(this.ele).top);
+            // 看函数的执行前面有没有点，点前面是谁，this就是谁；
+            document.onmousemove = this.move.bind(this);
+            document.onmouseup=this.up;
+        }
+        Drag.prototype.move = function(e){
+            // 设置盒子最新的left和top值；
+            this.ele.style.left = e.clientX -this.x+this.startL+"px";
+            this.ele.style.top = e.clientY-this.y+this.startT+"px";
+        }
+        Drag.prototype.up=function(){
+            // 清除document的事件
+            document.onmousemove=null;
+            document.onmouseup = null;
+        }
+        new Drag("#box");
+        new Drag("#box1");
+        // 封装一个选项卡
+
+
+
+
+
+    </script>
+</body>
+</html>

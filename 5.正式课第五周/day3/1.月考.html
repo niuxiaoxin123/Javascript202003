@@ -413,24 +413,26 @@
     //     this.n=n;
     // };
     // let m = new Model(10,20);
-    // class Modal{
-    //     constructor(){
-    //         this.x=x;
-    //         this.y=y;
-    //     }
-    //     z=10
-    //     getX(){
-    //         console.log(this.x);
-    //     }
-    //     getY(){
-    //         console.log(this.y);
-    //     }
-    //     static n=200
-    //     static setNumber(){
-    //         this.n=n;
-    //     }
-    // }
-    // console.dir(Modal);
+    class Modal{
+        constructor(){
+            this.x=1;
+            this.y=2;
+        }
+        // z=10
+        getX(){
+            console.log(this.x);
+        }
+        getY(){
+            console.log(this.y);
+        }
+        static n=200
+        static setNumber(){
+            this.n=n;
+        }
+    }
+    // Modal.prototype.a=1;
+    console.dir(Modal);
+    console.log(new Modal)
     
     </script>
 </body>

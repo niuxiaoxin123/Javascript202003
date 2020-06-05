@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 发布订阅： 是一种编程思想
+        // 订阅：订阅时把事件存储到一个事件池中，
+        // 发布:  当条件成立的时候，遍历事件池中的方法，让这些方法依次执行
+        // box.onclick = function(){
+        //     console.log(1);
+        // }
+        // 订阅的方法 ： 
+        // curEle ： 订阅的主体  type: 类型  fn: 订阅的方法
+        let box=document.getElementById("box");
+        function on(curEle,type,fn){
+            if(!curEle[type]){ // type所存储的变量
+                // 第一次进来，给元素新增一个属性名是type,属性值是空数组这样的属性
+                curEle[type]=[];// 把事件池放在元素上；只有第一次执行的时候，才是空数组
+            }
+            let arr = curEle[type];// 事件池，这个事件池就是元素身上的一个属性名
+            let isHas=true;// 在push之前，先对现有的事件池中的方法进行判断，是否存在，如果存在，那么不需要再进行push；为了防止重复添加；
+            for(let i =0;i<arr.length;i++){
+                if(fn===arr[i]){
+                    isHas=false;
+                }
+            }
+            if(isHas){
+                arr.push(fn);
+            }
+        }   
+        on(box,"boiling",fn1);// 将fn1这个方法订阅到box的boiling事件池中
+        on(box,"boiling",fn2);
+        on(box,"boiling",fn3);
+        on(box,"afterWork",fn4);
+        // 发布的方法
+        function emit(curEle,type){
+            let  arr = curEle[type];// 先获取这个类型的对应的事件池
+            // 遍历事件池，让这个事件池中的方法都执行；
+            for(let i=0;i<arr.length;i++){
+                if(typeof arr[i]=="function"){
+                    // arr[i]必须是函数才可以执行；
+                    arr[i]();
+                }
+            }
+        }
+
+        // 移除事件
+        function off(curEle,type,fn){
+            let arr = curEle[type];
+            for(let i=0;i<arr.length;i++){
+                if(fn===arr[i]){
+                    // arr.splice(i,1); 会引发数组塌陷
+                    arr[i]=null;// 
+                }
+            }
+        }
+        // 取消订阅；
+        off(box,"boiling",fn1)
+        setTimeout(function(){
+            emit(box,"boiling")// 触发box中boiling对应的事件池；
+        },3000)
+        // onclick  onmousedown 
+        // 发布订阅模式也叫自定义事件模式；
+        function fn1(){
+            console.log("泡面")
+        }
+        function fn2(){
+            console.log("泡咖啡")
+        }
+        function fn3(){
+            console.log("泡脚")
+        }
+        function fn4(){
+            console.log("扫地")
+        }
+        // 水开了，就要发布；让事件池中订阅的方法挨个执行；
+
+
+        // on  emit  off; 
+        // onclick = function 点击；
+        // attachEvent :  IE8  
+
+    
+    
+    </script>
+</body>
+</html>
