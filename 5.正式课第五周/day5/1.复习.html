@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width:150px;
+            height:400px;
+            background: url("clock.png") no-repeat;
+            margin: auto;
+            /* animation是复合属性 */
+            /* 动画名字  一次完整动画的时间 效果   无限次 */
+            /* animation-name:move;
+            animation-duration:2s;
+            animation-timing-function:linear;
+            animation-iteration-count: infinite; */
+            animation: move 2s linear infinite;
+            /* 设置动画的旋转中心点 */
+            transform-origin:right top;
+        }
+        /* 帧动画 */
+        /*  from{
+                代表0%
+            }
+            to{
+                代表100%
+            } */
+        @keyframes move{
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(45deg);
+            }
+            50%{
+                transform:rotate(0deg);
+            }
+            75%{
+                transform: rotate(-45deg);
+            }
+            100%{
+                transform:rotate(0deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // on: 订阅【向事件池中放方法】  emit：发布【遍历事件中的方法，并且让其执行】  off ： 取消订阅【删除订阅的方法】
+        // 登录
+        // CSS3 
+        // tranform： translate  rotate  scale  skew 
+        // transform-origin
+
+    
+    
+    </script>
+</body>
+</html>

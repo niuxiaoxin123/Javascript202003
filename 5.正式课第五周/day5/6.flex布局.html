@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .list{
+            width:800px;
+            height:200px;
+            list-style: none;
+            background: yellowgreen;
+            /* list就是一个flex容器，子元素自动成为了成员 */
+            display: flex;
+            /* flex-direction: column-reverse; 
+            flex-wrap: wrap-reverse; */
+             /* flex-flow:column-reverse   wrap-reverse; */
+             /* justify-content:  space-around ; */
+             align-items: stretch;
+        }
+        .list li{
+            width:300px;
+            /* height:100px; */
+            background: red;
+            text-align: center;
+        }
+        .list li:nth-child(1){
+            /* flex-grow:1; */
+            /* flex-shrink: 0; */
+            /* flex-basis: 600px; */
+            /* flex:0 1 */
+            height:100px;
+            order:1;
+            line-height: 100px;
+        }
+        .list li:nth-child(2){
+            /* flex-grow:1; */
+            order:0;
+            height:50px;
+            line-height: 50px;
+        }
+        .list li:nth-child(3){
+            /* flex-grow:1; */
+            order:2;
+            height:150px;
+            line-height: 150px;
+            align-self: flex-end;
+        }
+        .list li:nth-child(4){
+            /* flex-grow:2; */
+            height:120px;
+            order:1;
+            line-height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        // 父元素： 容器   子元素：项目
+        // flex: 有两个轴： 水平方向是煮粥  垂直方向是交叉轴；
+        // 项目默认沿着主轴方向排列；
+        // 容器上的属性
+        // flex-direction : 决定的项目的排列方向;
+        // flex-direction: row; row-reverse【反向排序】 cloumn [交叉轴排列]  cloumn-reverse [交叉轴反向]
+
+        // flex-wrap: nowrap; 不换行，如果子元素超过了父元素，那么同比例缩放不换行；wrap:换行 wrap-reverse: 换行颠倒顺序；
+
+        // flex-flow : flex-direction 和flex-wrap的简写；
+        // justify-content : 设置对齐的方向
+        // flex-start : 左对齐 flex-end  center  space-between  space-around
+
+        // align-items: flex-start : 交叉轴起点对齐
+        // flex-end：交叉轴的终点对齐。 
+        // center：交叉轴的中点对齐。
+        // baseline: 项目的第一行文字的基线对齐。
+        // stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+
+        // align-content:
+
+        // flex成员的属性
+        // order: 根据order的大小重新对DOM排列，默认是0；小的在前面；
+        // flex-grow: 都为1.均等分剩余的空间
+        // 
+
+
+    
+    
+    </script>
+</body>
+</html>

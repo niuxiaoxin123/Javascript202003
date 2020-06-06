@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+        .box{
+            width:1.5rem;
+            height:1.5rem;
+            background:red;
+        }
+        /* ul{
+            width:2rem;
+            height:1rem;
+        } */
+    </style>
+</head>
+<body>
+    <div class='box'></div>
+    <script>
+     // 移动端: 智能手机的屏幕大小参差不齐；
+     // rem布局；
+     // 视口： 布局视口  视觉视口  理想视口
+     // 布局视口： 和屏幕宽度没有关系；布局视口的设计一般都是980px;
+    //  console.log(document.documentElement.clientWidth)
+     // 视觉视口： 根据缩放可大可小，指的是看到网站区域的大小
+     // 理想视口；
+
+     // rem布局： 让每一个盒子根据当前屏幕的宽度计算出一个最新的宽度来适应整体的布局；
+
+     // 页面中html的font-size;就是1rem;如果想改变页面中元素的宽高，只需要改变html的font-size的值就可以；
+    
+     //UI --> 图 -> 设计稿;
+     //设计稿 :目前市场上，UI提供的设计稿的宽度一般都是750;高度
+     // 750px     150px       1.5rem            100px
+     // 375px     75px        1.5rem            50px;
+     // 414px     414/5px     1.5rem             ?
+    // 等比例
+
+    // ?=414*100/750
+    // 根据屏幕的大小时时刻刻更新html的fontSize 值；然后盒子才能得到适时的更新
+    // document.documentElement.style.fontSize=document.documentElement.clientWidth*100/750+"px";
+    // 为了计算出在不同屏幕的宽度下，最新的html的fontSize值；
+    (function(){
+        // window.onresize: 当屏幕的窗口大小发生改变，就会触发onresize事件；
+        function change(){
+            document.documentElement.style.fontSize=document.documentElement.clientWidth*100/750+"px";
+        }
+        window.onresize=change;
+        change();
+    })();
+    
+    </script>
+</body>
+</html>
