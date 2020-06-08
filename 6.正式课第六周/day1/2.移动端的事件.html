@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">天气很热，但是听课很凉快</div>
+    <script src="fastclick.js"></script>
+    <script>
+        // 将DOM\图片加载完毕，执行的函数；
+        window.addEventListener("load",function(){
+            FastClick.attach(document.body);
+        });
+        // touch事件是没有延迟的；
+        // fastClick的原理： 在fastClick里面把onclick事件的元素又重新绑定了touch事件，在touchend中会给DOM元素自定义立即触发的click;同时阻止300ms之后延迟的那个onclick;
+        let box  = document.getElementById("box");
+        // 移动端中存在onclick事件，点击事件，相当于触摸；但是移动端一般不用onclick事件，因为移动端中的onclick存在300ms的延迟；在移动端中点击完盒子以后，会等待300ms，判断是否有下一次点击行为；如果有，说明是双击事件，如果没有下一次点击，那么就会触发onclick;
+        let now = Date.now();
+        // 没有延迟了；
+        box.onclick = function(){
+            console.log(100);
+            console.log(Date.now()-now)
+        }
+        // 在移动里不存在鼠标，当然也不存在鼠标事件了;
+        // 触摸： 在移动中存在touch事件来代替鼠标事件；
+        // box.onmouseover = function(){
+        //     console.log(100);
+        // }
+        // fastClick插件
+        // 移动端： touch事件 触摸事件
+
+        // zepto.js ： 相当于jquery的移动版；
+        // tap: 同样阻止延迟
+        // tap: 就是点击事件；
+        // $("#box").tap(function(){
+
+        // })
+    
+    
+    </script>
+</body>
+</html>

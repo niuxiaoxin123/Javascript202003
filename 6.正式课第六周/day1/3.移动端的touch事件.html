@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            margin:auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box" class="foo"></div>
+    <!-- <div  class="foo"></div>
+    <div  class="foo"></div> -->
+    <script>
+        // document.querySelector： 适用于移动端，兼容性好；
+        // document.querySelector: 获取一个元素；如果是id需要加上#;如果是class，需要加上. 
+        // document.querySelectorAll();
+        let box = document.querySelector(".foo");
+        // console.log(box);
+        // let boxs = document.querySelectorAll(".foo");
+        // console.log(boxs);
+        
+
+        // 触摸事件
+        // ontouchstart : 触摸开始执行的方法；
+        // ontouchmove : 触摸移动
+        // ontouchend : 触摸结束
+
+        // box.ontouchstart = function(){
+        //     console.log(100);
+        // }
+        box.onclick = function(){
+            console.log(1000)
+        }
+        box.addEventListener("touchstart",function(e){
+            // 移动端的事件信息存放在事件对象的touches中
+            // clientX  clientY  pageX  pageY   target  type
+            // console.log(e);
+            // console.log(e.touches[0].clientX);
+            console.log(100);
+        })
+        box.addEventListener("touchmove",function(){
+            console.log(200);
+        })
+        box.addEventListener("touchend",function(e){
+            // 在这个事件中，事件信息放在了事件对象e的changedTouches 这个属性上；
+            // console.log(e);
+            console.log(300);
+        });
+        // onclick最后执行的，在ontouchend之后执行；一旦在元素进行了滑动，那么就不再触发onclick；
+        // FastClick原理： 把给元素绑定的点击事件，改造了给body绑定touch事件；元素事件触发时，会冒泡到body,触发了body的touch事件，由于touch事件不延迟，立即执行，所以不再有延迟了；阻止给元素绑定的事件；
+        // touchstart===>touchend ===> onclick 
+
+    
+    </script>
+</body>
+</html>

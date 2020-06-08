@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        // 在加载DOM之前，先执行了rem的计算，避免了rem发生变化以后重新对DOM进行排列，减少了大量的回流；
+        (function(){
+            function computedFont(){
+                let winW = document.documentElement.clientWidth;
+                document.documentElement.style.fontSize=winW*100/750 +"px"
+            }
+            // 让方法执行，计算出当前最新的html的fontSize值；
+            computedFont()
+            // 当浏览器窗口发生改变，再次计算fontSize值；
+            window.addEventListener("resize",computedFont)
+        })()
+    </script>
+</head>
+<body>
+    <div class="container">
+       <audio src="img/myDream.m4a" id="music"></audio>
+       <div class="imgBg"></div>
+       <div class="bg"></div>
+       <header class="header">
+            <div class="content">
+                <img src="img/myDream.jpg" alt="">
+                <h3>
+                    <span>我的梦</span>
+                    <span>张靓颖</span>
+                </h3>
+            </div>
+            <a href="javascript:;" id="musicBtn"></a>
+       </header>
+       <main class="main">
+           <div class="wrap">
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+               <p>今天天气好晴朗</p>
+           </div>
+       </main>
+       <footer class="footer">
+            <div class="progress">
+                <div class="proBg">
+                    <div class="lineBg"></div>
+                </div>
+                <span id="left">00:00</span>
+                <span id="right">00:00</span>
+            </div>
+            <a href="javascript:;" id="down">下载这周歌曲</a>
+       </footer>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

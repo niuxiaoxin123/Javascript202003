@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <audio src="img/myDream.m4a" controls id="music"></audio>
+    <button id="btn1">播放</button>
+    <button id="btn2">暂停</button>
+    <script>
+        // controls : 控制音频是否显示
+        // audio :音频 video：视频
+        let music = document.querySelector("#music");
+        let btn1 = document.querySelector("#btn1");
+        let btn2 = document.querySelector("#btn2");
+        // play:在音频的元素上有个play方法，可以让音乐播放起来；
+        // pause: 让音乐暂停的方法
+        // paused : 是音频元素对象的一个属性，如果是播放状态，那么该值是false，如果是暂停状态，那么paused是true；
+        // music.play();// 因为谷歌浏览器不允许加载页面时，让直接让音乐播放；原因是此时音频资源还没有加载完成
+        // 新版本的谷歌浏览器禁掉了自动播放的功能；因为音频资源还没有加载完成
+        // 当资源在家才会触发这个方法
+        // window.onload = function(){
+        //     console.log(100);
+        //     music.play();
+        //     console.log(music.duration);// NaN 
+        // }
+        // canplay : 能够实现播放；当音乐可以播放时，执行这个事件；
+        // music.addEventListener("canplay",function(){
+        //     console.log(music.duration)
+        // })
+        // duration: 音频的总时长 单位是秒；
+        // currentTime : 获取此时此刻播放了多长时间；
+        
+        btn1.onclick = function(){
+            // music : 是音频的元素对象
+            music.play();
+            console.dir(music)
+        }
+        btn2.onclick = function(){
+            music.pause();
+            console.log(music.currentTime);
+            console.dir(music)
+        }
+        
+        
+    </script>
+</body>
+</html>
