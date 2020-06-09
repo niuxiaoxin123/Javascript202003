@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 每一个页面都有自己独立的全局作用域，并且页面之间相互不能访问
+        // 我们希望在页面B中可以获取到页面A的内容；
+        // 页面A和页面B需要找到一个公共的载体；当然是浏览器；在浏览器专门提供了可以存储的空间。浏览器这块空间是Storage;实现页面之间的数据传递
+        // localStorage  sessionStorage   cookie 
+        // H5新增的API ;
+        // console.log(num);
+        // localStorage :永久存储；关闭页面或关闭浏览器，下次打开仍然可以获取到；
+        // localStorage.setItem(key,value) 设置数据
+        // localStorage.getItem(); 获取localStorage的数据;如果获取不到，那么结果是null;
+        // localStorage.removeItem(key)// 删除storage中的数据
+        // localStorage.clear(); 清空storage;
+        // localStorage.setItem("a","2020第三期");
+        // localStorage.removeItem("a");
+        // localStorage.clear();
+
+        // sessionStorage  : 会话存储 : 只能自己的页面可以访问
+        // sessionStorage.setItem("a","你们很潇洒");
+        // getItem  removeItem   clear
+        // cookie 
+        // 当登录时，如果一段时间以后，没有访问或这个页面，
+        // localStorage 和sessionStorage 和cookie 的区别； session
+
+
+
+
+        
+        
+        
+    </script>
+</body>
+</html>
