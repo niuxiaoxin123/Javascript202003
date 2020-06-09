@@ -57,7 +57,7 @@ html,body{
     background: url("../img/music.svg") no-repeat;
     background-size:100% 100%;
 }
-.header #music.select{
+.header #musicBtn.select{
     animation: move 2s linear infinite;
 }
 @keyframes move{
@@ -81,6 +81,7 @@ html,body{
     position: absolute;
     width:96%;
     top:0;
+    transition:all 0.5s linear;
 }
 .main .wrap p{
     width:100%;
@@ -90,7 +91,9 @@ html,body{
     color:rgba(255,255,255,0.6);
     font-size:0.4rem;
 }
-
+.main .wrap p.select{
+    color:#31C27C;
+}
 /* footer的样式 */
 .footer{
     width:100%;

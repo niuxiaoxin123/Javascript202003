@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet/less" href="5.less">
+    <link rel="stylesheet/less" href="6.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>
+    <!-- 在浏览器解析less文件时，这个js把less文件进行了重新的编译，编译成了css文件 -->
 </head>
 <body>
     <div class="box">
-        <div class="noon">中午快下课了</div>
+        <!-- <div class="noon">中午快下课了</div> -->
+        <div class="box-a"></div>
     </div>
-    <div class="noon">aaa</div>
+    <!-- <div class="noon">aaa</div> -->
     <script>
         // html :标记语言
         // Js 编程语言；具有编程思想；
@@ -25,6 +27,15 @@
 
         //less ： 预编译语言；开发的时候用less进行开发，但是最后上线的时候还需要把less编译成css文件；
         // 浏览器不能识别less的文件，只识别HTML css  js;
+        /// 开发写代码的时候用less文件；那么上线的代码最好是css;
+
+        // 上线：开发环境  测试环境 生产环境
+        // 开发环境：就是写的代码
+        // 测试环境： 作为一个临时的平台，来检测项目的有没有bug等内容；
+        // 生产环境：服务器的代码；
+
+         
+
     </script>
     
 </body>

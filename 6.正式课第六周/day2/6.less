@@ -1,0 +1,65 @@
+// 解决权重
+// 可以定义变量 通过@定义变量
+// @w:100px;
+// //变量经常定义公共的图片路径;
+// @URL:"./img/";// 方便统一进行修改，不需要挨个去更改
+// .box{
+//     width:@w;
+//     height:@w;
+//     background:url("@{URL}zf_cube1.png");
+//     .box1{
+//         // 如果这个作用域没有，会继续向上查找，如果上一级作用域也没有，会继续向上一级查找；
+//         // less 中定义的变量具有变量提升的特点
+//         width:@w;
+//         background:url("@{URL}zf_cube2.png");
+//         @w:200px;
+//     }
+// }
+
+// 函数的封装： 函数是不会被css重新解析的；
+// .public(@a){ 
+//     // 可以传参
+//     width:@a;
+//     height:@a;
+//     background: red;
+// }
+// 如果是类，最终还是要编译的
+// .public{ // 类
+//     width:80px;
+//     height:80px;
+// }
+// .box{
+//     .public;// 引用公共的样式
+//     .public();// 函数调用
+//     .box1{
+//         .public;
+//     }
+// }
+
+// &
+// .public{
+//     color:black;
+//     font-size: 10px;
+// }
+// .box{
+//     width:100px;
+//     height:100px;
+//     background: blue;
+//     &:hover{
+//         background: red;
+//     }
+//     // .public; 出现冗余的代码;把public复制一份粘下来
+//     &:extend(.public);
+//     &-box{
+//         width:10px;
+//     }
+// }
+
+// 混合mixin
+.layout(@a) when(@a<100){
+    background: red;
+}
+.box{
+    width:100px;
+    .layout(99);
+}

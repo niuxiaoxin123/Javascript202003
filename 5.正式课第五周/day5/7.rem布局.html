@@ -50,14 +50,23 @@
     // 根据屏幕的大小时时刻刻更新html的fontSize 值；然后盒子才能得到适时的更新
     // document.documentElement.style.fontSize=document.documentElement.clientWidth*100/750+"px";
     // 为了计算出在不同屏幕的宽度下，最新的html的fontSize值；
-    (function(){
-        // window.onresize: 当屏幕的窗口大小发生改变，就会触发onresize事件；
-        function change(){
-            document.documentElement.style.fontSize=document.documentElement.clientWidth*100/750+"px";
-        }
-        window.onresize=change;
-        change();
-    })();
+    // (function(){
+    //     // window.onresize: 当屏幕的窗口大小发生改变，就会触发onresize事件；
+    //     function change(){
+    //         document.documentElement.style.fontSize=document.documentElement.clientWidth*100/750+"px";
+    //     }
+    //     window.onresize=change;
+    //     change();
+    // })();
+        var b=10;
+        (function b(){
+           var  b = 1;
+           b=20;
+           console.log(b)//为啥输出函数b而不是变量b
+        })()
+       
+       
+       console.log(b)
     
     </script>
 </body>

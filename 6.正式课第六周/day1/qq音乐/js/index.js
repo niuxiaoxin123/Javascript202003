@@ -27,7 +27,7 @@ $.ajax({
 
 // 3.请求完数据以后绑定数据
 function bindHtml(data){
-    console.log(data);
+    // console.log(data);
     data=data.replace(/&#(\d+);/g,function(res,a){
         switch(a){
             case "32":
@@ -54,11 +54,79 @@ function bindHtml(data){
    let str = ``;
    for(let i=0;i<arr.length;i++){
        let cur = arr[i];
-       str+=`<p>${cur.val}</p>`
+       // 把当前歌词分钟和秒放到行间属性上
+       str+=`<p data-min="${cur.a}" data-sec="${cur.b}">${cur.val}</p>`
    }
    $(".wrap").html(str);
 }
 
-// 作业： 1. 点击按钮让音乐播放和暂停
+// 作业：  1. 点击按钮让音乐播放和暂停
 //        2. currentTime  duration ;每隔一秒获取一下当前的currentTime,对left的span赋值；duration对right赋值；进度条
 //        3. 
+// 给musicBtn 绑定点击事件，如果是暂停状态，让其播放，如果播放状态，让其暂停
+let music = $("#music")[0];// 这样写是一个jquery的实例；play都是在原生的DOM对象上；
+// let  a = document.getElementById("music");
+// console.log(music ===a);
+let timer;
+$("#musicBtn").tap(function(){
+    if(music.paused){
+        music.play();
+        // this => 原生的DOM元素；需要把原生的DOM对象转成jquery的实例；才能调用addClass
+        $(this).addClass("select");
+        timer = setInterval(computeTime,1000);
+    }else{
+        music.pause();
+        $(this).removeClass("select");
+        clearInterval(timer);
+    }
+});
+// 当音频解析完成以后，对right进行赋值
+// console.log(music.duration)
+music.addEventListener("canplay",function(){
+    $("#right").html(formate(music.duration))
+})
+// 格式化时间的方法
+function formate(time){
+    let min = Math.floor(time/60);
+    let sec = Math.floor(time%60);
+    min = min<10?"0"+min:min;
+    sec=sec<10?"0"+sec:sec;
+    return min+":"+sec;
+}
+let curT = 0;
+function computeTime(){
+    let curTime = music.currentTime;
+    let duration = music.duration;
+    let cur = formate(curTime);
+    if(curTime>duration){
+        // 当音乐播放完成，停止定时器及动画；
+        clearInterval(timer);
+        $("#musicBtn").removeClass("select");
+        return;
+    }
+    $("#left").html(cur);
+    // 时间的比等于宽度的比;
+    $(".lineBg").css("width",curTime/duration*100+"%");
+    let min = cur.split(":")[0];
+    let sec = cur.split(":")[1];
+    // 根据这个时间去匹配
+    let allp= document.getElementsByTagName("p");
+    for(let i=0;i<allp.length;i++){
+        let curP = allp[i];
+        let minP = curP.getAttribute("data-min");
+        let secP = curP.getAttribute("data-sec");
+        // 让左下角的时间和这个行上的事件比较，如果相同，音乐已经播放到了这一行，加上颜色；
+        if(min===minP && sec===secP){
+            // 满足条件并且className不是select,给其加上class为select；
+            if(curP.className!=="select"){
+                $(curP).addClass("select").siblings().removeClass("select");
+                if(i>=6){
+                    // 因为每行的行高都是0.84rem;
+                    curT-=0.84;
+                    $(".wrap").css("top",curT+"rem");
+                }
+            }
+        }
+    }
+
+}
