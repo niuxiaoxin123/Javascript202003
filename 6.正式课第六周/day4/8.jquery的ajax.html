@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        //$ 
+        // window.$=window.jQuery=jQuery ;
+        // 在jquery的封装中，jquery的私有属性上，在jquery的原型上；
+        // addClass
+        // $("#box").addClass
+        // $.each $.ajax
+        $.ajax({// 这个对象作为参数传给了ajax这个函数的实参
+            url:"json/lyric.json",
+            type:"get",
+            async:false,
+            // data:{  传参
+            //     username:"sunxuebin",
+            //     password:"100000"
+            // },
+            cache:true,// 是否走缓存；默认是true，走缓存 false 不走缓存
+            dataType:"json",// 设置返回的数据类型
+            success:function(data){ // 请求成功才会触发这个函数
+                // 请求成功以后会把后端请求回来的数据传给这个函数的data
+                // 请求回来的数据已经转成了JSON格式对象
+                console.log(data);
+            },
+            timeout:1000,// 设置请求的超时时间；
+            beforeSend:function(){
+                // 可以在这个函数中设置请求头
+            },
+            complete:function(){
+                // 不管请求是成功还是失败，都会执行
+            },
+            error:function(){
+                // 请求失败会调用函数
+            }
+        });
+        // 封装jquery版的ajax
+        // url  async  cache  data  success   type
+        function ajax(){
+
+        }
+        ajax({
+            url:"json/lyric.json",
+            async:true,
+            success:function(){
+                
+            }
+        })
+        
+        
+        
+    </script>
+</body>
+</html>
