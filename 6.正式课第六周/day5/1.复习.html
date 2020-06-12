@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+         //  项目流程  
+         //  发布网站
+         //  从浏览器输入url到页面渲染发生了什么？
+         //  AST语法解析  C
+         //  http  url   http://www.jd.com:443/n/search.html?user=1223&password=99#hahs;
+         // ajax  => 前后端分离==>接口文档；
+         // ajax的readState 0 1 2 3 4;
+         // ajax的状态码： 
+         // get post 四点区别
+         // ajax的同异步；能用异步就别用同步；
+         // jquery的ajax : url 
+        //  $.ajax({
+        //      url:'',
+        //      type:"post",
+        //      data:{
+
+        //      },
+        //      async:false,
+        //      cache:false,
+        //      dataType:"json",
+        //      success:function(){},
+        //      error:function(){},
+        //      complete:function(){}
+        //  })
+        $.ajax({
+            url:location.href,
+            data:{a:100},
+            type:"GET",
+            success:function(data){
+            }
+        })
+    // console.log(window.location.href)
+    
+    </script>
+</body>
+</html>
