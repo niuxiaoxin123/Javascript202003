@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // async function async1(){
+        //     console.log("async1 start");// 2
+        //     await async2();
+        //     console.log("async1 end");// 微任务1 6
+        // }
+        // async function  async2(){
+        //     console.log("async2")// 3
+        // }
+        // console.log("script start");// 1
+        // setTimeout(()=>{
+        //     console.log("setTimeout") // 8
+        // },0);
+        // async1();
+        // new Promise((resolve)=>{
+        //     console.log("promise1");// 4
+        //     resolve();
+        // }).then(()=>{
+        //     console.log("promise2")// 微任务2 7
+        // });
+        // console.log("script end")// 5
+
+        // 微任务： promise的then   await 微任务
+        // 宏任务: 定时器 ajax 
+        // 事件循环机制：同异步
+        // 当执行JS代码时，分为主任务队列和等待任务队列，在执行主栈的代码时，遇到同步的代码会立即执行，遇到异步的代码会先放到等待队列中，放入时区分是宏任务还是微任务，按照不同的任务放到等待队列中不同的池子中，当主任务队列执行完成以后，此时要去等待队列中获取异步任务；先去微任务的事件池中获取任务且放在主栈中执行，微任务执行完以后，再去宏任务中获取任务，并且拿到主栈中执行；
+
+        // event Loop : 事件  循环
+    
+    
+        
+    </script>
+</body>
+</html>

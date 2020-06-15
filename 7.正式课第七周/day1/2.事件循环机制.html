@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout(()=>{
+        //     console.log(111);
+        // },0)
+        // let p = new Promise(function(resolve,reject){
+        //     console.log(222);
+        //     resolve()
+        // });
+        // console.log(888);
+        // // 定时器和then都是异步的；但是异步任务分为微任务和宏任务；定时器是属于宏任务，then属于微任务；一定先执行微任务，后执行宏任务；
+        // p.then(function(){// then 也是异步的；then先执行的
+        //     console.log(666);
+        // });
+
+
+        // setTimeout(()=>{
+        //     console.log(111);
+        // },0)
+        // function bar(){
+        //     console.log(333);
+        // }
+        // async function fn(){
+        //     let s = await bar();
+        //     // await下面的代码也是微任务；
+        //     console.log(666);
+        // }
+        // fn();
+        // console.log(222);
+
+        // 微任务： promise的then  await下面的代码都是微任务
+        // 宏任务 ： 定时器  ajax   事件... 
+
+        function fn1(){console.log(666)}
+        setTimeout(function(){
+            console.log(800)
+        },0);
+        console.log(900);
+        async function fn(){
+            console.log(999);
+            await fn1();
+            console.log(888);
+        }
+        let p = new Promise(function(resolve,reject){
+            console.log(200);
+            resolve();
+            console.log(300) 
+        });
+        p.then(function(){
+            console.log(100)
+        });
+        fn();
+        // 微任务执行的顺序谁先放在任务队列中，谁先执行；
+        // 900 200  300 999 666 100  888  800 
+        
+    
+    
+    </script>
+</body>
+</html>
