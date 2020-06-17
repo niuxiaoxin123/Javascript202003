@@ -57,6 +57,9 @@ $(function(){
         $baseBox = $(".baseBox"),
         $spanName = $baseBox.children("span"),
         $signoutBtn=$baseBox.children("a"),
+        $itemBox = $(".itemBox"),
+        $navList = $(".navBox a"),
+        $iframeBox=$(".iframeBox"),
         $menuBox = $(".menuBox");
     // 1. 计算出container的高度
     function computed(){
@@ -102,12 +105,42 @@ $(function(){
 
     // DOM 节点： nodeType  nodeValue  nodeName  tagName
     // 基于事件委托，实现左侧折叠菜单
-    $menuBox.click(function(e){
-        let target = e.target,
-            tarTag = target.nodeName,
-            $target= $(target);
+    $menuBox.click(function(e){// 给$menuBox绑定点击事件
+        let target = e.target,// e是事件对象，上面有个target属性名是代表点击的元素，也就是事件源；
+            tarTag = target.tagName,// 事件源上有个tagName属性名,属性值时大写的标签名
+            // console.log(tarTage);       
+            $target= $(target);// 把原生的元素对象转成jquery的对象
         if(tarTag==="I"){
             $target.parent().next().slideToggle(300);
         }
+    });
+    // 当点击组织结构只显示前面3个itemBox 点击客户管理显示最后一个itemBox
+    // filterjquery的过滤器，过滤出$itemBox的索引小于3那三个
+    let $organise = $itemBox.filter(":lt(3)"),
+        $customer = $itemBox.eq(3);
+    let initIndex = 0;
+    function change(index){
+        if(index===0){
+            $organise.css("display","block");
+            $customer.css("display","none");
+            // 给iframeBox这个元素设置src属性，
+            $iframeBox.attr("src","page/userlist.html")
+        }else{
+            $organise.css("display","none");
+            $customer.css("display","block");
+            $iframeBox.attr("src","page/customerlist.html");
+        }
+    }
+    change(initIndex);
+    // 给横向的导航绑定点击事件，把当前a标签的索引传递给change方法；
+    $navList.click(function(){
+        let index = $(this).index();// 获取当前a标签的在兄弟元素的索引；
+        change(index);
     })
+
+
+
+
+    
+
 })
