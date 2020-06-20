@@ -127,6 +127,7 @@ $(function(){
         if(!checkUserName()||!checkEmail()||!checkPhone()){return};
         // 如果进行是新增还是修改的判断呢？
         let url = userId?"/user/update":"/user/add";
+        // liveServer启动服务发送post请求会刷新页面； 是vscode帮助咱们启动服务用的；
         axios.post(url,{
             userId:userId?userId:null,
             name:$username.val().trim(),
@@ -136,6 +137,10 @@ $(function(){
             departmentId:$userdepartment.val(),
             jobId:$userjob.val(),
             desc:$userdesc.val().trim()
+        }).then(result=>{
+            if(parseFloat(result.code)===0){
+                window.location.href="userlist.html";
+            }
         })
     })
 
