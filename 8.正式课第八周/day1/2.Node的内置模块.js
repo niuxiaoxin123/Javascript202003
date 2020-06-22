@@ -31,10 +31,10 @@ let fs = require("fs");
 
 
 // 4. writeFile writeFile(path,内容,encoding,callback);
-// fs.writeFile("./3.txt","欢迎新同学","utf8",function(){
-//     // 当成功的写完以后，会触发该回调函数
-//     console.log("已成功修改");
-// });
+fs.writeFile("./3.txt",[1,2,3],"utf8",function(){
+    // 当成功的写完以后，会触发该回调函数
+    console.log("已成功修改");
+});
 // 先读取，然后把读出来的内容和新的内容拼接到一起；
 // fs.readFile("./3.txt","utf8",function(err,result){
 //     fs.writeFile("./3.txt",result+"欢迎新同学","utf8",function(){
@@ -45,6 +45,23 @@ let fs = require("fs");
 // 4.appeddFileSync : 直接文件末尾追加内容
 // fs.appendFileSync("./3.txt","不许走神","utf8");
 // fs.appendFile
+
+
+//  copyFileSync : 把文件里面的内容拷贝到新的文件中，并且替换掉原来的内容；覆盖
+// copyFileSync(A,B);把A拷贝到b中；
+// fs.copyFileSync("./customer.json","./3.txt")
+
+
+// readdirSync : 同步读取指定的目录，返回一个数组，数组中包含了目录的字符串；
+// let address = fs.readdirSync("../../");
+// console.log(address);
+
+// readdir:异步读取文件目录，读取完会触发回调函数执行，err,代表错误信息，result代表读取的结果，是一个数组
+// 同异步；
+// fs.readdir("./",function(err,result){
+//     console.log(result);
+// });
+
 
 
 
