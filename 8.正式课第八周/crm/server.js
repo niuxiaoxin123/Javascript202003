@@ -3,6 +3,7 @@ let bodyParser =require("body-parser");
 let session = require("express-session");
 let  promiseFs = require("./PromiseFs.js");
 let app = express();
+// 监听一个端口；
 app.listen(8080,function(){
     console.log("8080启动成功");
 });
@@ -49,8 +50,6 @@ app.use("/user",require("./routes/user"));
 // app.use("/job",require("./routes/job"));
 // app.use("/customer",require("./routes/customer"));
 // app.use("/visit",require("./routes/visit"));
-
-
 
 
 // 静态资源文件

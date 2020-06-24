@@ -71,6 +71,7 @@ $(function(){
             handleCheckbox();
         })
     }
+    render();
     // 请求下拉框的数据
     let selectBind = function(){
         return axios.get("/department/list").then(result=>{
@@ -87,7 +88,7 @@ $(function(){
     };
     selectBind().then(()=>{
         // rennder一定是
-        render();
+        // render();
     });
     // 点击全选；都选中或者都不选中
     // 点击其中一个input，当所有的input都选中，全被选中，只要一个没选中，那么全选就不选中

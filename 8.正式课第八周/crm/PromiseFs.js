@@ -42,7 +42,7 @@ function suffixName(pathname){
     obj[item]=function(pathname,content){
         // 如果content传过去{},需要对将对象转成JSON格式的字符串；
         pathname = path.resolve(pathname);
-        typeof content==="obejct"&&content!==null?content = JSON.stringify(content):null;
+        typeof content==="object"&&content!==null?content = JSON.stringify(content):null;
         return new Promise((resolve,reject)=>{
             let encoding = suffixName(pathname);
             let callBack = function(err,result){
@@ -52,7 +52,7 @@ function suffixName(pathname){
                 }
                 resolve(result);
             }
-            fs[item](pathname,content,encoding,callback)
+            fs[item](pathname,content,encoding,callBack)
         })
     }
 });
