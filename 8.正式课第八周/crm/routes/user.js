@@ -179,6 +179,73 @@ route.get("/delete",function(req,res){
         })
     }
 });
+// 新增用户;
+// 获取到前端传递过来的参数，放到对象中，push到req.$userdata;最后把req.$userdata写到user.json中;
+route.post("/add",function(req,res){
+    // 前端post请求传递过来的参数从req.body获取；get请求传过来的参数是从req.query中获取；
+    let {name,sex,email,phone,departmentId,jobId,desc}=req.body;
+    req.$userdata.push({
+        // 判断数组是否为空，如果空id为1；如果不为空，最后一项id+1；
+        id:req.$userdata.length===0?1:req.$userdata[req.$userdata.length-1]['id']+1,
+        name,
+        password:"8376ac810bb9f231d28fcf1f",
+        sex,
+        email,
+        phone,
+        departmentId,
+        jobId,
+        desc,
+        time:new Date().getTime(),
+        state:0
+    });
+    promiseFs.writeFile("./json/user.json",req.$userdata).then(()=>{
+        res.status(200);
+        res.type("application/json");
+        res.send({
+            code:0,
+            codeText:"OK"
+        })
+    }).catch(err=>{
+        res.status(200);
+        res.type("application/json")
+        res.send({
+            code:1,
+            codeText:"新增失败"
+        })
+    })
+})
 
+
+// 更新数据
+// 在req.$userdata中找到和传过来id相同的这个对象
+route.post("/update",function(req,res){
+    let {userId}=req.body;
+    req.$userdata= req.$userdata.map(item=>{
+        // 在项目中，后端返回的数据一般都会有id；代表唯一性；
+        if(parseFloat(item.id)===parseFloat(userId)){
+            return  {
+                ...item,// 数据库中原来的对象信息
+                ...req.body // 前端传过来的新的数据对象
+            }
+        }
+        return item;
+    });
+    promiseFs.writeFile("./json/user.json",req.$userdata).then(()=>{
+        res.status(200);
+        res.type("application/json");
+        res.send({
+            code:0,
+            codeText:"OK"
+        })
+    }).catch(err=>{
+        res.status(200);
+        res.type("application/json")
+        res.send({
+            code:1,
+            codeText:"修改失败"
+        })
+    })
+
+})
 
 module.exports = route;

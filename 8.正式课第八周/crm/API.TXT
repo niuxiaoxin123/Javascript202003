@@ -137,7 +137,7 @@ RESULT：{
 获取部门详细信息
 URL：/department/info
 METHOD：GET
-PARAMS：departmentId=1
+PARAMS：departmentId=1 
 RESULT：{
 	code:0  
 	codeText:'OK',
