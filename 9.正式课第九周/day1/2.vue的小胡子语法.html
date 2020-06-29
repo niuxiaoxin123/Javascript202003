@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div>
+        {{msg}}
+    </div> -->
+    <div id="app">
+        {{msg}}
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 写法不同了；
+        // 在vue中想改变页面中的结构，改变数据；数据变，视图变；
+        // vue 全家桶
+        // vue : 是一个构建用户界面的渐进式框架；vue的核心只关注视图层
+        // 数据响应式
+        // 小胡子：可以直接从data中取值；
+        // vue : 是一个类；传入对象
+        new Vue({
+            // 在这个对象中，属性名都不可以更改
+            el:"#app",
+            data:{
+                msg:"大家今晚继续预习"
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
