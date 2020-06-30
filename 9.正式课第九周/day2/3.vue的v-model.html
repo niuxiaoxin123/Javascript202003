@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1"></div>
+    <div id="app">
+        {{msg}}
+        <input type="text" v-model="name" hh="na">
+        <!-- <span v-model="name"></span> -->
+        <!-- <div v-model="name"></div> -->
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 指令： vue提供了一些内置的指令；以v-开头，放在行间属性上，有着特殊的意义的一些词；就是指令
+        // v-model : 指令会从data中匹配属性名相同的值
+        // 库和框架和区别：框架利用新编译的DOM结构替换掉原有的DOM；
+        // v-model : 双向绑定；视图能影响数据，数据还能影响视图；
+        // v-model:只能放在表单元素上；input  label   checkbox 
+        // 双向改变；
+        let vm = new Vue({
+            el:"#app",
+            // data:{
+            //     msg:"hello",
+            //     name:"用户名"
+            // }
+            // data:function(){
+            //     // data可以是函数，但是函数一定要return一个对象；
+            //     console.log(this);// 指向vue的实例
+            //     return {
+            //         msg:"hello",
+            //         name:"用户名"
+            //     }
+            // }
+            data(){
+                // data可以是函数，但是函数一定要return一个对象；
+                console.log(this);// 指向vue的实例
+                return {
+                    msg:"hello",
+                    name:"用户名"
+                }
+            }
+        });
+
+        // var obj = {
+        //     fn(){
+        //         // 这不是箭头函数
+        //         console.log("no problem");
+                
+        //     }
+        // }
+        // obj.fn()
+
+        // 在真实项目中，一个项目一般只有一个new Vue;
+        let  vm2 = new Vue({
+            el:"#app1"
+        })
+
+    </script>
+</body>
+</html>

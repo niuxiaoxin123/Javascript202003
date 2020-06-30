@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="age"> -->
+        <!-- <span>{{name}}在回龙观东大街</span> -->
+        <!-- <span v-text="name"></span> -->
+        <!-- <div v-text="str"></div>-->
+        <!-- <div v-html="a"></div>  -->
+        <!-- <div v-show="{}">斌哥很火</div>
+        <div v-if="undefined">大家不要睡觉</div>
+        <div v-else-if="1==2">vue学好</div>
+        <div v-else>快下课了</div> -->
+        <!-- <div v-html="str"></div> -->
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // v-开头，放在行间属性的一些特殊的指令，有特殊的意义；
+        // v-model 
+        // {{}}能帮助咱们把data中的value放入到元素中
+        // v-指令后面的值要么是data的一个属性名，要么是数据类型的一种
+        // v-text : 把data中文本放在元素中；不能标签
+        // v-html : 可以识别标签
+        // v-show :  通过设置布尔值来控制元素的显示隐藏，如果是true就是显示，false就不显示；如果不是布尔值，会将这个值默认转成布尔值；通过控制元素的css样式display:none来让元素隐藏的；
+        // v-if : 是直接删除了DOM元素
+        // v-else  : 条件语句；
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+                name:"zfpx",
+                age:11,
+                // 这样指令不会被解析；
+                str:"<span v-show='false'>中国</span>"
+            }
+        })
+        
+    </script>
+</body>
+</html>

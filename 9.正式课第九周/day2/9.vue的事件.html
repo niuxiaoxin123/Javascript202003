@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button  @click="fn">提交</button>
+        <!-- <input type="text" @keyup="fn"> -->
+        <div @click="f"></div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // v-on : 可以用来绑定事件指令
+        // v-on :可以简写成@;事件不需要加on;
+        let vm = new Vue({
+            el:"#app",
+            data:{
+             
+            },
+            methods:{
+                // 1.给元素绑定的事件的方法都放在了methods这个对象中
+                // 2. data和methods中的属性不能重名
+                // 3. 方法中的this指向了vue的实例
+                fn(){
+                    // console.log(100)
+                    // console.log(this);// 指向元素
+                },
+                f(){
+                }
+            }
+        })
+       
+    
+    
+    
+    </script>
+</body>
+</html>

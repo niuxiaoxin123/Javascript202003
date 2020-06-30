@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function observe(data){
+            if(typeof data !=="object")return;
+            let keys = Object.keys(data);// 将所有的属性名组成数组
+            keys.forEach(key=>{
+                defineReactive(data,key,data[key])
+            })
+        }
+        function defineReactive(obj,key,value){
+            let dep = new Dep;
+            Object.defineProperty(obj,key,{
+                get(){
+                    if(Dep.target){
+                        //Dep.target 是Watcher的实例 
+                        dep.addSub(Dep.target);
+                        return value;
+                    }
+                },
+                set(newVal){
+                    if(value !== newVal){
+                        value = newVal;
+                        observe(value);
+                        dep.notify();
+                    }
+                }
+            })
+        }
+        function nodeTofragment(node,vm){
+            let child;
+            let fragment = document.createDocumentFragment();
+            while(child=node.firstChild){
+                fragment.appendChild(child);
+                compile(child,vm);
+            }
+            node.appendChild(fragment);
+        }
+        function compile(node,vm){
+            if(node.typeType===1){
+                let attrs = node.attributes;
+                [...attrs].forEach(item=>{
+                    if(/^\-/.test(item.nodeName)){
+                        let valName = item.nodeValue;
+                        new Watcher(node,vm,valName);
+                        let val = vm.$data[valName];
+                        node.value = val;
+                        node.addEventListener("input",(e)=>{
+                            vm.$data[valName]=e.target.value;
+                        })
+                    }
+                });
+                [...node.childNodes].forEach(item=>{
+                    // 针对有子节点的元素，继续编译
+                    compile(item,vm)
+                });
+            }else{
+                let str  = node.textContent;
+                node.str = str;
+                if(/\{\{(.+)\}\}/.test(str)){
+                    str = str.replace(/\\{\{(.+)\}\}/g,function(a,b){
+                        b = b.replace(/^ +| +$/g,"");
+                        new Watcher(node,vm,b);
+                        return vm.$data[b]
+                    });
+                    node.textContent =str;
+                }
+            }
+        }
+        class Dep {
+            constructor(){
+                this.subs = [];
+            }
+            addSub (sub){
+                this.subs.push(sub);
+            }
+            notify(){
+                this.subs.forEach(item=>{
+                    item.update()
+                })
+            }
+        }
+        class Watcher{
+            constructor(node,vm,key){
+                this.node = node;
+                this.vm = vm;
+                this.key = key;
+                Dep.target = this;
+                this.getData();
+            }
+            update(){
+                this.getData();
+                if(this.node.nodeType===1){
+                    this.node.value = this.value;
+                }else{
+                    let str = this.node.str;
+                    str = str.replace(/\{\{(.+)\}\}/g,function(a,b){
+                        b= b.trim();
+                        return this.vm.$data[b];
+                    })
+                    this.node.textContent = str;
+
+                }
+            }
+            getData(){
+                this.value = this.vm.$data[this.key];
+            }
+        }
+        function Vue(options){
+            this.$el = document.querySelector(options.el);
+            // 将data放在$data属性上
+            this.$data= options.data;
+            observe(this.$data);
+            nodeTofragment(this.$el,this);
+        }    
+        let vm = new Vue({
+            el:"#app"
+        })
+        
+        
+    </script>
+</body>
+</html>

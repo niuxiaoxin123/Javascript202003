@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <!-- 虽然这个函数有小括号，但是不会执行，点击才执行 -->
+        <button @click="fn($event,100,200)">提交</button>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // data中的属性都会放在vm这个实例上
+                msg:"hello"
+            },
+            methods:{
+                // 这里面放的是键值对
+                // this指向vue实例；
+                // 1. 给元素绑定事件，可以加上小括号也可以不写小括号；
+                // 2. 如果时间绑定没有小括号，那么第一个参数e就是事件对象,如果有小括号，那么就是undefined；
+                // 3. 如果有小括号，那么e接收第一个实参；如果没有就是undefined
+                // 4.既需要传参，又需要事件对象；那么需要$event占位
+                fn(e,a){// 操作数据
+                    // e就是事件对象
+                    // console.log(this.msg);  
+                    // this.msg = "world";
+                    // console.log(100);
+                    console.log(e);  
+                }
+            }
+        });
+        
+    
+    </script>
+</body>
+</html>

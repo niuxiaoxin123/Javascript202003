@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" >
+        <div @click.self="fn1">
+            grandParent
+            <div @click="fn2">
+                parent
+                <div @click="fn3">
+                    child
+                </div>
+            </div>
+        </div>
+        <input type="text" @keyup.enter="fn">
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 事件存在冒泡传播；
+        // 事件修饰符：专门用来修饰事件的；
+        // .stop : 阻止事件的冒泡传播；
+        // .prevent : 阻止事件的默认行为；a标签的跳转 form表单中submit
+        // .capture : 控制事件在捕获的阶段执行
+        // .once : 只执行一次;只有第一次点击的时候执行
+        // .self : 只有点击自己的时候才会执行；
+        // .passive : 修饰onscroll事件，不会等到onscroll事件的方法执行完，就会立即执行下一次；提高代码的性能
+
+        // 键盘修饰符 
+        // .enter  .tab  .delete  .esc  .space  .up  .down  .left .right 
+        let vm = new Vue({
+            el:"#app",
+            data:{        
+            },
+            methods:{
+                fn1(e){
+                    console.log("grandParent")
+                },
+                fn2(){
+                    console.log("Parent")
+                },
+                fn3(){
+                    // e.stopPropagation();
+                    console.log("Child")
+                },
+                fn(){
+                    console.log(222);
+                }
+            }
+        });
+
+        // 
+        
+    
+    </script>
+</body>
+</html>

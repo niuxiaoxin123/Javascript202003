@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a" cd="b" gg="f" v-f="456">
+        <div id="b">
+            <div id="c"></div>
+        </div>
+        <div id="rr"></div>
+    </div>
+    <script>
+    function nodeTofragment(node,vm){
+            let child=node.firstChild;
+            let fragment = document.createDocumentFragment();
+            while(child){
+                console.log(node.firstChild);
+                fragment.appendChild(child);
+                // compile(child,vm);
+                child=node.firstChild;
+            }
+            node.appendChild(fragment);
+        }
+        nodeTofragment(a)
+    </script>
+</body>
+</html>
