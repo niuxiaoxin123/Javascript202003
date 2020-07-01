@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .x{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+        .y{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- {{a}}
+        <input type="text" v-model="a">
+        <div v-text="a"></div>
+        <div v-bind:data="a"></div>
+        <img :src="imgSrc" alt=""> -->
+        <div :class="{x:flag}"></div>
+        <div :class="[a,b]"></div>
+        <div :style="{width:num+'px'}"></div>
+        <div :style="[z]"></div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+     
+        // v-bind :
+        // 1.可以将一个普通的属性转成动态属性，可以去data中去取值；
+        // 2.v-bind:class后面属性值可以是一个对象，属性名是样式类名，如果样式类名的属性值时true，该样式生效；如果是false，该样式无效
+        // 3.v-bind可以放数组；
+        // 4. v-bind:style : 属性值需要放一个对象
+        // 5.v-bind:style 
+        // v-bind:   ==>简写成:
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // data中的数据只能通过{{}}或者在html中用内置的指令获取这个data中的值
+                a:"zfpx",
+                imgSrc:"/img/1.jpg",
+                flag:true,// 如果不是个布尔值，页面应用时也会转成布尔
+                a:"x",// 属性值要和类名对应；
+                b:"y",
+                num:100,
+                z:{color:"red"}
+               
+            },
+            methods:{
+                
+            }
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-show="flag" style="width:100px;height:100px;background: red;"></div>
+        <button @click="flag=!flag">{{flag?"隐藏":"显示"}}</button>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                flag:true
+            },
+            methods:{
+                // fn(){
+                //     //  if(this.flag){
+                //     //     this.flag = false;
+                //     //  }else{
+                //     //     this.flag=true;
+                //     //  }
+                //     // 代码是从右向左的
+                //     // flag就是true和false一个交替使用
+                //     this.flag=!this.flag;
+                // }
+            }
+        });
+    </script>
+</body>
+</html>

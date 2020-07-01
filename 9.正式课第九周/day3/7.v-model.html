@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="val"> -->
+        <!-- <input type="radio" v-model="sex" value="1">男
+        <input type="radio" v-model="sex" value="2">女 -->
+        <input type="checkbox" v-model="hobby" value="1">爱面试
+        <input type="checkbox" v-model="hobby" value="2">爱领钱
+        <input type="checkbox" v-model="hobby" value="3">涨工资
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // v-model: 双向数据绑定； v-model用于表单元素
+        // 视图==> DOM监听
+        // 数据==> 视图 Object.defineProperty  
+        // 在单选框中使用v-model；被选中的那一项，会把input框的value值赋值给sex;v-model绑定同一个属性，那么互斥;通过v-model来绑定互斥的属性
+        // 在复选框中使用v-model,如果hobby是一个普通的值，那么会默认转布尔，同时这个布尔值会控制所有的复选框选中或未选中；hobby还可以是一个数组;选中哪个input框，就会把谁的value值放进数组中；
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                val:"今天要下雨",
+                sex:1,
+                hobby:["1"]
+                // hobby:100// 会把这个数字转成布尔之后，再运算，是否选中，如果是true就都选中，false都不选中
+            }      
+        });
+    </script>
+</body>
+</html>
