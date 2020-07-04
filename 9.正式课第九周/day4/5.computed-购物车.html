@@ -68,6 +68,7 @@
             },
             // 如果通过事件绑定和computed都能解决，那么最好使用computed;
             // computed:会有缓存；
+            // computed和data以及methods中的方法属性不能重名；
             computed:{// 计算属性  checkAll也是一个属性，属性值时一个对象
                 checkAll:{
                     get(){

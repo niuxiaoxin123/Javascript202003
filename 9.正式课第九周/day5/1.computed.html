@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{a}}
+        <!-- {{fn()}} -->
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script>
+        // el  data   methods  computed created
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+                // arr:[]
+            },
+            methods:{
+                // fn(){
+                //     // this==> vm
+                //     return 100;
+                // }
+            },
+            filters:{
+
+            },
+            created(){
+            },
+            computed:{
+                // a:{
+                //     get(){
+                //         // 根据get的返回值渲染页面；
+                //     }
+                // }
+                // 验证computed是否支持异步；
+                a(){// 默认就会走get
+                    // 1. computed会根据依赖的数据更新而更新
+                    // 2. computed不支持异步；
+                    // 如果a的依赖数据是通过异步来更新的，那么a是不能监听到数据的变化的；
+                    // let b ;
+                    axios.get("carts.json").then((data)=>{
+                        // 异步请求数据更改b;
+                        b=data.data;
+                    });
+                    return b;// 数据最后赋值给a;
+                }
+            }
+        });
+    
+    </script>
+</body>
+</html>

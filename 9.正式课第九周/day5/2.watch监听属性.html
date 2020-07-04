@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="a"> -->
+        {{a}}
+        <button @click="change">改变</button>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script>
+        // computed : 当这个属性依赖多个属性计算而来，最好使用computed;依赖的变化以后，会触发computed的get方法；重新计算结果；
+        // computed : 有缓存 不支持异步
+        // data methods  computed不能重名；
+        // watch ： 监听； 监听是data中的属性
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+                a:100
+            },
+            methods:{
+                change(){// 普通的方法更改数据
+                    this.a = 300;
+                }
+            },
+            watch:{
+                a(newVal,oldVal){
+                    // 当a发生改变以后，会触发a的这个方法
+                    // 监听data已经存在的属性，当这个数据发生改变以后，要做的一些事；
+                    // newVal : 是最新的值  oldVal : 输出上一次的值；
+                    console.log(newVal,oldVal);
+                    console.log("a变了");
+                }
+            }      
+        });
+    </script>
+</body>
+</html>

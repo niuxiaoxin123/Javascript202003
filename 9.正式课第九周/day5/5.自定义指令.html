@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-drag style="width:100px;height:100px;background: red;position: absolute;left:100px;top:0px;"></div>
+        <div v-drag></div>-->
+        <button v-drag style="position: absolute;left:10px;top:0px;">登录</button> 
+    </div>
+    <div id="app1">
+        <div v-drag></div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 放到行间属性上有特殊的意义
+        // v-for  v-model v-if  v-else-if v-else  v-html  v-text  v-on  v-bind
+        // 指令： 内置的；
+        // 自定义 ： 自己的命名
+        // 全局指令
+        // 一次只能定义一个指令
+        Vue.directive("drag",{
+            inserted:function(ele){
+                console.log(ele);
+                
+            }
+        });
+
+        // 局部指令
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"hello"
+            },
+            // directives:{
+            //     // 指令放在directives这个对象中;函数名就是v-后面的名字;
+            //     drag(ele){
+            //         // 参数： 给哪个元素加上v-drag；那么这个参数就是哪个元素
+            //         // console.log(ele)
+            //         // 盒子和鼠标移动的距离应该是相同的；
+            //         ele.onmousedown  = function(e){
+            //             // 记录鼠标点击的位置 this==>ele
+            //             // 把鼠标的初始位置记录在元素的属性上
+            //             this.l = e.clientX;
+            //             this.t = e.clientY;
+            //             this.startX = parseFloat(this.style.left);
+            //             this.startY = parseFloat(this.style.top);
+            //             // 鼠标移动
+            //             document.onmousemove = function(e){
+            //                 ele.style.left = e.clientX - ele.l+ ele.startX +"px";
+            //                 ele.style.top = e.clientY -ele.t +ele.startY+"px";
+            //             }
+            //             // 鼠标抬起
+            //             document.onmouseup = function(){
+            //                 document.onmousemove = null;
+            //                 document.onmouseup = null;
+            //             }
+            //         }
+            //     }
+            // }
+        });
+        let  vm2 = new Vue({
+            el:"#app1",
+        })
+    
+    
+    
+    </script>
+</body>
+</html>
