@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <hand-some></hand-some>
+    </div>
+    <div id="app1">
+        <hand-some></hand-some>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 组件化   组件之间数据传递  vuex   组件的路由   vue@cli 搭建项目
+        // SPA :单页面应用；框架也适合开发大型的单页面应用，整个项目只有一个html
+        // 组件：把公共的代码HTML，css和js封装成一个组件，当想再次适用这个结构时，可以调用这个组件，提高了代码的复用性；
+
+        ///如何创建组件:
+        //  1.全局组件：所有的vue实例都可以使用 
+        //  2.局部组件
+        //component ：组件
+
+
+        //1.创建 Vue.component(组件名字，第二个是对象是vue实例初化基本的数据) 
+        //2.使用 ： 把组件作为标签名，把组件名以标签名的形式放在页面中；
+        //3.名字的规范
+            // 1.组件名字可以是大写的；
+            // 2.组件名字不支持驼峰命名，如果是驼峰，可以在使用时加上-；
+            // 3.不能和内置的标签名重名
+
+
+        // Vue中每一个组件都是一个vue的实例；每一个实例有自己的生命周期；当调用这个组件时，会生成该组件的生命周期；会执行beforeCreate  created  beforeMount  mounted;
+        Vue.component("handSome",{
+            // 注册组件data只能是函数数据类型的，属性值 不能是对象
+            // 和new Vue({})是一样的；
+            data:function(){
+                return {
+                    msg:"学好组件"
+                }
+            },
+            created(){
+                // 使用几次执行几次
+                // console.log(12);
+                console.log(this);
+            },
+            computed:{
+
+            },
+            methods:{
+
+            },
+            ///只能替换掉该组件自己
+            template:"<div>{{msg}}</div>"
+        });
+        let vm =new Vue({ 
+            el:"#app",
+            data:{
+              
+            },
+            methods:{
+               
+            }
+        });
+        let vm1 =new Vue({
+            el:"#app1",
+            data:{
+              
+            },
+            methods:{
+               
+            }
+        });
+    </script>
+</body>
+</html>

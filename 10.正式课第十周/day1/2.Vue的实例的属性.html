@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <div ref="a">112233</div>
+        <div ref="a">778899</div> -->
+        {{obj.a}}
+        <button @click="add">新增</button>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm =new Vue({
+            // el:"#app",
+            data:{
+                obj:{
+                    // a:100
+                }
+            },
+            methods:{
+                add(){
+                    // 因为
+                    // this.obj.a = 1000;
+                    this.$set(this.obj,"a",200);
+                }
+            },
+            directives:{
+                focus(){
+
+                }
+            }
+        }).$mount("#app");
+        console.log(vm);
+        //_uid : 该实例是第几个vue实例；
+        // $el: 当前vue实例挂载的DOM元素；属性值是原生的DOM对象；
+        // console.log(vm.$el===document.getElementById("app"));
+        // $options : 当前实例参数对象中的某些键值对；
+        // $refs:可以用来获取原生的DOM对象 this.$refs就可以获取行间属性带有ref的元素；
+        // $set : 给data中的对象新增键值对；
+        // $delete: 删除data中的一些属性
+        // $destroy : 销毁实例
+        // $mount : 挂载到元素上
+        // $nextTick ：用于DOM的异步更新
+        // $on : 订阅 
+        // $emit : 发布
+        // $off : 取消订阅
+    
+        
+    
+    
+    
+    
+    </script>
+</body>
+</html>

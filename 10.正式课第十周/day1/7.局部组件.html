@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <son></son>
+        
+    </div>
+    <!-- <div id="app1">
+        <son></son>
+    </div> -->
+    <template id='son'>
+        <div @click="fn">{{a}}
+            <ul>
+                <li  v-for="c in arr">{{c}}</li>
+            </ul>
+        </div>
+    </template>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // Vue.component(组件名,{});
+        // 1.创建一个组件
+        // $parent : 自己的父组件；
+        let  son = {
+            data(){
+                // 组件中data必须是函数；而且这个函数需要return一个对象
+                return {
+                    a:"我很快乐",
+                    /// 组件使用时的数据不能像作用域一样向父组件查找；不存在这个机制；只要子组件没有，但是子组件还用，那就报错了；
+                    arr:[1,2]
+                }
+            },
+            methods:{
+                fn(){
+                    console.log(this)
+                    console.log("能找到我吗")
+                }
+            },
+            created(){
+                console.log(100);
+            },
+            // template: 可以放html字符串，但是由于在项目中组件结构比较复杂，肯定不适合在js中编写HTML；所以通过传入template元素id，也可以识别HTML结构；
+            template:"#son"
+        }
+        // 局部组件： 只能在注册的vue实例上使用该组件，不能跨组件使用，但是可以被多个vue实例注册；
+        // son组件是app的组件的子组件
+        new Vue({
+            el:"#app",
+            data:{  
+                arr:[3,4,5]             
+            },
+            methods:{
+            },
+            components:{// 注册局部组件
+                // 这个属性名和页面使用时的名字一样
+                // 可以注册多个组件
+                son
+            }
+        })
+        // new Vue({
+        //     el:"#app1",
+        //     data:{ 
+        //     },
+        //     methods:{
+        //     },
+        //     // components:{
+        //     //     son
+        //     // }
+        // })
+
+        
+        
+    </script>
+</body>
+</html>

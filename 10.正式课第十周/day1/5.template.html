@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <div id="app1">
+
+    </div>
+    <template id="first">
+        <div>{{msg}}<div  @click='fn'>456</div></div>
+    </template>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // template: 模板
+        // 1. template属性属性值是个字符串，当初始化实例时，会把template属性值编程DOM元素替换掉整个id为app的整个元素；
+        // 2. template中只有一个根元素，如果有多个，那么会默认将第一个作为根元素；
+        // 3. template的元素中同样可以去到data或methods中的数据和方法
+
+        // 两个vue实例公用一个代码；template;
+        let vm =new Vue({
+            el:"#app",
+            data:{
+                msg:"zfpx"
+            },
+            methods:{
+                fn(){
+                    console.log("点我")
+                }
+            },
+            template:"#first"
+            // template:"<div>{{msg}}<div  @click='fn'>456</div></div>"
+        });
+        let vm1 =new Vue({
+            el:"#app1",
+            data:{
+                msg:"hlgdaj"
+            },
+            methods:{
+                fn(){
+                    console.log("点我")
+                }
+            },
+            template:"#first"
+            // template:"<div>{{msg}}<div  @click='fn'>456</div></div>"
+        });
+
+        // 公用了一段代码结构，但是解析出不同的数据来；
+       
+        
+    
+    
+    
+    
+    </script>
+</body>
+</html>
