@@ -34,9 +34,9 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item" v-for="item in todo" @dblclick="remember(item)">
+                                        <li class="list-group-item" v-for="(item,a) in todo" @dblclick="remember(item)">
                                             <span v-show="cur!==item">
-                                                <input type="checkbox" v-model="item.isSelected">
+                                                <input type="checkbox" v-model="item.isSelected" :key="item.title">
                                                 <span :class="{del:item.isSelected}">{{item.title}}</span>
                                             </span>
                                             <input    type="text"  v-model="item.title" v-focus  v-show="cur===item" @blur="update">

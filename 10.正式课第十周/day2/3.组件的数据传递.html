@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <span v-html="msg"></span> -->
+        <!-- 在子组件的行间属性，通过动态去取值，那么获取的是父组件中的数据 -->
+        <!-- <child  v-bind:a="msg"></child> -->
+        <!-- v-bind : 可以省略；转成了动态属性 -->
+        <child :a="obj"></child>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 组件和组件之间的数据通信；
+        // 1.数据传递
+        // 1) : 先把父组件的数据通过动态属性传递到子组件行间属性
+        // 2) : 在子组件中需要用props接收这个属性 
+        // 3) : 在子组件中使用行间属性名取值；
+        let  child = {
+            data(){
+                return {
+                    // msg:"zfpx",  
+                }
+            },
+            props:["a"],// props的值和动态属性的属性名保持一致
+            computed:{
+                // word(){
+                //     return 100;
+                // }
+            },
+            methods:{
+                // word(){
+                //     return 100;
+                // }
+            },
+            // 子组件不能获取数据时，如果自己没有[data、computed、methods];那么不能直接使用父组件中的数据；
+            // 子组件只能在template使用自己的数据
+            template:"<div>{{a.msg}}{{a.word}}</div>"
+        }
+        // vm这个实例是child组件的父组件；组件在哪个组件注册，那么就是谁的子组件；
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                obj:{
+                    msg:'vue.js',
+                    word:"china"
+                }
+            },
+            methods:{
+            },
+            components:{
+                child 
+            },
+            mounted(){
+                
+            }
+        })
+
+        
+        
+    </script>
+</body>
+</html>

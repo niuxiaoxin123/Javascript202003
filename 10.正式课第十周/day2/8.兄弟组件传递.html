@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <bro1 v-bind:f="changeRed"></bro1>
+        <bro2></bro2>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 兄弟组件数据传递
+        // 需要让bro2的事件方法和bro1建立联系；
+        // 事件车
+        // vuex  
+        let  eventBus = new Vue;// 这个就是个容器，能够把两个兄弟进行关联
+        let bro1 = {
+            data(){
+                return {
+                    color:"红色"
+                }
+            },
+            methods:{
+                changeBro2(){
+                    // 让eventBus中的订阅的changeRed执行
+                    eventBus.$emit("changeRed");
+                }
+            },
+            template:"<div>{{color}}<button @click='changeBro2'>变红色</button></div>"
+        };
+        let bro2= {
+            data(){
+                return {
+                    color:"绿色"
+                }
+            },
+            created(){
+                // created能不能获取到methods方法；可以
+                // $on : 订阅；把bro2的事件放到了eventBus这个实例的事件池中
+                eventBus.$on("changeRed",this.changeRed)
+            },
+            methods:{
+                changeRed(){
+                    this.color="红色";
+                }
+            },
+            template:"<div>{{color}}<button>变绿色</button></div>"
+        }
+        new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            methods:{
+
+            },
+            components:{
+                bro1,
+                bro2
+            },
+            mounted(){
+               
+            }
+        })
+    </script>
+</body>
+</html>
