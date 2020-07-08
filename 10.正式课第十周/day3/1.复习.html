@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child></child>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 指令： v-for v-if v-else v-else-if  v-bind  v-model  v-show   v-html  v-text v-on =>@
+        // 属性名：el  data  methods  filters directives  8个生命周期钩子函数   computed  watch  components props   template 
+        // vm的一些属性： $el  $options $parent  $destroy $emit $on  
+        // Vue.component(组件名,{});
+        let  child = {
+            data(){
+                return {msg:"zfpx"}
+            },
+            created(){
+            },
+            template:"<div>{{zfpx}}</div>"
+        };
+        // Vue中的组件 
+        let vm = new Vue({
+            el:"#app",
+            render:function(){
+            },
+            components:{
+                child
+            },
+            template:"<p></p>"
+        });
+        // 数据传递
+        // 父传子  子传父  兄弟数据传递
+    
+    </script>
+</body>
+</html>

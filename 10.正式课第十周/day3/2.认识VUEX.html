@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // vue全家桶  vuex  vue-router   vuel@cli  
+        // 双向数据绑定原理  生命周期    computed和watch区别   组件数据传递
+        // 组件相当多  SPA单页面应用 一定会涉及到组件和组件之间数据通信；
+        // vuex是应用中大型单页面应用；
+        // VUEX : 是一个专门解决vue项目的公共数据管理的库；
+    
+        // state : 公共数据
+        // mutations : 更改数据 
+        // actions ==> mutation ==> state
+
+        // vueX的数据传递： 把各个组件共享的状态抽离出来，放到公共的位置上，所有的组件都可以使用这个数据，并且可以更改它。既然公共的数据，当其中一个组件更改这个公共的数据之后，凡是依赖这个公共数据的组件都要更新；
+        // 1.vuex的数据存储是响应式的，当store中的数据发生变化，所有依赖这个数据的视图都要高校更新；
+
+        // 2. 你不能直接更改store中的数据；改变store中的数据唯一方式就是提交mutation;这样可以追踪每一个数据的变化；
+        let vm = new Vue({
+            el:"#app",
+            components:{
+               
+            },
+        });
+    
+    
+    </script>
+</body>
+</html>
