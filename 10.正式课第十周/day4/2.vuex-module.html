@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <first></first>
+        <second></second>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vuex/dist/vuex.js"></script>
+    <script>
+        // 有两个大组件，一个大组件有5个小组件，这五个小组件有公共的数据
+        let first={
+            methods:{
+               ...Vuex.mapMutations(["add","fn"]),
+            },
+            computed:{
+                // state是私有的，action mutation  getters是公共的；
+                // ...Vuex.mapState(["num"])
+            },
+            template:"<div>{{$store.state.first.num}}{{$store.state.first.count}}<button @click='fn'></button></div>"
+        };
+        // addEventListener : 给这个元素的点击事件绑定了两个
+        let second  ={
+            template:"<div></div>"
+        };
+        // 每个模块独立的state;但是getters  mutations  actions 会注册到全局上；
+        // 每一个module都可以有自己独立的state getters  mutations  actions 
+        // 如果私有模块和公有模块存在同样的方法，会把两个方法整合到一起；
+        let moduleA={
+            namespaced:true,
+            state:{
+                num:66,
+                count:99
+            },
+            getters:{
+                str(state){
+                    // state是局部的state
+                    // console.log(22);
+                    return 88;
+                }
+            },
+            mutations:{
+                add(state){// state 是局部的state 
+                    state.num++;
+                },
+                fn(state){
+                    console.log('私有');
+                    return "私有"
+                }
+            }
+        };
+        let moduleB={
+            state:{
+                num:33
+            }
+        }
+        // Vuex允许将store分隔成模块
+        let store = new Vuex.Store({
+            state:{
+                count:100
+            },
+            getters:{
+                
+            },
+            mutations:{
+                fn(){
+                    console.log('公有')
+                    return "公有"
+                }
+            },
+            actions:{
+
+            },
+            modules:{
+                first:moduleA,
+                second:moduleB
+            }
+        })
+        let vm = new Vue({
+            el:"#app",
+            components:{
+                first,
+                second
+            },
+            store
+        });
+    </script>
+</body>
+</html>
