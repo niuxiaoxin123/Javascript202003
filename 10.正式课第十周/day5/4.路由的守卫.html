@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/home">首页</router-link>
+        <router-link to="/list">列表页</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 导航守卫：
+        // 导航: 表示路由正在发生变化；
+        // 导航守卫： 全局的  单个路由独享  组件
+        // 参数变化，查询改变不会引发导航的守卫，因为组件一直没变；只能watch监听$route 或 beforeRouteUpdate组件守卫；
+
+        // 生命周期 ： 11个
+
+        // 当切换导航时，到了特定的时间会默认调用一些钩子函数，那么这些函数就是导航守卫，可以在进入个导航或者离开导航时，可以在钩子函数中做一些事情；
+        // 导航守卫 ： 7个
+        // 全局守卫 ： 3个
+        // 路由独享守卫 ： 1个
+        // 组件内部守卫 ： 3个
+        let home = {
+            template:"<div>home</div>"
+        }
+        let  list = {
+            template:"<div>list</div>"
+        }
+        let  routes=[
+            {path:"/home",component:home},
+            {path:"/list",component:list}
+        ];
+        let router= new VueRouter({
+            routes
+        });
+        // 全局守卫: 全局的前置钩子函数；只要切换组件，都会执行
+        router.beforeEach((to,from,next)=>{
+            // console.log(to,from);
+            // to : 要到达组件的信心
+            // from : 从哪个组件过来
+            // 权限校验
+            // 可以在这个钩子函数中获取到用户的信息，根据信息进行权限校验，如果这个用户不满足条件，那么next不需要运行，或者直接跳转到首页，403页面
+            next();// 只有执行了next之后才会向下执行
+            // debugger
+        });
+        // 全局守卫的后置的钩子函数；
+        router.afterEach((to,from)=>{
+            // 没有next 
+            // 当路由成功切换以后，执行的钩子函数
+            console.log("切换成功");
+        });
+        let vm = new Vue({
+            el:"#app",
+            router
+        });
+    
+
+    </script>
+</body>
+</html> 

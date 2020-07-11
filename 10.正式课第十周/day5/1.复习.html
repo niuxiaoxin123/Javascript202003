@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/child/100" tag="button"></router-link>
+        <router-view></router-view>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        //  组件  数据传递  路由   
+        // vuex :解决组件之间的数据传递；
+        // state  getters  mutations <== commit  actions<==dispatch   modules
+        // vuex原理
+        // vuex的module 
+        let child = {
+            created(){
+                
+            }
+        };
+        // VueRouter  : 路由  组件
+        // 熟悉项目 ： 1. 每隔模块对应个文件，模块有什么样组件  2. 路由配置 3. 在项目中如何发送一个axios请求 
+        // 1.创建组件
+        // 2.配置路由映射表
+
+        // $router : push  go  back 
+        // 路由的嵌套 ： children  二级路由
+        // 命名路由
+        // 动态路由： 传参 
+        // $route.params
+        let routes = [{path:"/child/:id",component:child,name:"first",children:[{path:"list"}]}];
+        // 创建router实例
+        let router= new VueRouter({
+            routes
+        })
+        // 把router挂载到vm实例上；
+        let vm = new Vue({
+            el:"#app",
+            router
+        });
+    
+    
+    
+    </script>
+</body>
+</html> 
