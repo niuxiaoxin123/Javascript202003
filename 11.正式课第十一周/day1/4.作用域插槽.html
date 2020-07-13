@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>这是父组件</h2>
+        <child>
+            <!-- {{msg}} -->
+            <!-- 子组件这个获取的是父组件的msg -->
+            <!-- 这块模板数据是注入到了子组件的slot插槽中，能不能获取到子组件的数据 -->
+            <!-- slot-scope:作用域插槽 -->
+            <!-- slot-scope的属性值是自定义的 -->
+            <!-- slot-scope的属性值把子组件中slot的行间属性以键值对的形式存到了这个属性值上，这个属性值是自定义的 -->
+            <!-- 这是父组件的地盘，但是slot-scope获取到子组件的数据 -->
+            <div slot="first">{{msg}}</div>
+            <div slot-scope="a">{{a.user}}</div>
+        </child>
+    </div>
+    <template id="child">
+        <div>
+            <h2>这是子组件</h2>
+            <!-- 将其转成动态属性，去获取data中的值 -->
+            <slot name="first"></slot>
+            <!-- 只会匹配一个带有slot-scope的模板 -->
+            <slot :user="msg" :word="cc"></slot>
+        </div>
+    </template>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let child = {
+            data(){
+                return {
+                    msg:"beijing",
+                    cc:"点名了"
+                }
+            },
+            template:"#child"
+        }
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"zfpx"
+            },
+            components:{
+                child
+            }
+        })
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <h2>这是父组件</h2>
+        <child>
+            <!-- 这里面小胡子获取到的是父组件的数据；不是child的msg -->
+            <div>{{msg}}</div>
+            <div>菜单二</div>
+            <div>菜单三</div>
+        </child>
+    </div>
+    <template id="child">
+        <div>
+            <!-- 将组件标签中的内容放到slot这个位置 -->
+            <h2>这是子组件</h2>
+            <slot></slot>
+            <!-- 内置的组件: 将父组件中的子组件里面的模板数据显示到子组件中 -->
+        </div>
+    </template>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // component  keep-alive   
+        // slot ： 内置的组件
+        let child = {
+            data(){
+                return {msg:"zfpx"}
+            },
+            template:"#child"
+        }
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"hello"
+            },
+            components:{
+                child
+            }
+        
+        });
+     
+    
+    
+    
+    
+    </script>
+</body>
+</html>

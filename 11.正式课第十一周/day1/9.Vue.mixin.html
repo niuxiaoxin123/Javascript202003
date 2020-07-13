@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="app">
+        {{name}}
+        {{msg}}
+        {{msg}}
+        <my></my>
+        <my></my>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // VUEX  ： 每个组件都可以使用$store的数据
+        // Vue.mixin :
+        // 1. 可以将对象的data中的数据合并到组件的data中,如果重名了，那么以组件内部的数据为准；
+        // 2. 还可以给组件实例混入生命钩子函数；这个不会覆盖，有多少个组件，这个函数执行几次；并且mixin混入的函数是先执行的，再执行组件的钩子函数
+        // 全局混入
+        let a = Vue.mixin({
+            data(){
+                return {
+                    name:"202003",
+                    msg:"大家很棒"
+                }
+            },
+            created(){// 组件使用一次，执行一次
+                console.log("created mixin")
+            }
+        });
+        Vue.component("my",{
+            data(){
+                return {
+                    msg:"6688"
+                }
+            },
+            created(){
+                console.log("created my")
+            },
+            template:"<div>{{msg}}</div>"
+        });
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            created(){
+                console.log("created vm")
+            },
+           // store放在这里，会给vm的实例新增一个$store,同时给其子孙组件也新增了$store 这个属性
+            methods:{
+               
+            }
+        });
+        // console.log(vm);
+        
+    
+    
+    </script>
+</body>
+</html>

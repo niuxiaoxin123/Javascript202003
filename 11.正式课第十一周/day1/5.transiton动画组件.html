@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <style>
+        /* fade */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 2s;
+        }
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+    </style> -->
+    <link rel="stylesheet" href="animate.css">
+</head>
+<body>
+    <div id="app">
+        <button @click="fn">显示/隐藏</button>
+        <!-- name属性可以帮助咱们自动生成类名 -->
+        <!-- <transition name="fade">
+            <div v-if="show">hello  beijing</div>
+        </transition>   -->
+        <!-- 定义进入和离开的状态 -->
+        <transition name="slide" 
+        enter-active-class="animated bounceInDown"
+        leave-active-class="animated bounceOutDown">
+                <div v-if="show">hello  beijing</div>
+        </transition>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 6个class 
+        // v-enter : 定义动画开始的状态，在插入元素之前生效；
+        // v-enter-active : 进入动画过度的状态
+        // v-enter-to : 定义动画结束的状态
+        // v-leave :离开的开始状态
+        // v-leave-active : 离开过程中的动画
+        // v-leave-to : 结束动画的状态
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+                show:true
+            },
+            methods:{
+                fn(){
+                    this.show=!this.show;
+                }
+            }
+
+        })
+    
+    
+    </script>
+</body>
+</html>

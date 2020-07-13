@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-cloak>{{msg}}</div>
+        <div v-pre>{{zfpx}}</div>
+        <div v-pre>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div> -->
+
+        <button @click="fn">点击</button>
+        <div v-once>{{msg}}</div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 指令v- 放在行间属性上，有特殊的意义
+        // v-for  v-model  v-bind=>:  v-on=>@  v-if  v-else  v-else-if  v-show  v-html v-text 
+
+        // v-cloak:可以隐藏未编译的小胡子语法标签;直到编译结束，才让该元素显示
+        // v-pre : 该元素是不被解析的；按照元素原有的写法进行渲染；
+        // 当该结构是写死的静态结构，可以加上v-pre;减少解析次数；
+        // v-once ： 只渲染一次以后更改了数据，也不会再次渲染，
+        let  vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"a",
+                word:"zfpx"
+            },
+            methods:{
+                fn(){
+                    this.msg = 888;
+                }
+            }
+
+        })
+    
+    
+    </script>
+</body>
+</html>

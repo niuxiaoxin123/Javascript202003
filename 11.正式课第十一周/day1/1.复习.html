@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/child"></router-link>
+        <router-view></router-view>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 产品  UI  前端  后台  测试  自己的服务器 
+        // 项目： 1.自己公司有研发团队  2. 租借别人的（企管宝）   3.借用别人公司的团队   4.公司的外包
+        // 项目类型 ： 官网   OA系统   CRM系统  订单系统（商品、酒店、外卖） //  电商网站（京东、淘宝）   移动端 （App混合开发） h5宣传页  小程序   
+        // 系统类的（单页面应用）==>为了方便管理 OA管理系统【公司内部员工】
+        // A公司   B公司的OA管理系统；
+        // 单页面应用
+        // 组件: 有自己独立的html,css,以及js;可以复用；
+        // 组件的数据传递 
+        // 路由  ： 
+        let  child = {};
+        let routes=[{path:"/child",component:child}] ;
+        let  router = new VueRouter({
+            routes
+        });
+        // 路由传参 ： 三种方式 ：id  query params
+        // 路由守卫 ： 7个路由守卫  
+        // 全局守卫： beforeEach  beforeResolve  afterEach
+        // 路由独享守卫： beforeEnter
+        // 组件内部守卫： beforeRouteEnter  beforeRouteUpdate  beforeRouteLeave
+        let vm = new Vue({
+            el:"#app",
+            router
+        });
+        // 内置组件
+        //  component : is属性   keep-alive: 用于组件的缓存
+        //  activated   deactivated    errorCaptured  
+    
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -11,6 +11,9 @@
             text-decoration: line-through;
             color:#ccc;
         }
+        [v-cloak] {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +37,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item" v-for="(item,a) in todo" @dblclick="remember(item)">
+                                        <li class="list-group-item" v-for="(item,a) in todo" @dblclick="remember(item)"  v-cloak>
                                             <span v-show="cur!==item">
                                                 <input type="checkbox" v-model="item.isSelected" :key="item.title">
                                                 <span :class="{del:item.isSelected}">{{item.title}}</span>
