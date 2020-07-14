@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{$store.state.str}}
+        <first></first>
+        <second></second>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vuex/dist/vuex.js"></script>
+    <script>
+        // 多组件数据共享；state状态就是数据
+        // store是一个实例
+        // 当共享的数据发生改变以后，那么依赖这个数据的组件都会高效的更新；
+        // 在vuex规定：要改state的数据，必须通过commit来提交一个mutation
+        let  store = new Vuex.Store({
+            state:{
+                count:100,// 这是公共数据 多组件共享数据
+                str:"雪斌很帅"
+            },
+            mutations:{ // 改变
+                add(state,payload){// state这个state默认就是store中的state;
+                    // payload ： 载荷
+                    // console.log(state);
+                    console.log(this);
+                    state.count+=payload;
+                }
+            }
+        })
+        let  first={
+            data(){
+                return {
+                    msg:"我爱你中华",
+                    // count:1
+                }
+            },
+            // beforeCreate(){
+            //     // 也可以在生命周期的任何一个钩子函数中使用
+            //     console.log(this.$store.state.count);
+            // },
+            // created(){
+            //     console.log(this.$store.state.count);// 每一个组件也会新增一个$store 
+            // },
+            // first组件就拿到了store中count的值；
+            methods:{
+                addCount(val){
+                    // this.$store.state.count++;// this不能省
+                    // commit是$store上的一个方法，能够让store中mutations中的方法执行
+                    // commit :提交
+                    this.$store.commit("add",val);// 这个名字需要和mutations中的方法的名字保持一致
+                }
+            },
+            // Vuex.mapState : 可以将vuex中的store中的state的数据，映射到当前组件的计算属性上；
+            //{ count:function(){}}
+            // store中的数据是响应式的；
+            computed:{
+                // vuex.mapState返回值是一个对象,自己组件的计算属性依赖store中的数据变化;
+                // a(){
+                // },
+                // count(){
+                // },
+                ...Vuex.mapState(["count"])
+            },
+            template:"<div>{{$store.state.count}}{{count}}<button @click='addCount(2)'>累加</button></div>"
+        }
+        let  child={};
+        let  second={
+            data(){
+                return {}
+            },
+            components:{
+                child
+            },
+            template:"<div>{{$store.state.count}}</div>"
+        }
+        // first和second作为vm的子组件，可以通过$store获取到公共的数据；那么如果child组件是second的子组件；同样可以获取到store中的公共数据；只要是vm的子孙组件就可以；
+
+        // 在真实的项目中，只有一个new Vue；这个Vm实例是所有组件的祖先组件
+        let vm = new Vue({
+            el:"#app",
+            components:{
+                first,
+                second
+            },
+            store:store// 当把store注入到实例时，vm实例上会新增一个$store;属性值是一个对象；在VUEX源码将store注入到这个vm实例的同时，同时也注入到它的子孙组件的实例上；
+        });
+        // let  vm1 = new Vue({
+        //     el:"#app1",
+        // });
+        // function Vue(options){
+        //     this.$store = options.store
+        // }
+        // console.log(vm);// $store 
+        
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{user}} -->
+        <my></my>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 只想对某个组件进行混入，而不是每一个组件都混入
+        // Vue.mixin({
+        //     data(){
+        //         return {user:"zfpx"}
+        //     }
+        // })
+        // 相当于obj注入到了对应组件上
+        let  obj = {
+            data(){
+                return {user:"zfpx"}
+            },
+            created(){
+                // 还可以混入钩子函数
+                // 如果混入到组件中，先执行混入的钩子函数，再执行组件自己的钩子函数
+                // console.log(100);
+                console.log(this);// 指向被混入的组件实例
+                // 有多少个vue实例，created就会执行多少次；并且每次执行都会指向不同的组件实例
+            }
+        }
+
+        Vue.component("my",{
+            data(){
+                return {
+                    msg:"世界很大"
+                }
+            },
+            created(){
+                console.log(200); 
+            },
+            template:"<div>{{user}}</div>",
+            mixins:[obj]// 局部混入 只能该组件下使用data中的数据
+        })
+        let vm =new Vue({
+            el:"#app",
+            data(){
+                return {msg:"hello"}
+            },
+            // mixins:[obj]
+        });
+        console.log(vm);
+        
+      
+        
+    </script>
+</body>
+</html>

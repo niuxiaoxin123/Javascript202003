@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 实例.$store -->
+        {{$store.state.count}}
+        <child></child>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vuex/dist/vuex.js"></script>
+    <script>
+        // VUEX : 各个组件之间的通信问题；适合应用于中大型项目；把公共的数据放在store的state中；各个组件可以获取到这个state;this.$store.state;而且还可以改这个数据，commit提交store中的mutations;如果是异步需要用dipatch派发actions，action是commit的mutation
+        // Vuex 代表是自执行函数的返回值
+        let Vuex=(function(){
+            // 采用闭包保护里面的变量不受外界干扰
+            class Store{
+                constructor(){
+                    // this  ===> store的实例
+                    this.state={count:1}
+                }
+            }
+            function install(_Vue){
+                // 形参就是Vue这个类
+                // 会默认调用install
+                _Vue.mixin({
+                    // 将生成的store通过mixin注入到每一个组件
+                    beforeCreate(){
+                        // this ==> 代表每一个组件实例
+                        // 会把这个方法注入到每一个组件实例上，并且这个钩子函数的执行时间早于组件实例的钩子
+                    }
+                })
+            }
+            return {
+                Store,
+                install
+            }
+        })();
+
+        // Vue的插件必须使用Vue.use执行一下；会默认检测是否是vue官方的插件，vuex内部会执行调用一次vue.use,当Vue.use执行时，发现Vuex是个对象，会默认调用里面install；
+        Vue.use(Vuex)
+
+
+
+        let  store = new Vuex.Store({
+            state:{
+                    // 数据
+                count:1
+            },
+            mutations:{
+                fn(state){// 默认会传递一个store的state
+                    
+                }
+            },
+            getters:{
+
+            },
+            actions:{
+
+            }
+        });
+        // VUEX原理：就是共享了$store;每一个组件都被注入了$store
+        let  child={
+            // 实例.$store
+            template:"<div>{{this.$store.state.count}}</div>"
+        }
+        let  vm = new Vue({
+            el:"#app",
+            components:{
+                child
+            },
+            // 把Store的实例给了这个store的属性
+            store// 每一个组件身上都会有一个$store属性
+        })
+    
+    
+    </script>
+</body>
+</html>
