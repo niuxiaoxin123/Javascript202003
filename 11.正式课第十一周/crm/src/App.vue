@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <!-- 根据路由的配置，显示不同的组件 -->
+    <!-- router-link : 改变路由 -->
+    <router-view></router-view>
+    <!-- 根据路由显示的对应的组件 login.vue   index.vue -->
   </div>
 </template>
 
@@ -16,17 +15,12 @@
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+// 由于APP.vue永远显示，这个地方写的是全局的样式
+*{
+  margin:0;
+  padding:0;
+  list-style: none
 }
+
+
 </style>
