@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from "../views/index.vue";
+import org from "./org";
+import crm from "./customer"
 // 是第三方插件，需要Vue.use
 Vue.use(VueRouter)
 
@@ -14,16 +16,19 @@ const routes = [
     {
         path:"/",
         component:index,
+        redirect:"/org",// redirect : 重定向，如果访问/,那么路由会自动重定向到/org；
         children:[
             {
                 path:"/org",
                 name:"org",
-                component:()=>import("../views/org.vue")
+                component:()=>import("../views/org.vue"),
+                children:org
             },
             {
                 path:"/crm",
                 name:"crm",
-                component:()=>import("../views/crm.vue")
+                component:()=>import("../views/crm.vue"),
+                chilren:crm
             }
         ]
     }

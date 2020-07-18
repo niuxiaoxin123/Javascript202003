@@ -18,6 +18,7 @@
             </el-header>
             <div class="middleBox">
                 <!-- 用于显示组织结构和客户端的大组件 -->
+                <!-- 用于显示index这个组件的子组件 -->
                 <router-view></router-view>
             </div>
         </el-container>
@@ -61,9 +62,9 @@
         }
     }
 </script>
-
-<style lang="less" scoped>
-   
+    
+<style lang="less">
+    // scoped : 代表的是私有样式
     .el-container .header{
         background: #333;
         color:white;
@@ -110,5 +111,14 @@
         width:100%;
         left:0;
         bottom:0;
+        .el-container{
+            height:100%;
+            .el-aside{
+                background:#50545E;
+                color:#333;
+                text-align: center;
+            }
+        }
     }
+    
 </style>

@@ -1,6 +1,6 @@
 <template>
     <el-container>
-        <el-aside>Aside-crm</el-aside>
+        <my-aside :ary="ary"></my-aside>
         <el-main>
             <!-- 凡是能够切换路由发生改变的地方，需要使用router-view -->
             main-crm
@@ -10,12 +10,17 @@
 </template>
 
 <script>
+import ary from "../router/customer.js"
+import  navlist from "@/components/navlist.vue";
 export default {
   name: '',
   data() { 
     return {
-
+        ary:ary
     }
+  },
+  components:{
+     "my-aside":navlist
   }
  }
 </script>
