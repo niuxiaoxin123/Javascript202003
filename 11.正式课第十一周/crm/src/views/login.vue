@@ -50,7 +50,21 @@ export default {
             password:this.password
         }
         login(obj).then(data=>{
-            console.log(data);
+            // element-ui :给每个实例提供了$alert方法
+           if(data.code===0){
+                 console.log(data);
+                // 把权限以及当前的用户名存储到localStorage中
+                localStorage.setItem("power",data.power);
+                localStorage.setItem("user",this.username);
+                this.$alert("恭喜登录成功","提示",{
+                  confirmButtonText:"确定",
+                  callback:()=>{
+                    // 当点击确定按钮时，会触发个回调函数
+                    // 登录成功后，改变hash值；
+                    this.$router.push("/");
+                  }
+              })
+           }
         })
     }
   }

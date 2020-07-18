@@ -22,5 +22,15 @@
   list-style: none
 }
 
-
+ .lt{
+      float:left;
+  }
+  .rt{
+      float:right
+  }
+  .clear::after{
+    content:'';
+    display: block;
+    clear:both;
+  }
 </style>

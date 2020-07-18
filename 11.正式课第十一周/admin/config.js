@@ -9,7 +9,6 @@ module.exports = {
 		HEADERS: 'Content-Type,Content-Length,Authorization, Accept,X-Requested-With',
 		CREDENTIALS: true
 	},
-
 	//=>SESSION存储相关信息
 	SESSION: {
 		secret: 'ZFPX',
