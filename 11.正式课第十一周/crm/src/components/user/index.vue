@@ -23,7 +23,12 @@
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column label="姓名" width="120" prop="name"></el-table-column>
-        <el-table-column  prop="sex" label="性别" width="120"></el-table-column>
+        <el-table-column  label="性别" width="120">
+            <template slot-scope="scope">
+              <!-- scope: 是tabelData中的每一项 -->
+              <span>{{scope.row.sex==0?"男":"女"}}</span>
+            </template>
+        </el-table-column>
         <el-table-column prop="department" label="部门"></el-table-column>
         <el-table-column prop="job" label="职务"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
@@ -31,8 +36,8 @@
         <el-table-column prop="desc" label="描述"></el-table-column>
         <el-table-column label="操作" width="200">
            <template slot-scope="scope">
-              <el-button>编辑</el-button>
-              <el-button>删除</el-button>
+              <el-button size="mini">编辑</el-button>
+              <el-button size="mini" type="danger" @click.native.prevent="deleteRow(scope.$index,tableData)">删除</el-button>
            </template>
         </el-table-column>
       </el-table>
@@ -58,8 +63,13 @@ export default {
   },
   methods:{
     handleSelectionChange(val) {
-        this.multipleSelection = val;
-      }
+      this.multipleSelection = val;
+    },
+    deleteRow(cur,obj){
+      console.log(cur);
+      
+      obj.splice(cur,1);
+    }
   },
   computed:{
     options(){
