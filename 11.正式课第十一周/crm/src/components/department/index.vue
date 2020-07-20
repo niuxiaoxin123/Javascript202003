@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import {deleteDepartment} from "@/api/department.js";
 export default {
   name: '',
   data() { 
@@ -44,10 +45,27 @@ export default {
           }).then(()=>{
               // 这个函数会等到点击确定按钮之后，会执行这个方法
               // 发送请求
+              // console.log(row.id);
               
+              deleteDepartment(row.id).then(data=>{
+                // console.log(data);  
+                // 数据删除成功以后，不仅要删除后台的数据，还需要删除store的数据
+                 if(data.code==0){
+                    this.$message({
+                      type:"success",
+                      message:"删除成功"
+                    })
+                    this.$store.dispatch("changeDepartmentList")
+                 }else{
+                   this.$message({
+                      type:"error",
+                      message:"删除失败"
+                    })
+                 }
+              })
+
           },function(){
-            console.log(200);
-            
+            console.log(200); 
           });
       }
   },

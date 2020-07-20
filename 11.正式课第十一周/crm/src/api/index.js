@@ -22,3 +22,4 @@ export function getUserList(option){
         params:option
     })
 }
+// 删除部门列表的数据
