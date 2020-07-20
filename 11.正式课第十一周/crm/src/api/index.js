@@ -14,3 +14,11 @@ export function signout(){
 export function getDepartmentList(){
     return http.get("/department/list")
 }
+
+// 获取员工列表的数据
+export function getUserList(option){
+    console.log(option);
+    return http.get("/user/list",{
+        params:option
+    })
+}

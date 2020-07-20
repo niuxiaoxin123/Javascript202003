@@ -3,14 +3,15 @@
       <div>
         <el-button>全部删除</el-button>
         <el-select v-model="value"  placeholder="请选择部门">
+          <el-option value="0" label="全部部门"></el-option>
           <el-option
             v-for="item in options"
             :key="item.id"
             :label="item.name"
-            :value="item.name">
+            :value="item.id">
           </el-option>
         </el-select>
-        <el-input style="width:300px;margin-left:20px" placeholder="请输入内容" prefix-icon="el-icon-search"></el-input>
+        <el-input style="width:300px;margin-left:20px" placeholder="请输入内容" prefix-icon="el-icon-search" v-model="val"></el-input>
       </div>
 
       <el-table
@@ -20,60 +21,40 @@
         style="width: 100%"
         border
         @selection-change="handleSelectionChange">
-
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column label="日期" width="120">
-          <template slot-scope="scope">{{ scope.row.date }}</template>
+        <el-table-column label="姓名" width="120" prop="name"></el-table-column>
+        <el-table-column  prop="sex" label="性别" width="120"></el-table-column>
+        <el-table-column prop="department" label="部门"></el-table-column>
+        <el-table-column prop="job" label="职务"></el-table-column>
+        <el-table-column prop="email" label="邮箱"></el-table-column>
+        <el-table-column prop="phone" label="电话"></el-table-column>
+        <el-table-column prop="desc" label="描述"></el-table-column>
+        <el-table-column label="操作" width="200">
+           <template slot-scope="scope">
+              <el-button>编辑</el-button>
+              <el-button>删除</el-button>
+           </template>
         </el-table-column>
-        <el-table-column  prop="name" label="姓名" width="120">
-        </el-table-column>
-        <el-table-column prop="address" label="地址" show-overflow-tooltip></el-table-column>
-
       </el-table>
   </div>
 </template>
 
 <script>
 //  部门的数据由于好几个组件都会用到该数据，所以放到公共数据中比较方便；
+// label : 是当前这一列的表头；
+// props和对象的属性名对应；
 export default {
   data() { 
     return {
-      value:"",
+      value:"0",
+      val:"",
       // 组件的prop和数据中
-      tableData: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-02',
-          name: '小沈阳',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
     }
   },
   created(){
     // 在created派发actions中的动作；
      this.$store.dispatch("changeDepartmentList");
+     this.$store.dispatch("changeUserList",{departmentId:parseFloat(this.value),search:this.val});
   },
   methods:{
     handleSelectionChange(val) {
@@ -83,6 +64,9 @@ export default {
   computed:{
     options(){
        return this.$store.state.departmentList;
+    },
+    tableData(){
+      return this.$store.state.userList;
     }
   }
  }
