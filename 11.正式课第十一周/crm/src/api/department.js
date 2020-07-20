@@ -7,3 +7,11 @@ export function deleteDepartment(departmentId){
         }
     })
 }
+// 更新部门的请求
+export function updateDepartmentList(option){
+    return http.post("/department/update",option)
+}
+// 新增部门的请求
+export function addDepartmentList(option){
+    return http.post("/department/add",option)
+}

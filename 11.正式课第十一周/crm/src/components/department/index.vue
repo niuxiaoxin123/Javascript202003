@@ -11,7 +11,7 @@
         <el-table-column label="操作">
             <!-- 如果需要自定列中的数据或内容，需要用template来渲染这一列 -->
             <template slot-scope="scope">
-                <el-button size="mini">编辑</el-button>
+                <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
                 <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>
             </template>
         </el-table-column>
@@ -35,6 +35,14 @@ export default {
         // 请求的流程 
   },
   methods:{
+      handleEdit(row){
+        // 点击编辑时，跳转到新增部门页面
+        // 路由传参 :id  params[name]   query[path]
+        this.$router.push({
+          path:"/org/addDepartment",
+          query:{id:row.id}
+        })
+      },
       handleDelete(row){// row : 是当前这一行对应的数据
           // this==> 组件的实例
           // $confirm会返回一个promise的实例
