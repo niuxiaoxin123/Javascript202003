@@ -16,7 +16,7 @@ const routes = [
     {
         path:"/",
         component:index,
-        redirect:"/org",// redirect : 重定向，如果访问/,那么路由会自动重定向到/org；
+        redirect:"/org/user",// redirect : 重定向，如果访问/,那么路由会自动重定向到/org/user；
         children:[
             {
                 path:"/org",
