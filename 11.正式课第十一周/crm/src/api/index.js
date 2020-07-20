@@ -10,3 +10,7 @@ export function signout(){
         return data;
     })
 }
+// 获取部门列表的方法
+export function getDepartmentList(){
+    return http.get("/department/list")
+}
