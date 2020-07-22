@@ -7,7 +7,6 @@
      </div>
   </div>
 </template>
-
 <script>
 export default {
   name: '',
@@ -20,6 +19,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+  //  url :"/v4//mweb-feed/content/list"
+  // type:"get",
+  // params:{
+  //         newType:"keji",// 当前请求的type类型
+  //         oldType:"tuijian",// 上一次请求的type;
+  //         count:10,//每次请求10条数据
+  //         reload:true,
+  //         cur_step:0,
+  //         category:"keji"
+  // }
   .header{
       div{
           display: flex;

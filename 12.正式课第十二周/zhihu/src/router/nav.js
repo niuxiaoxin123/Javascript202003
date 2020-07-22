@@ -1,7 +1,9 @@
+import home from "./home.js";
 export default [// children： 是index组件的子路由的配置
     {
        path:"/home",
-       component:()=>import("@/components/home/home.vue")
+       component:()=>import("@/components/home/home.vue"),
+       children:home
     },
     {
       path:"/vip",
