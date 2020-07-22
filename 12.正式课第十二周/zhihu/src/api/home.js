@@ -5,4 +5,4 @@ export  function hotList(option){
         params:option
     })
 }
-// 默认会导出一个对象
+//默认会导出一个对象

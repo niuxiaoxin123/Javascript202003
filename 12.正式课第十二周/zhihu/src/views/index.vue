@@ -57,6 +57,7 @@ export default {
         bottom:0;
         left:0;
         width:100%;
+        background:white;
         height:18vw;// 1vw : 相当于屏幕的1%;
         border-top:1px solid #eee;
         display: flex;

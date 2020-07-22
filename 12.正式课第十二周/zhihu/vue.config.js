@@ -6,3 +6,4 @@ module.exports={
         proxy:"https://www.zhihu.com/api"
     }
 }
+// 只要更改了这个配置文件，一定要重新启动项目

@@ -11,7 +11,7 @@ const http  =  axios.create({
     params:{
         t:Math.random()
     },
-    timeout:2000
+    // timeout:2000
 });
 // 添加请求以及响应拦截器
 http.interceptors.response.use(function(response){
