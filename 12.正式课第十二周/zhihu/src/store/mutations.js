@@ -7,6 +7,7 @@ export function changeHotList(state,option){
     if(option.newType===option.oldType){
         state.hotlist.push(...option.data);
     }else{
+        console.log(2);
         state.hotlist=option.data;
     }
    

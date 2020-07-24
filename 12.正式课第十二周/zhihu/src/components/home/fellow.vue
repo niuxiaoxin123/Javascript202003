@@ -66,6 +66,7 @@ export default {
   methods:{
     // created==>methods==> dispatch（actions中的方法）==> actions中的方法引用了api请求接口的方法，并且把请求回来的数据传给了commit===> commit提交了mutations中的方法，从而让vuex中的数据发生改变；
     getList(){
+        console.log(100);
         // dispatch 传递的参数是actions中的方法
         // commit 传递的参数是mutations中的方法 
         this.$store.dispatch("getHotList",{

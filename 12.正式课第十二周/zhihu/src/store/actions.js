@@ -14,7 +14,7 @@ export function getHotList({commit},option){
         // 会等到hotList这个方法请求数据成功以后,会执行这个then中的函数；
         // 这个第二个参数就会传给mutation方法的第二个参数；
         // {data:[]}
-        console.log(data);
+        // console.log(data);
         commit("changeHotList",{
             newType:option.newType,
             oldType:option.oldType,
