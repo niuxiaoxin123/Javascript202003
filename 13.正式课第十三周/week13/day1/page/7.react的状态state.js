@@ -36,7 +36,7 @@ class Bar extends Component{
         // });
     }
     render(){
-        console.log("渲染")
+        // console.log("渲染")
         return <div>
             <p>{this.state.num}</p>
             <p>{this.state.str}</p>
