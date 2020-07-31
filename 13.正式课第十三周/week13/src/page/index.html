@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="add">+</button>
+    <span id="text"></span>
+    <button id="min">-</button>
+    <script src="../redux.js"></script>
+    <script>
+        let add = document.getElementById("add");
+        let text = document.getElementById("text")
+        let min = document.getElementById("min");
+        // 必须结合redux;
+        // 点击+-按钮时，更改store中的数据，并且让视图更新
+        // 让这个span的元素放入的是公共的数据；
+        //  createStore :
+        //  state : createStore形成作用域变量
+        //  getState ： 将state进行深克隆，并且返回；为了防止外界直接更改state
+        //  dispatch :[1.通过createStore传递进来的reducer的返回值改变state  2.让订阅的事件池中的方法循环执行]
+        //  subscribe : 将订阅的方法放到事件池中，并且返回一个函数，用于订阅方法的取消订阅；   
+        // const ADD_COUNT="ADD_COUNT";
+        // const MIN_COUNT="MIN_COUNT";
+        // let initState={
+        //     num:11
+        // }
+        // // 这个reducer的返回值会覆盖store中的state；
+        // function reducer(state=initState,action){
+        //     switch(action.type){
+        //         case ADD_COUNT:
+        //             return {...state,num:state.num+1}// 那原来的对象覆盖掉
+        //         case MIN_COUNT:
+        //             return {...state,num:state.num-1}
+        //     }
+        //     return state;// 把初始化值赋值给store中的state
+        // }
+        // // redux只给你提供createStore；当执行createStore时；把reducer这个函数传递了过去；当createStore执行的时候，默认会执行一次dispatch;
+        // let store = createStore(reducer);
+        // function renderSpan(){
+        //     text.innerHTML = store.getState().num;
+        // }
+        // renderSpan();
+        // store.subscribe(renderSpan);
+        // // 更改store中的state
+        // add.onclick= function(){
+        //     store.dispatch({type:ADD_COUNT});
+        // }
+        // min.onclick = function(){
+        //     store.dispatch({type:MIN_COUNT})
+        // }
+        // ... :尝试
+        // Es6新增语法；可以给函数的参数赋默认值
+        // function fn(x=1,y){
+        //     console.log(x);
+        // }
+        // fn(undefined)
+
+        
+        // id是text的span元素获取的是公共的数据；
+        // redux 里面的store默认是undefined；
+        let  initState={num:11};
+        const ADD_COUNT="ADD_COUNT";
+        const MIN_COUNT = "MIN_COUNT"
+        let store = createStore(reducer)// 传递更改state的那个函数，这个函数是自己的
+        // reducer : 是用来改数据；只要dispatch一次，reducer就执行一次；
+        function reducer(state=initState,action){
+            // 在createStore中默认调用了一次dispatch ;意味着也默认执行一次reducer
+            // 由于reducer传过来的实参state是undefined，所以initState就把值给了这个的形参state；
+            // state :{num:11} action：{type:ADD_COUNT}
+            switch(action.type){
+                case ADD_COUNT:
+                    return {...state,num:state.num+1}// 把最新的这个对象地址赋值给store中的state；
+                case MIN_COUNT:
+                    return {...state,num:state.num-1}
+            }
+            return  state;
+        }
+        function renderSpan(){
+            text.innerHTML = store.getState().num;
+        }
+        renderSpan();
+        // 需要renderSpan 重新执行一次
+        store.subscribe(renderSpan);// 只要以后dispatch,这个renderSpan就会执行一次；
+        // 绑定点击事件
+        // 要更改createStore中的state的num属性值；dispatch;需要传递一个action，action带有一个type属性；type的属性值不能重复，因为reducer只有一个
+        //在真实的项目，type有很多；
+        // 30 个 abc  ab   cd
+        // 这个type就是个标识，不会更改；  
+        add.onclick = function(){
+            store.dispatch({type:ADD_COUNT});// 实际上是执行的reducer；reducer的返回值最后更改了state；
+        }
+        min.onclick = function(){
+            store.dispatch({type:MIN_COUNT})
+        }
+
+
+
+    </script>
+</body>
+</html>

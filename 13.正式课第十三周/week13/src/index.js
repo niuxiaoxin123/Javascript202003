@@ -1,1 +1,1 @@
-import "./slider/index"
+import "./component/count.js";
