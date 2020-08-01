@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import store from "../store/index.js";
-import actions from "../store/actions/count.js";
+import store from "../store/index.js.js";
+import actions from "../store/actions/count.js.js";
 
 
 // 当更改store中的数据时：
