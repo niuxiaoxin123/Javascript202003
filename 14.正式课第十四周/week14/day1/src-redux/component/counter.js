@@ -1,5 +1,5 @@
 import React from "react";
-import actions from "../store/actions/counter.js.js";
+import actions from "../store/actions/counter.js.js.js";
 import {connect} from "react-redux";
 // connect : react-redux 要求返回一个连接后的组件；connect
 // 属性和状态的变化能引发视图的更新；
