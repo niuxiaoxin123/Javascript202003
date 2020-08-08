@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./page/App";
-ReactDOM.render(<div>
+import store from "./store/index.js";
+import {Provider} from "react-redux";
+ReactDOM.render(<Provider store={store}>
   <App></App>
-</div>,document.getElementById('root'));
+</Provider>,document.getElementById('root'));
 // create-react-app 如何配置less；让项目支持less；
 // 当安装某些模块时，npm或yarn都有可能出现安装了一些新的模块的同时，也可能会删除一些模块，如果是这样，那么需要重新npm i  ;或yarn 重新跑环境；
 

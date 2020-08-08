@@ -6,8 +6,12 @@ import Classify from "./classify/classify.js";
 import Taste from "./taste/taste"
 import Cart from "./cart/cart";
 import Personal from "./personal/personal"
-import Search from "./search/search"
+import Search from "./search/search";
+// 引入公共的样式
+import "../assets/css/common.less";
+import "../assets/css/reset.min.css";
 class App extends React.Component{
+    // 监听页面的hash值，然后根据路由映射表渲染对应的组件
     render(){
         return <HashRouter>
             {/* 路由 */}
