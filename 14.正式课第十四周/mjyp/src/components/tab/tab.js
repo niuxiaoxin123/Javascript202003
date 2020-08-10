@@ -1,8 +1,15 @@
 import React from "react";
 import "./tab.less";
 // Link 和 NavLink : 点击navLink会有activeclass这个类名；
-import {NavLink} from "react-router-dom";
-function Tab(){
+import {NavLink,withRouter} from "react-router-dom";
+function Tab(props){
+    // history  location   match
+    console.log(props);
+    let pathname = props.location.pathname;
+    let flag = /search/.test(pathname);// 检测路径是否包含search;
+    if(flag){
+        return null;
+    }
     return <div className="tab">
         <NavLink to="/home" className="link">
             <i className="icon"></i>
@@ -26,4 +33,4 @@ function Tab(){
         </NavLink>
     </div>
 }
-export default Tab;
+export default withRouter(Tab);

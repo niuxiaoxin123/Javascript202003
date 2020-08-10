@@ -21,5 +21,15 @@ export default {
                 data:data
             })
         }
+    },
+    queryHot(){
+        return async dispatch=>{
+            let data = await api.home.queryMain();
+            dispatch({
+                type:Types.HOME_HOT,
+                data:data
+            })
+
+        }
     }
 }
