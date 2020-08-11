@@ -3,6 +3,7 @@ import "./swiper.less";
 import "swiper/css/swiper.css";
 import Swiper from "swiper";
 function Banner(props){
+    
     useEffect(()=>{
         new Swiper(".swiper-container",{
             loop:true,
