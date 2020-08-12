@@ -1,1 +1,11 @@
-/* pages/cart/cart.wxss */
+.item_box{
+    display: flex;
+    padding:20px;
+    text-align: center;
+}
+.item_box .img_box{
+    width:200rpx;
+    height:200rpx;
+    overflow: hidden;
+    background-size:contain;
+}

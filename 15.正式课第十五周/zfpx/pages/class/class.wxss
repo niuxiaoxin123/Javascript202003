@@ -1,1 +1,46 @@
-/* pages/class/class.wxss */
+.list_one{
+    padding:20rpx;
+}
+.list_one .item{
+    height:180rpx;
+    display: flex;
+    margin-bottom: 20rpx;
+}
+.item .img_box{
+    width:230rpx;
+}
+.item .img_box image{
+    width:100%;
+    height:100%;
+}
+.item .content_box{
+    flex:1;
+    overflow: hidden;
+    position: relative;
+    padding-left:20rpx;
+    box-sizing: border-box;
+}
+.content_box .til{
+    font-size: 35rpx;
+    height:80rpx;
+    line-height: 80rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    width:100%;
+}
+.content_box .desc{
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.content_box .bot_box{
+    position: absolute;
+    bottom:0;
+    display: flex;
+    width:100%;
+} 
+.content_box .bot_box view{
+    flex:1;
+}  

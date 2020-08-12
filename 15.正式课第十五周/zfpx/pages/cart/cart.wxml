@@ -1,2 +1,18 @@
-<!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="cart_box">
+    <view class="h1">购物车列表</view>
+    <view class="item_box" wx:for="{{cartList}}">
+        <view class="img_box">
+            <image src="{{item.img}}"></image>
+        </view>
+        <view class="content_box">
+            <view class="til">{{item.til}}</view>
+            <view class="price">单价 {{item.price}}</view>
+            <view>
+                <input value="{{item.count}}"></input>
+            </view>
+        </view>
+    </view>
+    <view>
+        总价是{{total}}
+    </view>
+</view>
